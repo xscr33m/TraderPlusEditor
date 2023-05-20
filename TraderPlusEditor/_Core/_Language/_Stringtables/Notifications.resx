@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="de_CategoryExists" xml:space="preserve">
+    <value>Diese Kategorie existiert bereits.</value>
+  </data>
+  <data name="de_CategoryInvalidName" xml:space="preserve">
+    <value>Bitte gebe einen gültigen Kategorienamen ein.</value>
+  </data>
+  <data name="de_CategoryNoProduct" xml:space="preserve">
+    <value>Keine Produkte gefunden in Kategorie '</value>
+  </data>
+  <data name="de_ImportFail" xml:space="preserve">
+    <value>Die Datei war fehlerhaft und wurde nicht importiert!</value>
+  </data>
+  <data name="de_ImportSuccess" xml:space="preserve">
+    <value>' wurde erfolgreich importiert!</value>
+  </data>
+  <data name="de_InvalidCharacters" xml:space="preserve">
+    <value>Ungültige(s) Zeichen '</value>
+  </data>
+  <data name="de_InvalidCharacters2" xml:space="preserve">
+    <value>' wurde gelöscht!</value>
+  </data>
+  <data name="de_InvalidEmptyValue" xml:space="preserve">
+    <value>Leerer Wert erkannt! Kein Export möglich, wenn der Wert nicht korrekt ist!</value>
+  </data>
+  <data name="de_InvalidNumberFormat" xml:space="preserve">
+    <value>Ungültiges Zahlenformat! Kein Export möglich, wenn der Wert nicht korrekt ist!</value>
+  </data>
+  <data name="de_NoExistingFolder" xml:space="preserve">
+    <value>Der Ordner existiert nicht!</value>
+  </data>
+  <data name="de_ProductDeleteSuccess" xml:space="preserve">
+    <value>Markierte Produkte wurden gelöscht!</value>
+  </data>
+  <data name="de_ProductExists" xml:space="preserve">
+    <value>' existiert bereits in Kategorie '</value>
+  </data>
+  <data name="de_ProductMissingTextBoxes" xml:space="preserve">
+    <value>Bitte fülle alle benötigten Textboxen!</value>
+  </data>
+  <data name="de_ProductNoSelectedCategory" xml:space="preserve">
+    <value>Bitte wähle zuerst eine Kategorie.</value>
+  </data>
+  <data name="de_SaveFailed" xml:space="preserve">
+    <value>Keine Änderungen festgestellt! Es muss keine neue Datei erstellt werden!</value>
+  </data>
+  <data name="de_SaveSuccess" xml:space="preserve">
+    <value>Datei erfolgreich gespeichert!</value>
+  </data>
+  <data name="de_SearchNoResult" xml:space="preserve">
+    <value>Kein Produkt enthält '</value>
+  </data>
+  <data name="de_SearchNoTerm" xml:space="preserve">
+    <value>Bitte gib einen Suchbegriff ein.</value>
+  </data>
+  <data name="de_SettingsSaved" xml:space="preserve">
+    <value>Einstellungen erfolgreich gespeichert!</value>
+  </data>
+  <data name="de_Startup" xml:space="preserve">
+    <value>xscr33mLabs wurde erfolgreich gestartet!</value>
+  </data>
+  <data name="en_CategoryExists" xml:space="preserve">
+    <value>The category already exists.</value>
+  </data>
+  <data name="en_CategoryInvalidName" xml:space="preserve">
+    <value>Please enter a valid category name.</value>
+  </data>
+  <data name="en_CategoryNoProduct" xml:space="preserve">
+    <value>No products found in category '</value>
+  </data>
+  <data name="en_ImportFail" xml:space="preserve">
+    <value>The file was faulty and was not imported!</value>
+  </data>
+  <data name="en_ImportSuccess" xml:space="preserve">
+    <value>' successfully imported!</value>
+  </data>
+  <data name="en_InvalidCharacters" xml:space="preserve">
+    <value>Invalid character(s) '</value>
+  </data>
+  <data name="en_InvalidCharacters2" xml:space="preserve">
+    <value>' has been deleted!</value>
+  </data>
+  <data name="en_InvalidEmptyValue" xml:space="preserve">
+    <value>Empty value detected! No export possible if the value is not correct!</value>
+  </data>
+  <data name="en_InvalidNumberFormat" xml:space="preserve">
+    <value>Invalid number format! No export possible if the value is not correct!</value>
+  </data>
+  <data name="en_NoExistingFolder" xml:space="preserve">
+    <value>The folder does not exist!</value>
+  </data>
+  <data name="en_ProductDeleteSuccess" xml:space="preserve">
+    <value>Marked Products have been deleted!</value>
+  </data>
+  <data name="en_ProductExists" xml:space="preserve">
+    <value>' already exists in the category '</value>
+  </data>
+  <data name="en_ProductMissingTextBoxes" xml:space="preserve">
+    <value>Please fill all required textboxes!</value>
+  </data>
+  <data name="en_ProductNoSelectedCategory" xml:space="preserve">
+    <value>Please select a category.</value>
+  </data>
+  <data name="en_SaveFailed" xml:space="preserve">
+    <value>No changes detected! There is no need to create a new file!</value>
+  </data>
+  <data name="en_SaveSuccess" xml:space="preserve">
+    <value>Data successfully saved!</value>
+  </data>
+  <data name="en_SearchNoResult" xml:space="preserve">
+    <value>No product contains '</value>
+  </data>
+  <data name="en_SearchNoTerm" xml:space="preserve">
+    <value>Please enter a search term.</value>
+  </data>
+  <data name="en_SettingsSaved" xml:space="preserve">
+    <value>Settings saved successfully!</value>
+  </data>
+  <data name="en_Startup" xml:space="preserve">
+    <value>xscr33mLabs successfully started!</value>
+  </data>
+  <data name="fr_CategoryExists" xml:space="preserve">
+    <value>La catégorie existe déjà.</value>
+  </data>
+  <data name="fr_CategoryInvalidName" xml:space="preserve">
+    <value>Veuillez saisir un nom de catégorie valide.</value>
+  </data>
+  <data name="fr_CategoryNoProduct" xml:space="preserve">
+    <value>Aucun produit trouvé dans la catégorie '</value>
+  </data>
+  <data name="fr_ImportFail" xml:space="preserve">
+    <value>Le fichier était erroné et n'a pas été importé !</value>
+  </data>
+  <data name="fr_ImportSuccess" xml:space="preserve">
+    <value>' a été importé avec succès!</value>
+  </data>
+  <data name="fr_InvalidCharacters" xml:space="preserve">
+    <value>Caractère(s) non valide(s) '</value>
+  </data>
+  <data name="fr_InvalidCharacters2" xml:space="preserve">
+    <value>a été supprimée !</value>
+  </data>
+  <data name="fr_InvalidEmptyValue" xml:space="preserve">
+    <value>Valeur vide détectée ! Aucune exportation possible si la valeur n'est pas correcte !</value>
+  </data>
+  <data name="fr_InvalidNumberFormat" xml:space="preserve">
+    <value>Format de nombre invalide ! Aucune exportation possible si la valeur n'est pas correcte !</value>
+  </data>
+  <data name="fr_NoExistingFolder" xml:space="preserve">
+    <value>Le dossier n'existe pas !</value>
+  </data>
+  <data name="fr_ProductDeleteSuccess" xml:space="preserve">
+    <value>Les produits marqués ont été supprimés !</value>
+  </data>
+  <data name="fr_ProductExists" xml:space="preserve">
+    <value>' existe déjà dans la catégorie '</value>
+  </data>
+  <data name="fr_ProductMissingTextBoxes" xml:space="preserve">
+    <value>Veuillez remplir toutes les zones de texte requises !</value>
+  </data>
+  <data name="fr_ProductNoSelectedCategory" xml:space="preserve">
+    <value>Veuillez sélectionner une catégorie.</value>
+  </data>
+  <data name="fr_SaveFailed" xml:space="preserve">
+    <value>Aucun changement n'a été détecté ! Il n'est pas nécessaire de créer un nouveau fichier !</value>
+  </data>
+  <data name="fr_SaveSuccess" xml:space="preserve">
+    <value>Données sauvegardées avec succès !</value>
+  </data>
+  <data name="fr_SearchNoResult" xml:space="preserve">
+    <value>Aucun produit ne contient de '</value>
+  </data>
+  <data name="fr_SearchNoTerm" xml:space="preserve">
+    <value>Veuillez saisir un terme de recherche.</value>
+  </data>
+  <data name="fr_SettingsSaved" xml:space="preserve">
+    <value>Paramètres enregistrés avec succès !</value>
+  </data>
+  <data name="fr_Startup" xml:space="preserve">
+    <value>xscr33mLabs a été lancé avec succès !</value>
+  </data>
+</root>

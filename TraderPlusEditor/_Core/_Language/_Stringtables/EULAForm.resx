@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="de_CopiedFail" xml:space="preserve">
+    <value>Kein Text zum Kopieren!</value>
+  </data>
+  <data name="de_CopiedSuccess" xml:space="preserve">
+    <value>In die Zwischenablage kopiert!</value>
+  </data>
+  <data name="de_EULAText" xml:space="preserve">
+    <value>1. Übersicht
+Diese Endbenutzer-Lizenzvereinbarung (EULA) ist ein rechtlicher Vertrag zwischen Ihnen, dem Endbenutzer, und xscr33m, dem Entwickler von xscr33mLabs Tools, einer Desktop-Anwendung, die in C# geschrieben wurde. Durch die Installation oder Verwendung von xscr33mLabs Tools erklären Sie sich mit den Bedingungen dieser EULA einverstanden.
+
+2. Lizenz
+Die Entwickler von xscr33mLabs Tools gewähren Ihnen hiermit eine nicht-exklusive und nicht übertragbare Lizenz zur Installation und Verwendung von xscr33mLabs Tools auf einem einzigen Computer oder Gerät, das Sie besitzen oder kontrollieren. Diese EULA erlaubt Ihnen nicht, xscr33mLabs Tools zu verkaufen, zu vermieten, zu leasen, zu übertragen, zu sublizenzieren oder anderweitig zu verteilen.
+
+3. Modifikationen
+Sie sind nicht berechtigt, xscr33mLabs Tools zu modifizieren, zu ändern, zu zerlegen, zu dekompilieren oder anderweitig zu versuchen, den Quellcode von xscr33mLabs Tools zu extrahieren.
+
+4. Sammlung von Nutzerdaten
+xscr33mLabs Tools sammelt keine personenbezogenen Daten ohne Ihre ausdrückliche Zustimmung. Eine Übermittlung von personenbezogenen Daten erfolgt ausschließlich über die Kontaktfunktion in der Anwendung, wenn Sie dies wünschen.
+
+5. Garantie
+xscr33mLabs Tools wird "wie besehen" bereitgestellt. Der Entwickler von xscr33mLabs Tools lehnt jegliche ausdrückliche oder stillschweigende Garantien ab, einschließlich, aber nicht beschränkt auf Garantien für die Verkäuflichkeit und die Eignung für einen bestimmten Zweck.
+
+6. Haftungsausschluss
+Unter keinen Umständen haftet der Entwickler von xscr33mLabs Tools für direkte, indirekte, besondere, zufällige oder Folgeschäden jeglicher Art, einschließlich, aber nicht beschränkt auf Schäden aufgrund von Gewinnausfall oder unterbrochenem Geschäft, die aus der Verwendung von xscr33mLabs Tools oder dem Unvermögen, es zu verwenden, resultieren, selbst wenn der Entwickler auf die Möglichkeit
+solcher Schäden hingewiesen wurde. Diese  Haftungsausschlüsse und -beschränkungen gelten unabhängig davon, ob die Forderung auf Vertrag, Garantie, Delikt (einschließlich Fahrlässigkeit), Produkthaftung oder anderem rechtlichem Grund beruht.
+
+7. Änderungen
+Der Entwickler behält sich das Recht vor, diese EULA jederzeit zu ändern oder zu aktualisieren. Es liegt in Ihrer Verantwortung, diese EULA regelmäßig zu überprüfen, um Änderungen oder Updates bemerken zu können. Ihre fortgesetzte Verwendung von xscr33mLabs Tools nach solchen Änderungen oder Aktualisierungen gilt als Ihre Annahme solcher Änderungen oder Aktualisierungen.
+
+8. Beendigung
+Diese EULA wird automatisch beendet, wenn Sie gegen eine der Bedingungen verstoßen. In einem solchen Fall müssen Sie unverzüglich alle Kopien von xscr33mLabs Tools zerstören und die Verwendung der Anwendung einstellen.
+
+9. Gesamte Vereinbarung
+Diese EULA stellt die gesamte Vereinbarung zwischen Ihnen und dem Entwickler von xscr33mLabs Tools dar und ersetzt alle vorherigen Vereinbarungen und Übereinkünfte zwischen Ihnen und dem Entwickler hinsichtlich der Verwendung von xscr33mLabs Tools.
+
+10. Rechtswahl
+Diese EULA unterliegt dem Recht der Bundesrepublik Deutschland und Sie stimmen hiermit ausdrücklich der ausschließlichen Gerichtsbarkeit und dem Rechtsstand dieser Gerichte für alle Streitigkeiten im Zusammenhang mit dieser EULA und der Verwendung von xscr33mLabs Tools zu.
+
+Vielen Dank für die Verwendung von xscr33mLabs Tools!</value>
+  </data>
+  <data name="de_ReviewTitle" xml:space="preserve">
+    <value>Dies ist die Endbenutzer-Lizenzvereinbarung (EULA) für xscr33mLabs Tools</value>
+  </data>
+  <data name="de_Title" xml:space="preserve">
+    <value>Um TraderPlusEditor zu verwenden, akzeptiere bitte das Endbenutzerlizenzabkommen.</value>
+  </data>
+  <data name="en_CopiedFail" xml:space="preserve">
+    <value>No text to copy!</value>
+  </data>
+  <data name="en_CopiedSuccess" xml:space="preserve">
+    <value>Copied to Clipboard!</value>
+  </data>
+  <data name="en_EULAText" xml:space="preserve">
+    <value>1. overview
+This End User License Agreement (EULA) is a legal agreement between you, the end user, and xscr33m, the developer of xscr33mLabs Tools, a desktop application written in C#. By installing or using xscr33mLabs Tools, you agree to be bound by the terms of this EULA.
+
+2. license
+The developers of xscr33mLabs Tools hereby grant you a non-exclusive and non-transferable license to install and use xscr33mLabs Tools on a single computer or device that you own or control. This EULA does not permit you to sell, rent, lease, transfer, sublicense or otherwise distribute xscr33mLabs Tools.
+
+3. modifications
+You are not authorized to modify, alter, disassemble, decompile or otherwise attempt to extract the source code of xscr33mLabs Tools.
+
+4. collection of user data
+xscr33mLabs Tools does not collect any personal data without your explicit consent. Personal data will only be transmitted via the contact function in the application if you wish to do so.
+
+5. warranty
+xscr33mLabs Tools is provided "as is". The developer of xscr33mLabs Tools disclaims all warranties, express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose.
+
+6. disclaimer of liability
+In no event shall the developer of xscr33mLabs Tools be liable for any direct, indirect, special, incidental or consequential damages of any kind, including, but not limited to, damages for loss of profits or business interruption, arising out of the use of xscr33mLabs Tools or the inability to use it, even if the developer has been advised of the possibility of such damages.
+of such damages. These exclusions and limitations of liability apply regardless of whether the claim is based on contract, warranty, tort (including negligence), product liability or any other legal theory.
+
+7. changes
+The Developer reserves the right to change or update this EULA at any time. It is your responsibility to review this EULA periodically to be aware of any changes or updates. Your continued use of xscr33mLabs Tools after such changes or updates will constitute your acceptance of such changes or updates.
+
+8. termination
+This EULA will terminate automatically if you breach any of its terms. In such event, you must immediately destroy all copies of xscr33mLabs Tools and cease using the Application.
+
+9. entire agreement
+This EULA constitutes the entire agreement between you and the Developer of xscr33mLabs Tools and supersedes all prior agreements and understandings between you and the Developer regarding the use of xscr33mLabs Tools.
+
+10. choice of law
+This EULA is governed by the laws of the Federal Republic of Germany and you hereby expressly consent to the exclusive jurisdiction and venue of such courts in all disputes relating to this EULA and the use of xscr33mLabs Tools.
+
+Thank you for using xscr33mLabs Tools!</value>
+  </data>
+  <data name="en_ReviewTitle" xml:space="preserve">
+    <value>This is the End User License Agreement (EULA) for xscr33mLabs Tools</value>
+  </data>
+  <data name="en_Title" xml:space="preserve">
+    <value>To use TraderPlusEditor, please accept the End User License Agreement.</value>
+  </data>
+  <data name="fr_CopiedFail" xml:space="preserve">
+    <value>Pas de texte à copier !</value>
+  </data>
+  <data name="fr_CopiedSuccess" xml:space="preserve">
+    <value>Copié dans le presse-papiers !</value>
+  </data>
+  <data name="fr_EULAText" xml:space="preserve">
+    <value>1. aperçu
+Ce Contrat de Licence Utilisateur Final (CLUF) est un contrat légal entre vous, l'utilisateur final, et xscr33m, le développeur de xscr33mLabs Tools, une application de bureau écrite en C#. En installant ou en utilisant xscr33mLabs Tools, vous acceptez d'être lié par les termes de ce CLUF.
+
+2. ème licence
+Les développeurs de xscr33mLabs Tools vous accordent par la présente une licence non exclusive et non transférable pour l'installation et l'utilisation de xscr33mLabs Tools sur un seul ordinateur ou dispositif que vous possédez ou contrôlez. Ce CLUF ne vous autorise pas à vendre, louer, louer à bail, transférer, sous-licencier ou distribuer de toute autre manière les outils xscr33mLabs.
+
+3. modifications
+Vous n'êtes pas autorisé à modifier, altérer, désassembler, décompiler ou tenter de toute autre manière d'extraire le code source des outils xscr33mLabs.
+
+4. collecte des données des utilisateurs
+xscr33mLabs Tools ne collecte pas de données personnelles sans votre consentement explicite. La transmission de données personnelles se fait uniquement via la fonction de contact de l'application, si vous le souhaitez.
+
+5. garantie
+xscr33mLabs Tools est fourni "en l'état". Le développeur de xscr33mLabs Tools décline toute garantie, expresse ou implicite, y compris, mais sans s'y limiter, les garanties de qualité marchande et d'adéquation à un usage particulier.
+
+6. Clause de non-responsabilité
+En aucun cas, le développeur des outils xscr33mLabs ne sera responsable des dommages directs, indirects, spéciaux, accessoires ou consécutifs de quelque nature que ce soit, y compris, mais sans s'y limiter, les dommages résultant d'une perte de bénéfices ou d'une activité interrompue, résultant de l'utilisation des outils xscr33mLabs ou de l'incapacité à les utiliser, même si le développeur a été informé de la possibilité de ces dommages.
+de tels dommages a été informé. Ces exclusions et limitations de responsabilité s'appliquent indépendamment du fait que la réclamation soit basée sur un contrat, une garantie, un délit (y compris la négligence), la responsabilité du fait des produits ou tout autre motif légal.
+
+7. modifications
+Le développeur se réserve le droit de modifier ou de mettre à jour le présent CLUF à tout moment. Il est de votre responsabilité de consulter régulièrement le présent CLUF afin de prendre connaissance de toute modification ou mise à jour. Votre utilisation continue des outils xscr33mLabs après de telles modifications ou mises à jour sera considérée comme votre acceptation de ces modifications ou mises à jour.
+
+8. résiliation
+Le présent CLUF sera automatiquement résilié si vous ne respectez pas l'une de ses conditions. Dans un tel cas, vous devez immédiatement détruire toutes les copies de xscr33mLabs Tools et cesser d'utiliser l'application.
+
+9. Intégralité de l'accord
+Le présent CLUF constitue l'intégralité de l'accord entre vous et le développeur des outils xscr33mLabs et remplace tous les accords et conventions antérieurs entre vous et le développeur concernant l'utilisation des outils xscr33mLabs.
+
+10. choix de la loi
+Le présent CLUF est régi par les lois de la République Fédérale d'Allemagne et vous acceptez expressément par la présente de vous soumettre à la juridiction exclusive et à la compétence de ces tribunaux pour tout litige relatif au présent CLUF et à l'utilisation des outils xscr33mLabs.
+
+Merci d'utiliser les outils xscr33mLabs !</value>
+  </data>
+  <data name="fr_ReviewTitle" xml:space="preserve">
+    <value>Ceci est le Contrat de Licence Utilisateur Final (CLUF) pour les outils xscr33mLabs Tools</value>
+  </data>
+  <data name="fr_Title" xml:space="preserve">
+    <value>Pour pouvoir utiliser TraderPlusEditor, veuillez accepter le Contrat de Licence Utilisateur Final.</value>
+  </data>
+</root>

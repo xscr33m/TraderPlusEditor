@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B70C440-32F1-40C6-BF5F-D737D1D44903}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TraderPlusEditor</RootNamespace>
+    <AssemblyName>TraderPlusEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>_Core\_Resources\_Images\TPE_Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.3.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=9.1.2.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.9.1.2\lib\netstandard2.0\Octokit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Core\_Engine\FileManager.cs" />
+    <Compile Include="_Core\_Engine\InstanceCheck.cs" />
+    <Compile Include="_Core\_Engine\JSONData.cs" />
+    <Compile Include="_Core\_Engine\JSONValidator.cs" />
+    <Compile Include="_Core\_Engine\PathGenerator.cs" />
+    <Compile Include="_Core\_Engine\TPVerif.cs" />
+    <Compile Include="_Core\_Engine\UpdateCheck.cs" />
+    <Compile Include="_Core\_Engine\WebsiteLauncher.cs" />
+    <Compile Include="_Core\_Forms\CustomMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Core\_Forms\CustomMessage.Designer.cs">
+      <DependentUpon>CustomMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Forms\EULADialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Core\_Forms\EULADialog.Designer.cs">
+      <DependentUpon>EULADialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormInfo.Designer.cs">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Core\_Forms\FormSplash.Designer.cs">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\LanguageCore.cs" />
+    <Compile Include="_Core\_Language\_Stringtables\EULAForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EULAForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\FileManagerRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileManagerRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\InfoForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfoForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\JSONValidatorRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JSONValidatorRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\MainForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\MessageForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\Notifications.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Notifications.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\SettingsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\SplashForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\TPVerifRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TPVerifRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_Core\_Language\_Stringtables\UpdateCheckRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateCheckRes.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="_Core\_Forms\CustomMessage.resx">
+      <DependentUpon>CustomMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Forms\EULADialog.resx">
+      <DependentUpon>EULADialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Forms\FormInfo.resx">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Forms\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Forms\FormSplash.resx">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\EULAForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EULAForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\FileManagerRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileManagerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\InfoForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InfoForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\JSONValidatorRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>JSONValidatorRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\MainForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\MessageForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\Notifications.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Notifications.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\SettingsForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\SplashForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\TPVerifRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TPVerifRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Core\_Language\_Stringtables\UpdateCheckRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UpdateCheckRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="_Core\_Resources\_Images\NoImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="_Core\_Resources\_Images\xscr33mLabs_Logo.png" />
+    <EmbeddedResource Include="_Core\_Resources\_Images\xscr33mLabs_Splash.png" />
+    <EmbeddedResource Include="_Core\_Resources\_Images\xscr33mLabs_Tile_S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="_Core\_Resources\_Images\TPE_Logo.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
