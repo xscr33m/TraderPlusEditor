@@ -19,8 +19,8 @@ namespace TraderPlusEditor
 
         private void F_Main_Load(object sender, EventArgs e)
         {
-
             menuStrip1.Renderer = new CustomMenuRenderer();
         }
+
     }
 }
