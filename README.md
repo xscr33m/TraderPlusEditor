@@ -34,13 +34,13 @@ Don't forget to save the values.
 
 ## How-To-Use
 
-    1. download the file [TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases/download/v1.0/xscr33m.s.TraderPlusEditor.zip). 
-    2. unzip the TraderPlusEditor.zip file with 7Zip or another program.
-    3. run the file TraderPlusEditor.exe in the folder TraderPlusEditor.
-    4. click on "Load File" and choose your TraderPlusPriceConfig.json.
-    5. have fun editing the prices.
-    6. when you are done editing, just click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder accessible via the "Open Export Folder" button.
-    7. replace the old TraderPlusPriceConfig.json on your server with the new one.
+   1. download the file [TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases/download/v1.0/xscr33m.s.TraderPlusEditor.zip). 
+   2. unzip the TraderPlusEditor.zip file with 7Zip or another program.
+   3. run the file TraderPlusEditor.exe in the folder TraderPlusEditor.
+   4. click on "Load File" and choose your TraderPlusPriceConfig.json.
+   5. have fun editing the prices.
+   6. when you are done editing, just click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder accessible via the "Open Export Folder" button.
+   7. replace the old TraderPlusPriceConfig.json on your server with the new one.
     
     
 ## Feedback
