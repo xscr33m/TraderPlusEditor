@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +13,9 @@ namespace TraderPlusEditor
 {
     public partial class F_Main : Form
     {
-        static public string editorFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TraderPlusEditor");
+        static public string editorFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TraderPlusEditor", "EXPORTS");
         private string filePath;
-        private JsonData jsonData;
+        private JsonData loadedJsonData;
 
         public F_Main()
         {
@@ -33,7 +34,7 @@ namespace TraderPlusEditor
         {
             CHECKFORINSTANCE();
             GENERATEPATH();
-            menuStrip1.Renderer = new CustomMenuRenderer();
+            // menuStrip1.Renderer = new CustomMenuRenderer();
             ShowNotification("xscr33m's TraderPlusEditor successfully startet!", Properties.Resources.okay, Color.Beige);
         }
 
@@ -68,7 +69,7 @@ namespace TraderPlusEditor
             }
         }
 
-        private async void ShowNotification(string text, Image image, Color panelColor)
+        private async Task ShowNotification(string text, Image image, Color panelColor)
         {
             // Setze den Text des Labels
             lbl_pushNotifications.Text = text;
@@ -79,8 +80,8 @@ namespace TraderPlusEditor
             // Setze die Farbe des Panels
             pnl_pushNotifications.BackColor = panelColor;
 
-            // Warte für 0,9 Sekunden
-            await Task.Delay(900);
+            // Warte für 1 Sekunden
+            await Task.Delay(1000);
 
             // Mache das Panel und das Label sichtbar
             pnl_pushNotifications.Visible = true;
@@ -94,10 +95,10 @@ namespace TraderPlusEditor
             lbl_pushNotifications.Visible = false;
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_loadFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON Files (*.json)|*.json";
+            openFileDialog.Filter = "JSON Files (TraderPlusPriceConfig.json)|TraderPlusPriceConfig.json";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -106,19 +107,19 @@ namespace TraderPlusEditor
 
                 // JSON-Datei lesen und deserialisieren
                 string json = File.ReadAllText(filePath);
-                JsonData jsonData = JsonConvert.DeserializeObject<JsonData>(json);
+                loadedJsonData = JsonConvert.DeserializeObject<JsonData>(json);
 
                 // Grundlegende Informationen anzeigen
-                tb_version.Text = jsonData.Version;
-                cb_autoCalculation.Checked = Convert.ToBoolean(jsonData.EnableAutoCalculation);
-                cb_autoDestockAtRestart.Checked = Convert.ToBoolean(jsonData.EnableAutoDestockAtRestart);
-                cb_defaultTraderStock.Checked = Convert.ToBoolean(jsonData.EnableDefaultTraderStock);
+                tb_version.Text = loadedJsonData.Version;
+                cb_autoCalculation.Checked = Convert.ToBoolean(loadedJsonData.EnableAutoCalculation);
+                cb_autoDestockAtRestart.Checked = Convert.ToBoolean(loadedJsonData.EnableAutoDestockAtRestart);
+                cb_defaultTraderStock.Checked = Convert.ToBoolean(loadedJsonData.EnableDefaultTraderStock);
 
                 // Kategorien und Produkte in den ListViews anzeigen
                 lv_categories.Items.Clear();
                 lv_products.Items.Clear();
 
-                foreach (var category in jsonData.TraderCategories)
+                foreach (var category in loadedJsonData.TraderCategories)
                 {
                     // Kategorie zur Kategorien-ListView hinzufügen
                     lv_categories.Items.Add(category.CategoryName);
@@ -170,33 +171,119 @@ namespace TraderPlusEditor
                 cb_autoCalculation.Enabled = true;
                 cb_autoDestockAtRestart.Enabled = true;
                 cb_defaultTraderStock.Enabled = true;
-                btn_addProduct.Enabled = true;
-                // btn_addCategory.Enabled = true; 
-                btn_deleteCategory.Enabled = true;
-                btn_deleteProduct.Enabled = true;
-                btn_saveProduct.Enabled = true;
-                // btn_setToAllProducts.Enabled = true;  
-                btn_prevEntry.Enabled = true;
-                btn_nextEntry.Enabled = true;
-                lv_categories.Enabled = true;
-                lv_products.Enabled = true;
-                tb_version.Enabled = true;
-                tb_productName.Enabled = true;
+
+                btn_closeFile.Visible = true;
+
+                lv_categories.Enabled = true; 
                 tb_newCategoryName.Enabled = true;
-                tb_buyPrice.Enabled = true;
-                tb_sellPrice.Enabled = true;
-                tb_productCoefficient.Enabled = true;
-                tb_maxStock.Enabled = true;
-                tb_tradeQuantity.Enabled = true;
+
+                btn_exportFile.Enabled = false;
+                btn_loadFile.Visible = false;
 
                 ShowNotification("PriceConfig successfully importet!", Properties.Resources.okay, Color.Beige);
             }
         }
 
+        private void btn_exportFile_Click(object sender, EventArgs e)
+        {
+            if (loadedJsonData != null)
+            {
+                // Übertrage die Änderungen aus den ListViews zurück in die loadedJsonData-Instanz
+
+                // Kategorien aktualisieren
+                loadedJsonData.TraderCategories.Clear();
+                foreach (ListViewGroup group in lv_products.Groups)
+                {
+                    string categoryName = group.Header;
+                    List<string> products = new List<string>();
+
+                    // Produkte für die Kategorie sammeln
+                    foreach (ListViewItem item in group.Items)
+                    {
+                        string productName = item.SubItems[0].Text;
+                        string productCoefficient = item.SubItems[1].Text;
+                        string maxStock = item.SubItems[2].Text;
+                        string tradeQuantity = item.SubItems[3].Text;
+                        string buyPrice = item.SubItems[4].Text;
+                        string sellPrice = item.SubItems[5].Text;
+
+                        string productData = $"{productName},{productCoefficient},{maxStock},{tradeQuantity},{buyPrice},{sellPrice}";
+                        products.Add(productData);
+                    }
+
+                    Category category = new Category
+                    {
+                        CategoryName = categoryName,
+                        Products = products
+                    };
+
+                    loadedJsonData.TraderCategories.Add(category);
+                }
+
+                // Geladene Daten in eine neue JSON-Datei serialisieren und speichern
+                string serializedJson = JsonConvert.SerializeObject(loadedJsonData, Formatting.Indented);
+                string newFilePath = Path.Combine(editorFolderPath, "TraderPlusPriceConfig.json");
+
+                // Existierende Datei archivieren, falls vorhanden
+                if (File.Exists(newFilePath))
+                {
+                    int counter = 1;
+                    string oldFilePath = $"{newFilePath}.old{counter}";
+
+                    while (File.Exists(oldFilePath))
+                    {
+                        counter++;
+                        oldFilePath = $"{newFilePath}.old{counter}";
+                    }
+
+                    File.Move(newFilePath, oldFilePath);
+                }
+
+                File.WriteAllText(newFilePath, serializedJson);
+
+                ShowNotification("Data successfully saved!", Properties.Resources.okay, Color.Beige);
+
+                btn_exportFile.Enabled = false;
+            }
+        }
+
+        private void btn_closeFile_Click(object sender, EventArgs e)
+        {
+            // Daten zurücksetzen
+            loadedJsonData = null;
+            filePath = string.Empty;
+
+            Application.Restart();
+        } 
+
         private void lv_categories_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
+                lv_products.Enabled = true;
+
+                btn_addProduct.Enabled = true;
+                btn_deleteCategory.Enabled = true;
+                btn_deleteProduct.Enabled = true;
+                btn_saveProduct.Enabled = true;
+                btn_prevEntry.Enabled = true;
+                btn_nextEntry.Enabled = true;
+                btn_search.Enabled = true;
+                btn_setToAllProducts.Enabled = false;
+                btn_search.Enabled = true;
+
+                tb_productName.Enabled = true;
+                tb_buyPrice.Enabled = true;
+                tb_sellPrice.Enabled = true;
+                tb_productCoefficient.Enabled = true;
+                tb_maxStock.Enabled = true;
+                tb_tradeQuantity.Enabled = true;
+                tb_searchBar.Enabled = true;
+
+                ListViewItem selectedItem = lv_categories.SelectedItems[0];
+
+                tb_newCategoryName.Text = selectedItem.SubItems[0].Text;
+
                 string categoryName = lv_categories.SelectedItems[0].Text;
 
                 // Suchen der entsprechenden ListView-Gruppe in lv_products
@@ -233,14 +320,26 @@ namespace TraderPlusEditor
             if (lv_products.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = lv_products.SelectedItems[0];
-                Product selectedProduct = (Product)selectedItem.Tag;
 
-                tb_productName.Text = selectedProduct.Name;
+                tb_productName.Text = selectedItem.SubItems[0].Text;
                 tb_productCoefficient.Text = selectedItem.SubItems[1].Text;
                 tb_maxStock.Text = selectedItem.SubItems[2].Text;
                 tb_tradeQuantity.Text = selectedItem.SubItems[3].Text;
                 tb_buyPrice.Text = selectedItem.SubItems[4].Text;
                 tb_sellPrice.Text = selectedItem.SubItems[5].Text;
+
+                ListViewGroup selectedGroup = selectedItem.Group;
+                string categoryName = selectedGroup.Header;
+
+                foreach (ListViewItem categoryItem in lv_categories.Items)
+                {
+                    if (categoryItem.Text == categoryName)
+                    {
+                        categoryItem.Selected = true;
+                        categoryItem.EnsureVisible();
+                        break;
+                    }
+                }
             }
             else
             {
@@ -268,6 +367,8 @@ namespace TraderPlusEditor
                 selectedItem.BackColor = Color.LightPink;
 
                 ShowNotification("Product successfully saved!", Properties.Resources.okay, Color.Beige);
+
+                btn_exportFile.Enabled = true;
             }
         }
 
@@ -349,6 +450,12 @@ namespace TraderPlusEditor
                     tb_sellPrice.Clear();
 
                     ShowNotification("Product successfully added!", Properties.Resources.okay, Color.Beige);
+
+                    btn_exportFile.Enabled = true;
+                }
+                else
+                {
+                    ShowNotification("Fill all the boxes!", Properties.Resources.error, Color.LightCoral);
                 }
             }
         }
@@ -361,6 +468,8 @@ namespace TraderPlusEditor
                 lv_products.Items.Remove(selectedItem);
 
                 ShowNotification("Product successfully deleted!", Properties.Resources.warn, Color.Beige);
+
+                btn_exportFile.Enabled = true;
             }
         }
 
@@ -391,7 +500,7 @@ namespace TraderPlusEditor
                     // Erstellen eines neuen ListViewItem mit dem Wert aus der Textbox
                     string[] categoryData = new string[]
                     {
-                categoryName
+                        categoryName
                     };
                     ListViewItem newCategoryItem = new ListViewItem(categoryData);
 
@@ -412,6 +521,8 @@ namespace TraderPlusEditor
                     lv_products.Groups.Add(newCategoryGroup);
 
                     ShowNotification("Category successfully added!", Properties.Resources.okay, Color.Beige);
+
+                    btn_exportFile.Enabled = true;
                 }
                 else
                 {
@@ -425,9 +536,36 @@ namespace TraderPlusEditor
             if (lv_categories.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = lv_categories.SelectedItems[0];
+
+                // ListView-Gruppe für die ausgewählte Kategorie finden und entfernen
+                string categoryName = selectedItem.Text;
+                ListViewGroup categoryGroup = lv_products.Groups.Cast<ListViewGroup>()
+                    .FirstOrDefault(group => group.Header == categoryName);
+
+                if (categoryGroup != null)
+                {
+                    // Produkte der Kategorie aus der lv_products entfernen
+                    List<ListViewItem> itemsToRemove = new List<ListViewItem>();
+                    foreach (ListViewItem item in categoryGroup.Items)
+                    {
+                        itemsToRemove.Add(item);
+                    }
+
+                    foreach (ListViewItem itemToRemove in itemsToRemove)
+                    {
+                        lv_products.Items.Remove(itemToRemove);
+                    }
+
+                    // ListView-Gruppe entfernen
+                    lv_products.Groups.Remove(categoryGroup);
+                }
+
+                // Kategorie aus lv_categories entfernen
                 lv_categories.Items.Remove(selectedItem);
 
-                ShowNotification("Category successfully deleted!", Properties.Resources.warn, Color.Orange);
+                ShowNotification("Category successfully deleted!", Properties.Resources.warn, Color.LightCoral);
+
+                btn_exportFile.Enabled = true;
             }
         }
 
@@ -476,9 +614,44 @@ namespace TraderPlusEditor
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_searchProduct_Click(object sender, EventArgs e)
         {
-            
+            string searchText = tb_searchBar.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                ListViewItem foundItem = lv_products.Items.Cast<ListViewItem>()
+                    .FirstOrDefault(item => item.SubItems
+                        .Cast<ListViewItem.ListViewSubItem>()
+                        .Any(subItem => subItem.Text.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0));
+
+                if (foundItem != null)
+                {
+                    lv_products.SelectedItems.Clear();
+                    foundItem.Selected = true;
+                    foundItem.EnsureVisible();
+                }
+                else
+                {
+                    ShowNotification("No products found!", Properties.Resources.okay, Color.Beige);
+                }
+            }
+            else
+            {
+                ShowNotification("Please enter a search term.", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
+        private void btn_openExports_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(editorFolderPath))
+            {
+                Process.Start("explorer.exe", editorFolderPath);
+            }
+            else
+            {
+                ShowNotification("The folder does not exist!", Properties.Resources.warn, Color.LightCoral);
+            }
         }
     }
 }

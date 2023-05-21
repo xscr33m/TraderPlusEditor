@@ -30,6 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lv_products = new System.Windows.Forms.ListView();
+            this.product_class = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.product_coeffcient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.product_maxStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.product_tradeQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.product_buyPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.product_sellPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tb_searchBar = new System.Windows.Forms.TextBox();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btn_prevEntry = new System.Windows.Forms.Button();
             this.btn_nextEntry = new System.Windows.Forms.Button();
@@ -49,14 +62,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_productName = new System.Windows.Forms.TextBox();
             this.btn_addProduct = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lv_products = new System.Windows.Forms.ListView();
-            this.product_class = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.product_coeffcient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.product_maxStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.product_tradeQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.product_buyPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.product_sellPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_openExports = new System.Windows.Forms.Button();
+            this.btn_closeFile = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cb_defaultTraderStock = new System.Windows.Forms.CheckBox();
@@ -64,15 +72,10 @@
             this.cb_autoCalculation = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_version = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_exportFile = new System.Windows.Forms.Button();
+            this.btn_loadFile = new System.Windows.Forms.Button();
             this.pnl_pushNotifications = new System.Windows.Forms.Panel();
             this.lbl_pushNotifications = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -83,13 +86,14 @@
             this.lv_categories = new System.Windows.Forms.ListView();
             this.categories_Categories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.pnl_pushNotifications.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -97,16 +101,149 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox4);
-            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(223, 63);
+            this.panel1.Location = new System.Drawing.Point(223, 83);
             this.panel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.panel1.Size = new System.Drawing.Size(841, 497);
+            this.panel1.Size = new System.Drawing.Size(926, 678);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lv_products);
+            this.groupBox4.Controls.Add(this.panel4);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.groupBox4.Location = new System.Drawing.Point(5, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox4.Size = new System.Drawing.Size(916, 557);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Products";
+            // 
+            // lv_products
+            // 
+            this.lv_products.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.lv_products.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lv_products.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.product_class,
+            this.product_coeffcient,
+            this.product_maxStock,
+            this.product_tradeQuantity,
+            this.product_buyPrice,
+            this.product_sellPrice});
+            this.lv_products.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_products.Enabled = false;
+            this.lv_products.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lv_products.FullRowSelect = true;
+            this.lv_products.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lv_products.HideSelection = false;
+            this.lv_products.Location = new System.Drawing.Point(5, 66);
+            this.lv_products.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.lv_products.MultiSelect = false;
+            this.lv_products.Name = "lv_products";
+            this.lv_products.Size = new System.Drawing.Size(906, 487);
+            this.lv_products.TabIndex = 1;
+            this.lv_products.UseCompatibleStateImageBehavior = false;
+            this.lv_products.View = System.Windows.Forms.View.Details;
+            this.lv_products.SelectedIndexChanged += new System.EventHandler(this.lv_products_SelectedIndexChanged);
+            // 
+            // product_class
+            // 
+            this.product_class.Text = "Product name";
+            this.product_class.Width = 378;
+            // 
+            // product_coeffcient
+            // 
+            this.product_coeffcient.Text = "Coefficient";
+            this.product_coeffcient.Width = 110;
+            // 
+            // product_maxStock
+            // 
+            this.product_maxStock.Text = "Max stock";
+            this.product_maxStock.Width = 100;
+            // 
+            // product_tradeQuantity
+            // 
+            this.product_tradeQuantity.Text = "Trade quantity";
+            this.product_tradeQuantity.Width = 100;
+            // 
+            // product_buyPrice
+            // 
+            this.product_buyPrice.Text = "Buy price";
+            this.product_buyPrice.Width = 100;
+            // 
+            // product_sellPrice
+            // 
+            this.product_sellPrice.Text = "Sell Price";
+            this.product_sellPrice.Width = 100;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.groupBox6);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(5, 20);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(906, 46);
+            this.panel4.TabIndex = 2;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.tb_searchBar);
+            this.groupBox6.Controls.Add(this.btn_search);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Location = new System.Drawing.Point(0, -8);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox6.Size = new System.Drawing.Size(906, 54);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            // 
+            // tb_searchBar
+            // 
+            this.tb_searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tb_searchBar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tb_searchBar.Enabled = false;
+            this.tb_searchBar.Location = new System.Drawing.Point(2, 19);
+            this.tb_searchBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tb_searchBar.Name = "tb_searchBar";
+            this.tb_searchBar.Size = new System.Drawing.Size(786, 23);
+            this.tb_searchBar.TabIndex = 25;
+            // 
+            // btn_search
+            // 
+            this.btn_search.Enabled = false;
+            this.btn_search.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_search.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_search.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_search.Image = global::TraderPlusEditor.Properties.Resources.search;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.Location = new System.Drawing.Point(792, 10);
+            this.btn_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(112, 41);
+            this.btn_search.TabIndex = 24;
+            this.btn_search.Text = "Search";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_searchProduct_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 17);
+            this.label9.TabIndex = 0;
             // 
             // groupBox5
             // 
@@ -131,11 +268,11 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox5.Location = new System.Drawing.Point(5, 385);
+            this.groupBox5.Location = new System.Drawing.Point(5, 561);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(0, 0, 5, 4);
-            this.groupBox5.Size = new System.Drawing.Size(831, 108);
+            this.groupBox5.Size = new System.Drawing.Size(916, 113);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             // 
@@ -147,10 +284,10 @@
             this.btn_prevEntry.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_prevEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_prevEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_prevEntry.Location = new System.Drawing.Point(250, 60);
+            this.btn_prevEntry.Location = new System.Drawing.Point(250, 65);
             this.btn_prevEntry.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_prevEntry.Name = "btn_prevEntry";
-            this.btn_prevEntry.Size = new System.Drawing.Size(83, 46);
+            this.btn_prevEntry.Size = new System.Drawing.Size(121, 46);
             this.btn_prevEntry.TabIndex = 24;
             this.btn_prevEntry.Text = "Prev. entry";
             this.btn_prevEntry.UseVisualStyleBackColor = true;
@@ -164,10 +301,10 @@
             this.btn_nextEntry.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_nextEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_nextEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_nextEntry.Location = new System.Drawing.Point(332, 60);
+            this.btn_nextEntry.Location = new System.Drawing.Point(370, 65);
             this.btn_nextEntry.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_nextEntry.Name = "btn_nextEntry";
-            this.btn_nextEntry.Size = new System.Drawing.Size(83, 46);
+            this.btn_nextEntry.Size = new System.Drawing.Size(130, 46);
             this.btn_nextEntry.TabIndex = 23;
             this.btn_nextEntry.Text = "Next entry";
             this.btn_nextEntry.UseVisualStyleBackColor = true;
@@ -181,7 +318,7 @@
             this.btn_setToAllProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.btn_setToAllProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_setToAllProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_setToAllProducts.Location = new System.Drawing.Point(414, 60);
+            this.btn_setToAllProducts.Location = new System.Drawing.Point(499, 65);
             this.btn_setToAllProducts.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_setToAllProducts.Name = "btn_setToAllProducts";
             this.btn_setToAllProducts.Size = new System.Drawing.Size(416, 46);
@@ -198,7 +335,7 @@
             this.btn_deleteProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.btn_deleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_deleteProduct.Location = new System.Drawing.Point(125, 60);
+            this.btn_deleteProduct.Location = new System.Drawing.Point(125, 65);
             this.btn_deleteProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_deleteProduct.Name = "btn_deleteProduct";
             this.btn_deleteProduct.Size = new System.Drawing.Size(126, 46);
@@ -218,7 +355,7 @@
             this.btn_saveProduct.Location = new System.Drawing.Point(1, 8);
             this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_saveProduct.Name = "btn_saveProduct";
-            this.btn_saveProduct.Size = new System.Drawing.Size(125, 53);
+            this.btn_saveProduct.Size = new System.Drawing.Size(125, 58);
             this.btn_saveProduct.TabIndex = 16;
             this.btn_saveProduct.Text = "Save edits";
             this.btn_saveProduct.UseVisualStyleBackColor = true;
@@ -229,7 +366,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(727, 15);
+            this.label7.Location = new System.Drawing.Point(808, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 15);
@@ -240,10 +377,10 @@
             // 
             this.tb_sellPrice.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_sellPrice.Enabled = false;
-            this.tb_sellPrice.Location = new System.Drawing.Point(727, 33);
+            this.tb_sellPrice.Location = new System.Drawing.Point(811, 33);
             this.tb_sellPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_sellPrice.Name = "tb_sellPrice";
-            this.tb_sellPrice.Size = new System.Drawing.Size(96, 21);
+            this.tb_sellPrice.Size = new System.Drawing.Size(98, 21);
             this.tb_sellPrice.TabIndex = 14;
             // 
             // label6
@@ -251,7 +388,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(625, 15);
+            this.label6.Location = new System.Drawing.Point(706, 15);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 15);
@@ -262,7 +399,7 @@
             // 
             this.tb_buyPrice.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_buyPrice.Enabled = false;
-            this.tb_buyPrice.Location = new System.Drawing.Point(625, 33);
+            this.tb_buyPrice.Location = new System.Drawing.Point(709, 33);
             this.tb_buyPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_buyPrice.Name = "tb_buyPrice";
             this.tb_buyPrice.Size = new System.Drawing.Size(98, 21);
@@ -273,7 +410,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(532, 15);
+            this.label5.Location = new System.Drawing.Point(604, 15);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 15);
@@ -284,10 +421,10 @@
             // 
             this.tb_tradeQuantity.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_tradeQuantity.Enabled = false;
-            this.tb_tradeQuantity.Location = new System.Drawing.Point(532, 33);
+            this.tb_tradeQuantity.Location = new System.Drawing.Point(607, 33);
             this.tb_tradeQuantity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_tradeQuantity.Name = "tb_tradeQuantity";
-            this.tb_tradeQuantity.Size = new System.Drawing.Size(89, 21);
+            this.tb_tradeQuantity.Size = new System.Drawing.Size(98, 21);
             this.tb_tradeQuantity.TabIndex = 10;
             // 
             // label4
@@ -295,7 +432,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(461, 15);
+            this.label4.Location = new System.Drawing.Point(505, 15);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 15);
@@ -306,10 +443,10 @@
             // 
             this.tb_maxStock.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_maxStock.Enabled = false;
-            this.tb_maxStock.Location = new System.Drawing.Point(461, 33);
+            this.tb_maxStock.Location = new System.Drawing.Point(505, 33);
             this.tb_maxStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_maxStock.Name = "tb_maxStock";
-            this.tb_maxStock.Size = new System.Drawing.Size(67, 21);
+            this.tb_maxStock.Size = new System.Drawing.Size(98, 21);
             this.tb_maxStock.TabIndex = 8;
             // 
             // label3
@@ -317,7 +454,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(388, 15);
+            this.label3.Location = new System.Drawing.Point(400, 15);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
@@ -329,10 +466,10 @@
             // 
             this.tb_productCoefficient.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_productCoefficient.Enabled = false;
-            this.tb_productCoefficient.Location = new System.Drawing.Point(388, 33);
+            this.tb_productCoefficient.Location = new System.Drawing.Point(403, 33);
             this.tb_productCoefficient.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_productCoefficient.Name = "tb_productCoefficient";
-            this.tb_productCoefficient.Size = new System.Drawing.Size(69, 21);
+            this.tb_productCoefficient.Size = new System.Drawing.Size(98, 21);
             this.tb_productCoefficient.TabIndex = 6;
             // 
             // label2
@@ -354,7 +491,7 @@
             this.tb_productName.Location = new System.Drawing.Point(130, 33);
             this.tb_productName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_productName.Name = "tb_productName";
-            this.tb_productName.Size = new System.Drawing.Size(254, 21);
+            this.tb_productName.Size = new System.Drawing.Size(269, 21);
             this.tb_productName.TabIndex = 4;
             // 
             // btn_addProduct
@@ -365,7 +502,7 @@
             this.btn_addProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
             this.btn_addProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_addProduct.Location = new System.Drawing.Point(1, 60);
+            this.btn_addProduct.Location = new System.Drawing.Point(1, 65);
             this.btn_addProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_addProduct.Name = "btn_addProduct";
             this.btn_addProduct.Size = new System.Drawing.Size(125, 46);
@@ -374,86 +511,66 @@
             this.btn_addProduct.UseVisualStyleBackColor = true;
             this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
             // 
-            // groupBox4
+            // panel2
             // 
-            this.groupBox4.Controls.Add(this.lv_products);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox4.Location = new System.Drawing.Point(5, 52);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox4.Size = new System.Drawing.Size(831, 334);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Products";
+            this.panel2.Controls.Add(this.btn_openExports);
+            this.panel2.Controls.Add(this.btn_closeFile);
+            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.btn_exportFile);
+            this.panel2.Controls.Add(this.btn_loadFile);
+            this.panel2.Controls.Add(this.pnl_pushNotifications);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(5, 4, 5, 0);
+            this.panel2.Size = new System.Drawing.Size(1149, 83);
+            this.panel2.TabIndex = 0;
             // 
-            // lv_products
+            // btn_openExports
             // 
-            this.lv_products.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.lv_products.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lv_products.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.product_class,
-            this.product_coeffcient,
-            this.product_maxStock,
-            this.product_tradeQuantity,
-            this.product_buyPrice,
-            this.product_sellPrice});
-            this.lv_products.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lv_products.Enabled = false;
-            this.lv_products.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lv_products.FullRowSelect = true;
-            this.lv_products.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lv_products.HideSelection = false;
-            this.lv_products.Location = new System.Drawing.Point(5, 20);
-            this.lv_products.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.lv_products.MultiSelect = false;
-            this.lv_products.Name = "lv_products";
-            this.lv_products.Size = new System.Drawing.Size(821, 310);
-            this.lv_products.TabIndex = 1;
-            this.lv_products.UseCompatibleStateImageBehavior = false;
-            this.lv_products.View = System.Windows.Forms.View.Details;
-            this.lv_products.SelectedIndexChanged += new System.EventHandler(this.lv_products_SelectedIndexChanged);
+            this.btn_openExports.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_openExports.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_openExports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.BlueViolet;
+            this.btn_openExports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_openExports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_openExports.Image = global::TraderPlusEditor.Properties.Resources.export;
+            this.btn_openExports.Location = new System.Drawing.Point(937, 34);
+            this.btn_openExports.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_openExports.Name = "btn_openExports";
+            this.btn_openExports.Size = new System.Drawing.Size(207, 48);
+            this.btn_openExports.TabIndex = 22;
+            this.btn_openExports.Text = "Open export folder";
+            this.btn_openExports.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_openExports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_openExports.UseVisualStyleBackColor = true;
+            this.btn_openExports.Click += new System.EventHandler(this.btn_openExports_Click);
             // 
-            // product_class
+            // btn_closeFile
             // 
-            this.product_class.Text = "Product name";
-            this.product_class.Width = 340;
-            // 
-            // product_coeffcient
-            // 
-            this.product_coeffcient.Text = "Coefficient";
-            this.product_coeffcient.Width = 93;
-            // 
-            // product_maxStock
-            // 
-            this.product_maxStock.Text = "Max stock";
-            this.product_maxStock.Width = 85;
-            // 
-            // product_tradeQuantity
-            // 
-            this.product_tradeQuantity.Text = "Trade quantity";
-            this.product_tradeQuantity.Width = 95;
-            // 
-            // product_buyPrice
-            // 
-            this.product_buyPrice.Text = "Buy price";
-            this.product_buyPrice.Width = 100;
-            // 
-            // product_sellPrice
-            // 
-            this.product_sellPrice.Text = "Sell Price";
-            this.product_sellPrice.Width = 90;
+            this.btn_closeFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_closeFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_closeFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_closeFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_closeFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_closeFile.Location = new System.Drawing.Point(5, 34);
+            this.btn_closeFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_closeFile.Name = "btn_closeFile";
+            this.btn_closeFile.Size = new System.Drawing.Size(107, 48);
+            this.btn_closeFile.TabIndex = 21;
+            this.btn_closeFile.Text = "Close File";
+            this.btn_closeFile.UseVisualStyleBackColor = true;
+            this.btn_closeFile.Visible = false;
+            this.btn_closeFile.Click += new System.EventHandler(this.btn_closeFile_Click);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.groupBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(5, 4);
+            this.panel6.Location = new System.Drawing.Point(228, 33);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(831, 48);
-            this.panel6.TabIndex = 5;
+            this.panel6.Size = new System.Drawing.Size(705, 50);
+            this.panel6.TabIndex = 19;
             // 
             // groupBox1
             // 
@@ -468,10 +585,10 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(831, 48);
+            this.groupBox1.Size = new System.Drawing.Size(705, 50);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Settings";
+            this.groupBox1.Text = "File Settings";
             // 
             // cb_defaultTraderStock
             // 
@@ -479,7 +596,7 @@
             this.cb_defaultTraderStock.AutoSize = true;
             this.cb_defaultTraderStock.Enabled = false;
             this.cb_defaultTraderStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cb_defaultTraderStock.Location = new System.Drawing.Point(524, 16);
+            this.cb_defaultTraderStock.Location = new System.Drawing.Point(524, 18);
             this.cb_defaultTraderStock.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_defaultTraderStock.Name = "cb_defaultTraderStock";
             this.cb_defaultTraderStock.Size = new System.Drawing.Size(179, 19);
@@ -494,7 +611,7 @@
             this.cb_autoDestockAtRestart.AutoSize = true;
             this.cb_autoDestockAtRestart.Enabled = false;
             this.cb_autoDestockAtRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cb_autoDestockAtRestart.Location = new System.Drawing.Point(320, 17);
+            this.cb_autoDestockAtRestart.Location = new System.Drawing.Point(320, 19);
             this.cb_autoDestockAtRestart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_autoDestockAtRestart.Name = "cb_autoDestockAtRestart";
             this.cb_autoDestockAtRestart.Size = new System.Drawing.Size(194, 19);
@@ -509,7 +626,7 @@
             this.cb_autoCalculation.AutoSize = true;
             this.cb_autoCalculation.Enabled = false;
             this.cb_autoCalculation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cb_autoCalculation.Location = new System.Drawing.Point(154, 17);
+            this.cb_autoCalculation.Location = new System.Drawing.Point(154, 19);
             this.cb_autoCalculation.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_autoCalculation.Name = "cb_autoCalculation";
             this.cb_autoCalculation.Size = new System.Drawing.Size(156, 19);
@@ -524,7 +641,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(8, 19);
+            this.label1.Location = new System.Drawing.Point(8, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 15);
@@ -536,24 +653,45 @@
             this.tb_version.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tb_version.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_version.Enabled = false;
-            this.tb_version.Location = new System.Drawing.Point(65, 18);
+            this.tb_version.Location = new System.Drawing.Point(65, 20);
             this.tb_version.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_version.Name = "tb_version";
             this.tb_version.ReadOnly = true;
             this.tb_version.Size = new System.Drawing.Size(60, 23);
             this.tb_version.TabIndex = 0;
             // 
-            // panel2
+            // btn_exportFile
             // 
-            this.panel2.Controls.Add(this.pnl_pushNotifications);
-            this.panel2.Controls.Add(this.menuStrip1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(5, 4, 5, 0);
-            this.panel2.Size = new System.Drawing.Size(1064, 63);
-            this.panel2.TabIndex = 0;
+            this.btn_exportFile.Enabled = false;
+            this.btn_exportFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_exportFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_exportFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
+            this.btn_exportFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exportFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_exportFile.Location = new System.Drawing.Point(111, 34);
+            this.btn_exportFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_exportFile.Name = "btn_exportFile";
+            this.btn_exportFile.Size = new System.Drawing.Size(107, 48);
+            this.btn_exportFile.TabIndex = 18;
+            this.btn_exportFile.Text = "Export File";
+            this.btn_exportFile.UseVisualStyleBackColor = true;
+            this.btn_exportFile.Click += new System.EventHandler(this.btn_exportFile_Click);
+            // 
+            // btn_loadFile
+            // 
+            this.btn_loadFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_loadFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_loadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_loadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_loadFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_loadFile.Location = new System.Drawing.Point(5, 34);
+            this.btn_loadFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_loadFile.Name = "btn_loadFile";
+            this.btn_loadFile.Size = new System.Drawing.Size(107, 48);
+            this.btn_loadFile.TabIndex = 17;
+            this.btn_loadFile.Text = "Load File";
+            this.btn_loadFile.UseVisualStyleBackColor = true;
+            this.btn_loadFile.Click += new System.EventHandler(this.btn_loadFile_Click);
             // 
             // pnl_pushNotifications
             // 
@@ -561,10 +699,10 @@
             this.pnl_pushNotifications.BackColor = System.Drawing.SystemColors.Info;
             this.pnl_pushNotifications.Controls.Add(this.lbl_pushNotifications);
             this.pnl_pushNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnl_pushNotifications.Location = new System.Drawing.Point(5, 31);
+            this.pnl_pushNotifications.Location = new System.Drawing.Point(0, 1);
             this.pnl_pushNotifications.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_pushNotifications.Name = "pnl_pushNotifications";
-            this.pnl_pushNotifications.Size = new System.Drawing.Size(1054, 32);
+            this.pnl_pushNotifications.Size = new System.Drawing.Size(1149, 32);
             this.pnl_pushNotifications.TabIndex = 1;
             this.pnl_pushNotifications.Visible = false;
             // 
@@ -575,80 +713,22 @@
             this.lbl_pushNotifications.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_pushNotifications.Location = new System.Drawing.Point(0, 0);
             this.lbl_pushNotifications.Name = "lbl_pushNotifications";
-            this.lbl_pushNotifications.Size = new System.Drawing.Size(1054, 32);
+            this.lbl_pushNotifications.Size = new System.Drawing.Size(1149, 32);
             this.lbl_pushNotifications.TabIndex = 0;
             this.lbl_pushNotifications.Text = "PUSH_NOTIFICATIONS";
             this.lbl_pushNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_pushNotifications.Visible = false;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(5, 4);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip1.Size = new System.Drawing.Size(1054, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.fileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
-            this.fileToolStripMenuItem.Text = "Start";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.openToolStripMenuItem.Image = global::TraderPlusEditor.Properties.Resources.edit_64;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.openToolStripMenuItem.Text = "Load file";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.saveToolStripMenuItem.Image = global::TraderPlusEditor.Properties.Resources.save_64;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.saveToolStripMenuItem.Text = "Save file";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.exitToolStripMenuItem.Image = global::TraderPlusEditor.Properties.Resources.exit_64;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Location = new System.Drawing.Point(0, 83);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.panel3.Size = new System.Drawing.Size(223, 497);
+            this.panel3.Size = new System.Drawing.Size(223, 678);
             this.panel3.TabIndex = 0;
             // 
             // groupBox2
@@ -659,17 +739,16 @@
             this.groupBox2.Controls.Add(this.btn_addCategory);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(5, 385);
+            this.groupBox2.Location = new System.Drawing.Point(5, 561);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox2.Size = new System.Drawing.Size(213, 108);
+            this.groupBox2.Size = new System.Drawing.Size(213, 113);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -682,7 +761,6 @@
             // 
             // tb_newCategoryName
             // 
-            this.tb_newCategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_newCategoryName.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_newCategoryName.Enabled = false;
             this.tb_newCategoryName.Location = new System.Drawing.Point(7, 33);
@@ -700,7 +778,7 @@
             this.btn_deleteCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.btn_deleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deleteCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_deleteCategory.Location = new System.Drawing.Point(106, 60);
+            this.btn_deleteCategory.Location = new System.Drawing.Point(106, 65);
             this.btn_deleteCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_deleteCategory.Name = "btn_deleteCategory";
             this.btn_deleteCategory.Size = new System.Drawing.Size(106, 46);
@@ -717,7 +795,7 @@
             this.btn_addCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
             this.btn_addCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_addCategory.Location = new System.Drawing.Point(1, 60);
+            this.btn_addCategory.Location = new System.Drawing.Point(1, 65);
             this.btn_addCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_addCategory.Name = "btn_addCategory";
             this.btn_addCategory.Size = new System.Drawing.Size(106, 46);
@@ -735,7 +813,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox3.Size = new System.Drawing.Size(213, 382);
+            this.groupBox3.Size = new System.Drawing.Size(213, 557);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Categories";
@@ -755,7 +833,7 @@
             this.lv_categories.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lv_categories.MultiSelect = false;
             this.lv_categories.Name = "lv_categories";
-            this.lv_categories.Size = new System.Drawing.Size(203, 358);
+            this.lv_categories.Size = new System.Drawing.Size(203, 533);
             this.lv_categories.TabIndex = 0;
             this.lv_categories.UseCompatibleStateImageBehavior = false;
             this.lv_categories.View = System.Windows.Forms.View.Details;
@@ -771,33 +849,31 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1064, 560);
+            this.ClientSize = new System.Drawing.Size(1149, 761);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1080, 599);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1080, 599);
             this.Name = "F_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "xscr33m\'s TraderPlusEditor";
             this.Load += new System.EventHandler(this.F_Main_Load);
             this.panel1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnl_pushNotifications.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -810,22 +886,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListView lv_categories;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cb_defaultTraderStock;
-        private System.Windows.Forms.CheckBox cb_autoDestockAtRestart;
-        private System.Windows.Forms.CheckBox cb_autoCalculation;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_version;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ColumnHeader categories_Categories;
         private System.Windows.Forms.ListView lv_products;
@@ -861,6 +924,22 @@
         public System.Windows.Forms.TextBox tb_newCategoryName;
         private System.Windows.Forms.Panel pnl_pushNotifications;
         private System.Windows.Forms.Label lbl_pushNotifications;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btn_loadFile;
+        private System.Windows.Forms.Button btn_exportFile;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cb_defaultTraderStock;
+        private System.Windows.Forms.CheckBox cb_autoDestockAtRestart;
+        private System.Windows.Forms.CheckBox cb_autoCalculation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_version;
+        private System.Windows.Forms.Button btn_closeFile;
+        private System.Windows.Forms.TextBox tb_searchBar;
+        private System.Windows.Forms.Button btn_openExports;
     }
 }
 
