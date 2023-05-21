@@ -381,17 +381,42 @@ namespace TraderPlusEditor
             {
                 ListViewItem selectedItem = lv_products.SelectedItems[0];
 
-                selectedItem.SubItems[0].Text = tb_productName.Text;
-                selectedItem.SubItems[1].Text = tb_productCoefficient.Text;
-                selectedItem.SubItems[2].Text = tb_maxStock.Text;
-                selectedItem.SubItems[3].Text = tb_tradeQuantity.Text;
-                selectedItem.SubItems[4].Text = tb_buyPrice.Text;
-                selectedItem.SubItems[5].Text = tb_sellPrice.Text;
-                selectedItem.BackColor = Color.LightPink;
+                string originalProductName = selectedItem.SubItems[0].Text;
+                string originalProductCoefficient = selectedItem.SubItems[1].Text;
+                string originalMaxStock = selectedItem.SubItems[2].Text;
+                string originalTradeQuantity = selectedItem.SubItems[3].Text;
+                string originalBuyPrice = selectedItem.SubItems[4].Text;
+                string originalSellPrice = selectedItem.SubItems[5].Text;
 
-                ShowNotification("Product successfully saved!", Properties.Resources.okay, Color.Beige);
+                string newProductName = tb_productName.Text;
+                string newProductCoefficient = tb_productCoefficient.Text;
+                string newMaxStock = tb_maxStock.Text;
+                string newTradeQuantity = tb_tradeQuantity.Text;
+                string newBuyPrice = tb_buyPrice.Text;
+                string newSellPrice = tb_sellPrice.Text;
 
-                btn_exportFile.Enabled = true;
+                // Überprüfen, ob sich die Werte geändert haben
+                bool isModified = (originalProductName != newProductName) ||
+                    (originalProductCoefficient != newProductCoefficient) ||
+                    (originalMaxStock != newMaxStock) ||
+                    (originalTradeQuantity != newTradeQuantity) ||
+                    (originalBuyPrice != newBuyPrice) ||
+                    (originalSellPrice != newSellPrice);
+
+                if (isModified)
+                {
+                    selectedItem.SubItems[0].Text = newProductName;
+                    selectedItem.SubItems[1].Text = newProductCoefficient;
+                    selectedItem.SubItems[2].Text = newMaxStock;
+                    selectedItem.SubItems[3].Text = newTradeQuantity;
+                    selectedItem.SubItems[4].Text = newBuyPrice;
+                    selectedItem.SubItems[5].Text = newSellPrice;
+                    selectedItem.BackColor = Color.LightPink;
+
+                    ShowNotification("Product successfully saved!", Properties.Resources.okay, Color.Beige);
+
+                    btn_exportFile.Enabled = true;
+                }
             }
         }
 
