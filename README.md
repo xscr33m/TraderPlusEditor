@@ -47,10 +47,10 @@ Don't forget to save the values.
     
 ## Feedback
 
-~~~ If you have any feedback, please reach out to me!
+If you have any feedback, please reach out to me!
 Add me on Discord: xscr33m#4443 or create a Issue on GitHub.
 I would appreciate it very much! 
-~~~ 
+[Sponsor a coffee if you like the tool](https://www.paypal.com/paypalme/dheil53)
 
 
 ## License
