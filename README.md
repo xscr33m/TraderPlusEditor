@@ -34,7 +34,7 @@ Don't forget to save the values.
 
 ## How-To-Use
 
-    1. download the file TraderPlusEditor.zip.
+    1. download the file [TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases/download/v1.0/xscr33m.s.TraderPlusEditor.zip). 
     2. unzip the TraderPlusEditor.zip file with 7Zip or another program.
     3. run the file TraderPlusEditor.exe in the folder TraderPlusEditor.
     4. click on "Load File" and choose your TraderPlusPriceConfig.json.
