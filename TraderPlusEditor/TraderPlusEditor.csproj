@@ -70,7 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
     <Compile Include="JsonData.cs" />
     <Compile Include="custom_MenuStrip.cs" />
     <Compile Include="F_Main.cs">
