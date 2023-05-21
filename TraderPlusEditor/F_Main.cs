@@ -281,10 +281,14 @@ namespace TraderPlusEditor
                 btn_addProduct.Enabled = true;
                 btn_deleteCategory.Enabled = true;
                 btn_deleteProduct.Enabled = true;
-                btn_saveProduct.Enabled = true;
                 btn_search.Enabled = true;
-                btn_setToAllProducts.Enabled = false;
                 btn_search.Enabled = true;
+                btn_setAll_sellPrice.Enabled = true;
+                btn_setAll_buyPrice.Enabled = true;
+                btn_setAll_quantity.Enabled = true;
+                btn_setAll_maxStock.Enabled = true;
+                btn_setAll_coefficient.Enabled = true;
+                btn_nextEntry.Enabled = true;
 
                 tb_productName.Enabled = true;
                 tb_buyPrice.Enabled = true;
@@ -315,16 +319,15 @@ namespace TraderPlusEditor
                 lv_products.SelectedItems.Clear();
                 lv_products.Focus();
 
-                if (selectedGroup != null)
+                if (selectedGroup != null && selectedGroup.Items.Count > 0)
                 {
-                    // Scrollen zur Gruppe
-                    if (selectedGroup.Items.Count > 0)
-                        lv_products.EnsureVisible(lv_products.Items.IndexOf(selectedGroup.Items[0]));
-
-                    else
-                    {
-                        ShowNotification("No products in category. Add products first!", Properties.Resources.error, Color.Beige);
-                    }
+                    // Den ersten Eintrag in der Gruppe markieren
+                    selectedGroup.Items[0].Selected = true;
+                    selectedGroup.Items[0].EnsureVisible();
+                }
+                else
+                {
+                    ShowNotification("No products in category. Add products first!", Properties.Resources.error, Color.Beige);
                 }
             }
         }
@@ -354,6 +357,9 @@ namespace TraderPlusEditor
                         break;
                     }
                 }
+
+                // Aktualisiere den aktuellen Eintrag
+                currentEntryIndex = selectedItem.Index;
             }
             else
             {
@@ -363,10 +369,13 @@ namespace TraderPlusEditor
                 tb_tradeQuantity.Text = string.Empty;
                 tb_buyPrice.Text = string.Empty;
                 tb_sellPrice.Text = string.Empty;
+
+                // Kein Eintrag ausgewählt, setze den aktuellen Eintrag auf -1
+                currentEntryIndex = -1;
             }
         }
 
-        private void btn_saveProduct_Click(object sender, EventArgs e)
+        private void saveProduct_Click(object sender, EventArgs e)
         {
             if (lv_products.SelectedItems.Count > 0)
             {
@@ -485,11 +494,6 @@ namespace TraderPlusEditor
 
                 btn_exportFile.Enabled = true;
             }
-        }
-
-        private void btn_setToAllProducts_Click(object sender, EventArgs e)
-        {
-            // COMING_SOON
         }
 
         private void btn_addCategory_Click(object sender, EventArgs e)
@@ -651,6 +655,154 @@ namespace TraderPlusEditor
             catch
             {
                 ShowNotification("Browser could not get started. Donation link is: paypal.me/dheil53", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
+        private int currentEntryIndex = -1; // Variable zur Verfolgung des aktuellen Eintrags
+
+        private void btn_nextEntry_Click(object sender, EventArgs e)
+        {
+            if (lv_products.Items.Count > 0)
+            {
+                if (currentEntryIndex == -1)
+                {
+                    // Wenn kein Eintrag markiert ist, mit dem ersten Eintrag starten
+                    if (lv_products.SelectedItems.Count > 0)
+                    {
+                        currentEntryIndex = lv_products.SelectedItems[0].Index;
+                    }
+                    else
+                    {
+                        currentEntryIndex = 0;
+                    }
+                }
+                else
+                {
+                    // Den nächsten Eintrag markieren und anzeigen
+                    currentEntryIndex++;
+                    if (currentEntryIndex >= lv_products.Items.Count)
+                    {
+                        currentEntryIndex = 0; // Falls das Ende erreicht ist, zurück zum Anfang gehen
+                    }
+                }
+
+                lv_products.Items[currentEntryIndex].Selected = true;
+                lv_products.Items[currentEntryIndex].EnsureVisible();
+            }
+        }
+
+        private void btn_setAll_coefficient_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                foreach (ListViewItem item in lv_products.Items)
+                {
+                    if (item.Group.Header == categoryName)
+                    {
+                        item.SubItems[1].Text = tb_productCoefficient.Text;
+                        item.BackColor = Color.LightPink;
+                    }
+                }
+
+                ShowNotification("Coefficient updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+            }
+            else
+            {
+                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+            }
+        }
+
+        private void btn_setAll_maxStock_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                foreach (ListViewItem item in lv_products.Items)
+                {
+                    if (item.Group.Header == categoryName)
+                    {
+                        item.SubItems[2].Text = tb_maxStock.Text;
+                        item.BackColor = Color.LightPink;
+                    }
+                }
+
+                ShowNotification("Max stock updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+            }
+            else
+            {
+                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+            }
+        }
+
+        private void btn_setAll_quantity_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                foreach (ListViewItem item in lv_products.Items)
+                {
+                    if (item.Group.Header == categoryName)
+                    {
+                        item.SubItems[3].Text = tb_tradeQuantity.Text;
+                        item.BackColor = Color.LightPink;
+                    }
+                }
+
+                ShowNotification("Trade quantity updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+            }
+            else
+            {
+                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+            }
+        }
+
+        private void btn_setAll_buyPrice_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                foreach (ListViewItem item in lv_products.Items)
+                {
+                    if (item.Group.Header == categoryName)
+                    {
+                        item.SubItems[4].Text = tb_buyPrice.Text;
+                        item.BackColor = Color.LightPink;
+                    }
+                }
+
+                ShowNotification("Buy price updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+            }
+            else
+            {
+                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+            }
+        }
+
+        private void btn_setAll_sellPrice_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                foreach (ListViewItem item in lv_products.Items)
+                {
+                    if (item.Group.Header == categoryName)
+                    {
+                        item.SubItems[5].Text = tb_sellPrice.Text;
+                        item.BackColor = Color.LightPink;
+                    }
+                }
+
+                ShowNotification("Sell price updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+            }
+            else
+            {
+                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
             }
         }
     }

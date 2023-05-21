@@ -44,9 +44,13 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btn_setToAllProducts = new System.Windows.Forms.Button();
+            this.btn_setAll_coefficient = new System.Windows.Forms.Button();
+            this.btn_setAll_maxStock = new System.Windows.Forms.Button();
+            this.btn_setAll_quantity = new System.Windows.Forms.Button();
+            this.btn_setAll_buyPrice = new System.Windows.Forms.Button();
+            this.btn_nextEntry = new System.Windows.Forms.Button();
+            this.btn_setAll_sellPrice = new System.Windows.Forms.Button();
             this.btn_deleteProduct = new System.Windows.Forms.Button();
-            this.btn_saveProduct = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_sellPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -249,9 +253,13 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btn_setToAllProducts);
+            this.groupBox5.Controls.Add(this.btn_setAll_coefficient);
+            this.groupBox5.Controls.Add(this.btn_setAll_maxStock);
+            this.groupBox5.Controls.Add(this.btn_setAll_quantity);
+            this.groupBox5.Controls.Add(this.btn_setAll_buyPrice);
+            this.groupBox5.Controls.Add(this.btn_nextEntry);
+            this.groupBox5.Controls.Add(this.btn_setAll_sellPrice);
             this.groupBox5.Controls.Add(this.btn_deleteProduct);
-            this.groupBox5.Controls.Add(this.btn_saveProduct);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.tb_sellPrice);
             this.groupBox5.Controls.Add(this.label6);
@@ -276,23 +284,113 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             // 
-            // btn_setToAllProducts
+            // btn_setAll_coefficient
             // 
-            this.btn_setToAllProducts.Enabled = false;
-            this.btn_setToAllProducts.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_setToAllProducts.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_setToAllProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
-            this.btn_setToAllProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_setToAllProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_setToAllProducts.Location = new System.Drawing.Point(499, 65);
-            this.btn_setToAllProducts.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_setToAllProducts.Name = "btn_setToAllProducts";
-            this.btn_setToAllProducts.Size = new System.Drawing.Size(416, 46);
-            this.btn_setToAllProducts.TabIndex = 22;
-            this.btn_setToAllProducts.Text = "Set to all products in active category";
-            this.btn_setToAllProducts.UseVisualStyleBackColor = true;
-            this.btn_setToAllProducts.Visible = false;
-            this.btn_setToAllProducts.Click += new System.EventHandler(this.btn_setToAllProducts_Click);
+            this.btn_setAll_coefficient.Enabled = false;
+            this.btn_setAll_coefficient.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_setAll_coefficient.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_setAll_coefficient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LemonChiffon;
+            this.btn_setAll_coefficient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setAll_coefficient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_setAll_coefficient.Location = new System.Drawing.Point(409, 65);
+            this.btn_setAll_coefficient.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_setAll_coefficient.Name = "btn_setAll_coefficient";
+            this.btn_setAll_coefficient.Size = new System.Drawing.Size(97, 46);
+            this.btn_setAll_coefficient.TabIndex = 29;
+            this.btn_setAll_coefficient.TabStop = false;
+            this.btn_setAll_coefficient.Text = "Set all in category";
+            this.btn_setAll_coefficient.UseVisualStyleBackColor = true;
+            this.btn_setAll_coefficient.Click += new System.EventHandler(this.btn_setAll_coefficient_Click);
+            // 
+            // btn_setAll_maxStock
+            // 
+            this.btn_setAll_maxStock.Enabled = false;
+            this.btn_setAll_maxStock.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_setAll_maxStock.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_setAll_maxStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LemonChiffon;
+            this.btn_setAll_maxStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setAll_maxStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_setAll_maxStock.Location = new System.Drawing.Point(511, 65);
+            this.btn_setAll_maxStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_setAll_maxStock.Name = "btn_setAll_maxStock";
+            this.btn_setAll_maxStock.Size = new System.Drawing.Size(97, 46);
+            this.btn_setAll_maxStock.TabIndex = 28;
+            this.btn_setAll_maxStock.TabStop = false;
+            this.btn_setAll_maxStock.Text = "Set all in category";
+            this.btn_setAll_maxStock.UseVisualStyleBackColor = true;
+            this.btn_setAll_maxStock.Click += new System.EventHandler(this.btn_setAll_maxStock_Click);
+            // 
+            // btn_setAll_quantity
+            // 
+            this.btn_setAll_quantity.Enabled = false;
+            this.btn_setAll_quantity.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_setAll_quantity.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_setAll_quantity.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LemonChiffon;
+            this.btn_setAll_quantity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setAll_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_setAll_quantity.Location = new System.Drawing.Point(613, 65);
+            this.btn_setAll_quantity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_setAll_quantity.Name = "btn_setAll_quantity";
+            this.btn_setAll_quantity.Size = new System.Drawing.Size(97, 46);
+            this.btn_setAll_quantity.TabIndex = 27;
+            this.btn_setAll_quantity.TabStop = false;
+            this.btn_setAll_quantity.Text = "Set all in category";
+            this.btn_setAll_quantity.UseVisualStyleBackColor = true;
+            this.btn_setAll_quantity.Click += new System.EventHandler(this.btn_setAll_quantity_Click);
+            // 
+            // btn_setAll_buyPrice
+            // 
+            this.btn_setAll_buyPrice.Enabled = false;
+            this.btn_setAll_buyPrice.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_setAll_buyPrice.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_setAll_buyPrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LemonChiffon;
+            this.btn_setAll_buyPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setAll_buyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_setAll_buyPrice.Location = new System.Drawing.Point(715, 65);
+            this.btn_setAll_buyPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_setAll_buyPrice.Name = "btn_setAll_buyPrice";
+            this.btn_setAll_buyPrice.Size = new System.Drawing.Size(97, 46);
+            this.btn_setAll_buyPrice.TabIndex = 26;
+            this.btn_setAll_buyPrice.TabStop = false;
+            this.btn_setAll_buyPrice.Text = "Set all in category";
+            this.btn_setAll_buyPrice.UseVisualStyleBackColor = true;
+            this.btn_setAll_buyPrice.Click += new System.EventHandler(this.btn_setAll_buyPrice_Click);
+            // 
+            // btn_nextEntry
+            // 
+            this.btn_nextEntry.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btn_nextEntry.Enabled = false;
+            this.btn_nextEntry.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_nextEntry.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_nextEntry.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_nextEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_nextEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_nextEntry.Location = new System.Drawing.Point(1, 8);
+            this.btn_nextEntry.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_nextEntry.Name = "btn_nextEntry";
+            this.btn_nextEntry.Size = new System.Drawing.Size(68, 58);
+            this.btn_nextEntry.TabIndex = 7;
+            this.btn_nextEntry.Text = "Next Entry";
+            this.btn_nextEntry.UseVisualStyleBackColor = false;
+            this.btn_nextEntry.Click += new System.EventHandler(this.btn_nextEntry_Click);
+            // 
+            // btn_setAll_sellPrice
+            // 
+            this.btn_setAll_sellPrice.Enabled = false;
+            this.btn_setAll_sellPrice.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_setAll_sellPrice.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_setAll_sellPrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LemonChiffon;
+            this.btn_setAll_sellPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setAll_sellPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_setAll_sellPrice.Location = new System.Drawing.Point(817, 65);
+            this.btn_setAll_sellPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_setAll_sellPrice.Name = "btn_setAll_sellPrice";
+            this.btn_setAll_sellPrice.Size = new System.Drawing.Size(98, 46);
+            this.btn_setAll_sellPrice.TabIndex = 22;
+            this.btn_setAll_sellPrice.TabStop = false;
+            this.btn_setAll_sellPrice.Text = "Set all in category";
+            this.btn_setAll_sellPrice.UseVisualStyleBackColor = true;
+            this.btn_setAll_sellPrice.Click += new System.EventHandler(this.btn_setAll_sellPrice_Click);
             // 
             // btn_deleteProduct
             // 
@@ -312,29 +410,12 @@
             this.btn_deleteProduct.UseVisualStyleBackColor = true;
             this.btn_deleteProduct.Click += new System.EventHandler(this.btn_deleteProduct_Click);
             // 
-            // btn_saveProduct
-            // 
-            this.btn_saveProduct.Enabled = false;
-            this.btn_saveProduct.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_saveProduct.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_saveProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
-            this.btn_saveProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_saveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_saveProduct.Location = new System.Drawing.Point(1, 8);
-            this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_saveProduct.Name = "btn_saveProduct";
-            this.btn_saveProduct.Size = new System.Drawing.Size(125, 58);
-            this.btn_saveProduct.TabIndex = 7;
-            this.btn_saveProduct.Text = "Save edits";
-            this.btn_saveProduct.UseVisualStyleBackColor = true;
-            this.btn_saveProduct.Click += new System.EventHandler(this.btn_saveProduct_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(808, 15);
+            this.label7.Location = new System.Drawing.Point(814, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 15);
@@ -345,18 +426,19 @@
             // 
             this.tb_sellPrice.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_sellPrice.Enabled = false;
-            this.tb_sellPrice.Location = new System.Drawing.Point(811, 33);
+            this.tb_sellPrice.Location = new System.Drawing.Point(817, 33);
             this.tb_sellPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_sellPrice.Name = "tb_sellPrice";
-            this.tb_sellPrice.Size = new System.Drawing.Size(98, 21);
+            this.tb_sellPrice.Size = new System.Drawing.Size(97, 21);
             this.tb_sellPrice.TabIndex = 6;
+            this.tb_sellPrice.Leave += new System.EventHandler(this.saveProduct_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(706, 15);
+            this.label6.Location = new System.Drawing.Point(712, 15);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 15);
@@ -367,18 +449,19 @@
             // 
             this.tb_buyPrice.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_buyPrice.Enabled = false;
-            this.tb_buyPrice.Location = new System.Drawing.Point(709, 33);
+            this.tb_buyPrice.Location = new System.Drawing.Point(715, 33);
             this.tb_buyPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_buyPrice.Name = "tb_buyPrice";
-            this.tb_buyPrice.Size = new System.Drawing.Size(98, 21);
+            this.tb_buyPrice.Size = new System.Drawing.Size(97, 21);
             this.tb_buyPrice.TabIndex = 5;
+            this.tb_buyPrice.Leave += new System.EventHandler(this.saveProduct_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(604, 15);
+            this.label5.Location = new System.Drawing.Point(610, 15);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 15);
@@ -389,18 +472,19 @@
             // 
             this.tb_tradeQuantity.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_tradeQuantity.Enabled = false;
-            this.tb_tradeQuantity.Location = new System.Drawing.Point(607, 33);
+            this.tb_tradeQuantity.Location = new System.Drawing.Point(613, 33);
             this.tb_tradeQuantity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_tradeQuantity.Name = "tb_tradeQuantity";
-            this.tb_tradeQuantity.Size = new System.Drawing.Size(98, 21);
+            this.tb_tradeQuantity.Size = new System.Drawing.Size(97, 21);
             this.tb_tradeQuantity.TabIndex = 4;
+            this.tb_tradeQuantity.Leave += new System.EventHandler(this.saveProduct_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(505, 15);
+            this.label4.Location = new System.Drawing.Point(511, 15);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 15);
@@ -411,18 +495,19 @@
             // 
             this.tb_maxStock.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_maxStock.Enabled = false;
-            this.tb_maxStock.Location = new System.Drawing.Point(505, 33);
+            this.tb_maxStock.Location = new System.Drawing.Point(511, 33);
             this.tb_maxStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_maxStock.Name = "tb_maxStock";
-            this.tb_maxStock.Size = new System.Drawing.Size(98, 21);
+            this.tb_maxStock.Size = new System.Drawing.Size(97, 21);
             this.tb_maxStock.TabIndex = 3;
+            this.tb_maxStock.Leave += new System.EventHandler(this.saveProduct_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(400, 15);
+            this.label3.Location = new System.Drawing.Point(406, 15);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
@@ -434,18 +519,19 @@
             // 
             this.tb_productCoefficient.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_productCoefficient.Enabled = false;
-            this.tb_productCoefficient.Location = new System.Drawing.Point(403, 33);
+            this.tb_productCoefficient.Location = new System.Drawing.Point(409, 33);
             this.tb_productCoefficient.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_productCoefficient.Name = "tb_productCoefficient";
-            this.tb_productCoefficient.Size = new System.Drawing.Size(98, 21);
+            this.tb_productCoefficient.Size = new System.Drawing.Size(97, 21);
             this.tb_productCoefficient.TabIndex = 2;
+            this.tb_productCoefficient.Leave += new System.EventHandler(this.saveProduct_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(130, 15);
+            this.label2.Location = new System.Drawing.Point(73, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 15);
@@ -456,11 +542,12 @@
             // 
             this.tb_productName.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_productName.Enabled = false;
-            this.tb_productName.Location = new System.Drawing.Point(130, 33);
+            this.tb_productName.Location = new System.Drawing.Point(73, 33);
             this.tb_productName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_productName.Name = "tb_productName";
-            this.tb_productName.Size = new System.Drawing.Size(269, 21);
+            this.tb_productName.Size = new System.Drawing.Size(332, 21);
             this.tb_productName.TabIndex = 1;
+            this.tb_productName.Leave += new System.EventHandler(this.saveProduct_Click);
             // 
             // btn_addProduct
             // 
@@ -475,6 +562,7 @@
             this.btn_addProduct.Name = "btn_addProduct";
             this.btn_addProduct.Size = new System.Drawing.Size(125, 46);
             this.btn_addProduct.TabIndex = 8;
+            this.btn_addProduct.TabStop = false;
             this.btn_addProduct.Text = "Add product";
             this.btn_addProduct.UseVisualStyleBackColor = true;
             this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
@@ -907,9 +995,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_saveProduct;
         private System.Windows.Forms.Button btn_deleteProduct;
-        private System.Windows.Forms.Button btn_setToAllProducts;
+        private System.Windows.Forms.Button btn_setAll_sellPrice;
         public System.Windows.Forms.TextBox tb_sellPrice;
         public System.Windows.Forms.TextBox tb_buyPrice;
         public System.Windows.Forms.TextBox tb_tradeQuantity;
@@ -937,6 +1024,11 @@
         private System.Windows.Forms.TextBox tb_searchBar;
         private System.Windows.Forms.Button btn_openExports;
         private System.Windows.Forms.Button btn_donate;
+        private System.Windows.Forms.Button btn_nextEntry;
+        private System.Windows.Forms.Button btn_setAll_coefficient;
+        private System.Windows.Forms.Button btn_setAll_maxStock;
+        private System.Windows.Forms.Button btn_setAll_quantity;
+        private System.Windows.Forms.Button btn_setAll_buyPrice;
     }
 }
 
