@@ -44,8 +44,6 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btn_prevEntry = new System.Windows.Forms.Button();
-            this.btn_nextEntry = new System.Windows.Forms.Button();
             this.btn_setToAllProducts = new System.Windows.Forms.Button();
             this.btn_deleteProduct = new System.Windows.Forms.Button();
             this.btn_saveProduct = new System.Windows.Forms.Button();
@@ -63,6 +61,7 @@
             this.tb_productName = new System.Windows.Forms.TextBox();
             this.btn_addProduct = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_donate = new System.Windows.Forms.Button();
             this.btn_openExports = new System.Windows.Forms.Button();
             this.btn_closeFile = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -149,6 +148,7 @@
             this.lv_products.Name = "lv_products";
             this.lv_products.Size = new System.Drawing.Size(906, 487);
             this.lv_products.TabIndex = 1;
+            this.lv_products.TabStop = false;
             this.lv_products.UseCompatibleStateImageBehavior = false;
             this.lv_products.View = System.Windows.Forms.View.Details;
             this.lv_products.SelectedIndexChanged += new System.EventHandler(this.lv_products_SelectedIndexChanged);
@@ -215,6 +215,7 @@
             this.tb_searchBar.Name = "tb_searchBar";
             this.tb_searchBar.Size = new System.Drawing.Size(786, 23);
             this.tb_searchBar.TabIndex = 25;
+            this.tb_searchBar.TabStop = false;
             // 
             // btn_search
             // 
@@ -231,6 +232,7 @@
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(112, 41);
             this.btn_search.TabIndex = 24;
+            this.btn_search.TabStop = false;
             this.btn_search.Text = "Search";
             this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -247,8 +249,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btn_prevEntry);
-            this.groupBox5.Controls.Add(this.btn_nextEntry);
             this.groupBox5.Controls.Add(this.btn_setToAllProducts);
             this.groupBox5.Controls.Add(this.btn_deleteProduct);
             this.groupBox5.Controls.Add(this.btn_saveProduct);
@@ -276,40 +276,6 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             // 
-            // btn_prevEntry
-            // 
-            this.btn_prevEntry.Enabled = false;
-            this.btn_prevEntry.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_prevEntry.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_prevEntry.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_prevEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_prevEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_prevEntry.Location = new System.Drawing.Point(250, 65);
-            this.btn_prevEntry.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_prevEntry.Name = "btn_prevEntry";
-            this.btn_prevEntry.Size = new System.Drawing.Size(121, 46);
-            this.btn_prevEntry.TabIndex = 24;
-            this.btn_prevEntry.Text = "Prev. entry";
-            this.btn_prevEntry.UseVisualStyleBackColor = true;
-            this.btn_prevEntry.Click += new System.EventHandler(this.btn_prevEntry_Click);
-            // 
-            // btn_nextEntry
-            // 
-            this.btn_nextEntry.Enabled = false;
-            this.btn_nextEntry.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_nextEntry.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_nextEntry.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_nextEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_nextEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_nextEntry.Location = new System.Drawing.Point(370, 65);
-            this.btn_nextEntry.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_nextEntry.Name = "btn_nextEntry";
-            this.btn_nextEntry.Size = new System.Drawing.Size(130, 46);
-            this.btn_nextEntry.TabIndex = 23;
-            this.btn_nextEntry.Text = "Next entry";
-            this.btn_nextEntry.UseVisualStyleBackColor = true;
-            this.btn_nextEntry.Click += new System.EventHandler(this.btn_nextEntry_Click);
-            // 
             // btn_setToAllProducts
             // 
             this.btn_setToAllProducts.Enabled = false;
@@ -325,6 +291,7 @@
             this.btn_setToAllProducts.TabIndex = 22;
             this.btn_setToAllProducts.Text = "Set to all products in active category";
             this.btn_setToAllProducts.UseVisualStyleBackColor = true;
+            this.btn_setToAllProducts.Visible = false;
             this.btn_setToAllProducts.Click += new System.EventHandler(this.btn_setToAllProducts_Click);
             // 
             // btn_deleteProduct
@@ -340,6 +307,7 @@
             this.btn_deleteProduct.Name = "btn_deleteProduct";
             this.btn_deleteProduct.Size = new System.Drawing.Size(126, 46);
             this.btn_deleteProduct.TabIndex = 17;
+            this.btn_deleteProduct.TabStop = false;
             this.btn_deleteProduct.Text = "Delete selected";
             this.btn_deleteProduct.UseVisualStyleBackColor = true;
             this.btn_deleteProduct.Click += new System.EventHandler(this.btn_deleteProduct_Click);
@@ -356,7 +324,7 @@
             this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_saveProduct.Name = "btn_saveProduct";
             this.btn_saveProduct.Size = new System.Drawing.Size(125, 58);
-            this.btn_saveProduct.TabIndex = 16;
+            this.btn_saveProduct.TabIndex = 7;
             this.btn_saveProduct.Text = "Save edits";
             this.btn_saveProduct.UseVisualStyleBackColor = true;
             this.btn_saveProduct.Click += new System.EventHandler(this.btn_saveProduct_Click);
@@ -381,7 +349,7 @@
             this.tb_sellPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_sellPrice.Name = "tb_sellPrice";
             this.tb_sellPrice.Size = new System.Drawing.Size(98, 21);
-            this.tb_sellPrice.TabIndex = 14;
+            this.tb_sellPrice.TabIndex = 6;
             // 
             // label6
             // 
@@ -403,7 +371,7 @@
             this.tb_buyPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_buyPrice.Name = "tb_buyPrice";
             this.tb_buyPrice.Size = new System.Drawing.Size(98, 21);
-            this.tb_buyPrice.TabIndex = 12;
+            this.tb_buyPrice.TabIndex = 5;
             // 
             // label5
             // 
@@ -425,7 +393,7 @@
             this.tb_tradeQuantity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_tradeQuantity.Name = "tb_tradeQuantity";
             this.tb_tradeQuantity.Size = new System.Drawing.Size(98, 21);
-            this.tb_tradeQuantity.TabIndex = 10;
+            this.tb_tradeQuantity.TabIndex = 4;
             // 
             // label4
             // 
@@ -447,7 +415,7 @@
             this.tb_maxStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_maxStock.Name = "tb_maxStock";
             this.tb_maxStock.Size = new System.Drawing.Size(98, 21);
-            this.tb_maxStock.TabIndex = 8;
+            this.tb_maxStock.TabIndex = 3;
             // 
             // label3
             // 
@@ -470,7 +438,7 @@
             this.tb_productCoefficient.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_productCoefficient.Name = "tb_productCoefficient";
             this.tb_productCoefficient.Size = new System.Drawing.Size(98, 21);
-            this.tb_productCoefficient.TabIndex = 6;
+            this.tb_productCoefficient.TabIndex = 2;
             // 
             // label2
             // 
@@ -492,7 +460,7 @@
             this.tb_productName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_productName.Name = "tb_productName";
             this.tb_productName.Size = new System.Drawing.Size(269, 21);
-            this.tb_productName.TabIndex = 4;
+            this.tb_productName.TabIndex = 1;
             // 
             // btn_addProduct
             // 
@@ -506,13 +474,14 @@
             this.btn_addProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_addProduct.Name = "btn_addProduct";
             this.btn_addProduct.Size = new System.Drawing.Size(125, 46);
-            this.btn_addProduct.TabIndex = 2;
+            this.btn_addProduct.TabIndex = 8;
             this.btn_addProduct.Text = "Add product";
             this.btn_addProduct.UseVisualStyleBackColor = true;
             this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btn_donate);
             this.panel2.Controls.Add(this.btn_openExports);
             this.panel2.Controls.Add(this.btn_closeFile);
             this.panel2.Controls.Add(this.panel6);
@@ -527,6 +496,24 @@
             this.panel2.Size = new System.Drawing.Size(1149, 83);
             this.panel2.TabIndex = 0;
             // 
+            // btn_donate
+            // 
+            this.btn_donate.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_donate.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_donate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
+            this.btn_donate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_donate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_donate.Image = global::TraderPlusEditor.Properties.Resources.donate;
+            this.btn_donate.Location = new System.Drawing.Point(1087, 34);
+            this.btn_donate.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_donate.Name = "btn_donate";
+            this.btn_donate.Size = new System.Drawing.Size(57, 48);
+            this.btn_donate.TabIndex = 23;
+            this.btn_donate.TabStop = false;
+            this.btn_donate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_donate.UseVisualStyleBackColor = true;
+            this.btn_donate.Click += new System.EventHandler(this.btn_donate_Click);
+            // 
             // btn_openExports
             // 
             this.btn_openExports.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
@@ -538,10 +525,10 @@
             this.btn_openExports.Location = new System.Drawing.Point(937, 34);
             this.btn_openExports.Margin = new System.Windows.Forms.Padding(5);
             this.btn_openExports.Name = "btn_openExports";
-            this.btn_openExports.Size = new System.Drawing.Size(207, 48);
+            this.btn_openExports.Size = new System.Drawing.Size(151, 48);
             this.btn_openExports.TabIndex = 22;
-            this.btn_openExports.Text = "Open export folder";
-            this.btn_openExports.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_openExports.TabStop = false;
+            this.btn_openExports.Text = "Open exports";
             this.btn_openExports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_openExports.UseVisualStyleBackColor = true;
             this.btn_openExports.Click += new System.EventHandler(this.btn_openExports_Click);
@@ -558,6 +545,7 @@
             this.btn_closeFile.Name = "btn_closeFile";
             this.btn_closeFile.Size = new System.Drawing.Size(107, 48);
             this.btn_closeFile.TabIndex = 21;
+            this.btn_closeFile.TabStop = false;
             this.btn_closeFile.Text = "Close File";
             this.btn_closeFile.UseVisualStyleBackColor = true;
             this.btn_closeFile.Visible = false;
@@ -601,6 +589,7 @@
             this.cb_defaultTraderStock.Name = "cb_defaultTraderStock";
             this.cb_defaultTraderStock.Size = new System.Drawing.Size(179, 19);
             this.cb_defaultTraderStock.TabIndex = 4;
+            this.cb_defaultTraderStock.TabStop = false;
             this.cb_defaultTraderStock.Text = "Enable Default Trader Stock";
             this.cb_defaultTraderStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb_defaultTraderStock.UseVisualStyleBackColor = true;
@@ -616,6 +605,7 @@
             this.cb_autoDestockAtRestart.Name = "cb_autoDestockAtRestart";
             this.cb_autoDestockAtRestart.Size = new System.Drawing.Size(194, 19);
             this.cb_autoDestockAtRestart.TabIndex = 3;
+            this.cb_autoDestockAtRestart.TabStop = false;
             this.cb_autoDestockAtRestart.Text = "Enable Auto Destock At Restart";
             this.cb_autoDestockAtRestart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb_autoDestockAtRestart.UseVisualStyleBackColor = true;
@@ -631,6 +621,7 @@
             this.cb_autoCalculation.Name = "cb_autoCalculation";
             this.cb_autoCalculation.Size = new System.Drawing.Size(156, 19);
             this.cb_autoCalculation.TabIndex = 2;
+            this.cb_autoCalculation.TabStop = false;
             this.cb_autoCalculation.Text = "Enable Auto Calculation";
             this.cb_autoCalculation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb_autoCalculation.UseVisualStyleBackColor = true;
@@ -659,6 +650,7 @@
             this.tb_version.ReadOnly = true;
             this.tb_version.Size = new System.Drawing.Size(60, 23);
             this.tb_version.TabIndex = 0;
+            this.tb_version.TabStop = false;
             // 
             // btn_exportFile
             // 
@@ -673,6 +665,7 @@
             this.btn_exportFile.Name = "btn_exportFile";
             this.btn_exportFile.Size = new System.Drawing.Size(107, 48);
             this.btn_exportFile.TabIndex = 18;
+            this.btn_exportFile.TabStop = false;
             this.btn_exportFile.Text = "Export File";
             this.btn_exportFile.UseVisualStyleBackColor = true;
             this.btn_exportFile.Click += new System.EventHandler(this.btn_exportFile_Click);
@@ -689,6 +682,7 @@
             this.btn_loadFile.Name = "btn_loadFile";
             this.btn_loadFile.Size = new System.Drawing.Size(107, 48);
             this.btn_loadFile.TabIndex = 17;
+            this.btn_loadFile.TabStop = false;
             this.btn_loadFile.Text = "Load File";
             this.btn_loadFile.UseVisualStyleBackColor = true;
             this.btn_loadFile.Click += new System.EventHandler(this.btn_loadFile_Click);
@@ -768,6 +762,7 @@
             this.tb_newCategoryName.Name = "tb_newCategoryName";
             this.tb_newCategoryName.Size = new System.Drawing.Size(201, 21);
             this.tb_newCategoryName.TabIndex = 10;
+            this.tb_newCategoryName.TabStop = false;
             this.tb_newCategoryName.TextChanged += new System.EventHandler(this.tb_newCategoryName_TextChanged);
             // 
             // btn_deleteCategory
@@ -783,6 +778,7 @@
             this.btn_deleteCategory.Name = "btn_deleteCategory";
             this.btn_deleteCategory.Size = new System.Drawing.Size(106, 46);
             this.btn_deleteCategory.TabIndex = 1;
+            this.btn_deleteCategory.TabStop = false;
             this.btn_deleteCategory.Text = "Remove category";
             this.btn_deleteCategory.UseVisualStyleBackColor = true;
             this.btn_deleteCategory.Click += new System.EventHandler(this.btn_deleteCategory_Click);
@@ -800,6 +796,7 @@
             this.btn_addCategory.Name = "btn_addCategory";
             this.btn_addCategory.Size = new System.Drawing.Size(106, 46);
             this.btn_addCategory.TabIndex = 0;
+            this.btn_addCategory.TabStop = false;
             this.btn_addCategory.Text = "Add new category";
             this.btn_addCategory.UseVisualStyleBackColor = true;
             this.btn_addCategory.Click += new System.EventHandler(this.btn_addCategory_Click);
@@ -835,6 +832,7 @@
             this.lv_categories.Name = "lv_categories";
             this.lv_categories.Size = new System.Drawing.Size(203, 533);
             this.lv_categories.TabIndex = 0;
+            this.lv_categories.TabStop = false;
             this.lv_categories.UseCompatibleStateImageBehavior = false;
             this.lv_categories.View = System.Windows.Forms.View.Details;
             this.lv_categories.SelectedIndexChanged += new System.EventHandler(this.lv_categories_SelectedIndexChanged);
@@ -918,8 +916,6 @@
         public System.Windows.Forms.TextBox tb_maxStock;
         public System.Windows.Forms.TextBox tb_productCoefficient;
         public System.Windows.Forms.TextBox tb_productName;
-        private System.Windows.Forms.Button btn_prevEntry;
-        private System.Windows.Forms.Button btn_nextEntry;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox tb_newCategoryName;
         private System.Windows.Forms.Panel pnl_pushNotifications;
@@ -940,6 +936,7 @@
         private System.Windows.Forms.Button btn_closeFile;
         private System.Windows.Forms.TextBox tb_searchBar;
         private System.Windows.Forms.Button btn_openExports;
+        private System.Windows.Forms.Button btn_donate;
     }
 }
 

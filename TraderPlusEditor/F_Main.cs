@@ -282,8 +282,6 @@ namespace TraderPlusEditor
                 btn_deleteCategory.Enabled = true;
                 btn_deleteProduct.Enabled = true;
                 btn_saveProduct.Enabled = true;
-                btn_prevEntry.Enabled = true;
-                btn_nextEntry.Enabled = true;
                 btn_search.Enabled = true;
                 btn_setToAllProducts.Enabled = false;
                 btn_search.Enabled = true;
@@ -602,34 +600,6 @@ namespace TraderPlusEditor
             ENABLENEWCATEGORYBUTTON();
         }
 
-        private void btn_prevEntry_Click(object sender, EventArgs e)
-        {
-            if (lv_products.Items.Count > 0)
-            {
-                int selectedIndex = lv_products.SelectedIndices.Count > 0 ? lv_products.SelectedIndices[0] : -1;
-                int previousIndex = selectedIndex - 1;
-                if (previousIndex < 0)
-                    previousIndex = lv_products.Items.Count - 1;
-
-                lv_products.Items[previousIndex].Selected = true;
-                lv_products.Items[previousIndex].EnsureVisible();
-            }
-        }
-
-        private void btn_nextEntry_Click(object sender, EventArgs e)
-        {
-            if (lv_products.Items.Count > 0)
-            {
-                int selectedIndex = lv_products.SelectedIndices.Count > 0 ? lv_products.SelectedIndices[0] : -1;
-                int nextIndex = selectedIndex + 1;
-                if (nextIndex >= lv_products.Items.Count)
-                    nextIndex = 0;
-
-                lv_products.Items[nextIndex].Selected = true;
-                lv_products.Items[nextIndex].EnsureVisible();
-            }
-        }
-
         private void btn_searchProduct_Click(object sender, EventArgs e)
         {
             string searchText = tb_searchBar.Text.Trim();
@@ -667,6 +637,20 @@ namespace TraderPlusEditor
             else
             {
                 ShowNotification("The folder does not exist!", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
+        private void btn_donate_Click(object sender, EventArgs e)
+        {
+            string url = "https://www.paypal.me/dheil53";
+
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                ShowNotification("Browser could not get started. Donation link is: paypal.me/dheil53", Properties.Resources.warn, Color.LightCoral);
             }
         }
     }
