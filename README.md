@@ -19,7 +19,7 @@ Don't forget to save the values.
 - Dark Grey Themed
 - Easily add and remove products and categories
 
-![Logo](https://i.imgur.com/5PJYqOIt.png)
+![Logo](https://i.imgur.com/5PJYqOI.png)
 
 ## Upcoming
 
