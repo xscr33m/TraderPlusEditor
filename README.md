@@ -2,7 +2,8 @@
 
 
 # xscr33m's TraderPlusEditor
-Editor for DayZ Mod "TraderPlus". It makes the edit of PriceConfig much easier
+Editor for DayZ Mod [TraderPlus](https://steamcommunity.com/sharedfiles/filedetails/?id=2458896948). 
+It makes the edit of PriceConfig much easier and act as a .json validator aswell.
 This tool is intended to intuitively simplify the editing of TraderPlusPriceConfig.json. 
 Load your existing PriceConfig into the tool and click through the categories and products to adjust the individual variables. 
 Don't forget to save the values.
@@ -18,6 +19,7 @@ Don't forget to save the values.
 - Dark Grey Themed
 - Easily add and remove products and categories
 
+![Logo](https://i.imgur.com/5PJYqOIt.png)
 
 ## Upcoming
 
