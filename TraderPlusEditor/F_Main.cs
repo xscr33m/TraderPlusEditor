@@ -1,4 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///                                                                                                                                              ///
+/// © 2023 by xscr33m   (Discord: xscr33m#4443)                                                                                                  ///
+///                                                                                                                                              ///
+/// **** Disclaimer: ****                                                                                                                        ///
+///                                                                                                                                              ///
+/// This code is provided as-is without any warranty.                                                                                            ///
+/// xscr33m is not responsible for any issues, damages, or consequences arising from the use of this code or the tool developed using this code. ///
+/// It is recommended to review and understand the code before making any modifications or using it in a production environment.                 ///
+///                                                                                                                                              ///
+/// **** Feedback and Contributions: ****                                                                                                        ///
+/// Feedback and suggestions to improve the code or the tool are welcome.                                                                        /// 
+/// Feel free to reach out to xscr33m#4443 on Discord with any feedback or to contribute to the development of the tool.                         ///
+///                                                                                                                                              ///
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -35,7 +51,7 @@ namespace TraderPlusEditor
             CHECKFORINSTANCE();
             GENERATEPATH();
             // menuStrip1.Renderer = new CustomMenuRenderer();
-            ShowNotification("xscr33m's TraderPlusEditor successfully startet!", Properties.Resources.okay, Color.Beige);
+            ShowNotification("xscr33m's TraderPlusEditor successfully started!", Properties.Resources.okay, Color.Beige);
         }
 
         private async void CHECKFORINSTANCE()
