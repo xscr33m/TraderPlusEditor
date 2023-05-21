@@ -355,58 +355,7 @@ namespace TraderPlusEditor
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "JSON Files (*.json)|*.json";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-
-                // Daten aus den Steuerelementen lesen
-                string version = tb_version.Text;
-                int enableAutoCalculation = Convert.ToInt32(cb_autoCalculation.Checked);
-                int enableAutoDestock = Convert.ToInt32(cb_autoDestockAtRestart.Checked);
-                int enableDefaultTraderStock = Convert.ToInt32(cb_defaultTraderStock.Checked);
-
-                List<Category> traderCategories = new List<Category>();
-                foreach (ListViewItem categoryItem in lv_categories.Items)
-                {
-                    string categoryName = categoryItem.Text;
-                    List<string> products = new List<string>();
-
-                    // Produkte für die aktuelle Kategorie aus der lv_products ListView lesen
-                    foreach (ListViewItem productItem in lv_products.Items)
-                    {
-                        if (productItem.Group.Header == categoryName)
-                        {
-                            string product = productItem.Text;
-                            products.Add(product);
-                        }
-                    }
-
-                    // Category-Objekt erstellen und zur Liste hinzufügen
-                    Category category = new Category
-                    {
-                        CategoryName = categoryName,
-                        Products = products
-                    };
-                    traderCategories.Add(category);
-                }
-
-                // JsonData-Objekt erstellen
-                JsonData jsonData = new JsonData
-                {
-                    Version = version,
-                    EnableAutoCalculation = enableAutoCalculation,
-                    EnableAutoDestockAtRestart = enableAutoDestock,
-                    EnableDefaultTraderStock = enableDefaultTraderStock,
-                    TraderCategories = traderCategories
-                };
-
-                // JSON-Datei speichern
-                string json = JsonConvert.SerializeObject(jsonData, Formatting.Indented);
-                File.WriteAllText(filePath, json);
-            }
+            
         }
     }
 }
