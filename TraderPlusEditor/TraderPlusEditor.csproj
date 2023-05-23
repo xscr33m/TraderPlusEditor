@@ -136,15 +136,6 @@
     <EmbeddedResource Include="Resources\TraderPlusEditor_Logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\exit_64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\save_64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\edit_64.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\error.png" />
   </ItemGroup>
   <ItemGroup>
@@ -154,19 +145,37 @@
     <EmbeddedResource Include="Resources\okay.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\btnInfo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\export.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\donate.png" />
+    <EmbeddedResource Include="Resources\donate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\exportfile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

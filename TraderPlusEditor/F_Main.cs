@@ -132,14 +132,11 @@ namespace TraderPlusEditor
                 cb_defaultTraderStock.Checked = Convert.ToBoolean(loadedJsonData.EnableDefaultTraderStock);
 
                 // Kategorien und Produkte in den ListViews anzeigen
-                lv_categories.Items.Clear();
                 lv_products.Items.Clear();
+                lv_products.Groups.Clear();
 
                 foreach (var category in loadedJsonData.TraderCategories)
                 {
-                    // Kategorie zur Kategorien-ListView hinzufügen
-                    lv_categories.Items.Add(category.CategoryName);
-
                     // ListView-Gruppe für die Kategorie erstellen
                     ListViewGroup group = new ListViewGroup(category.CategoryName);
                     lv_products.Groups.Add(group);
@@ -184,19 +181,47 @@ namespace TraderPlusEditor
                     }
                 }
 
+                lv_products.Enabled = true;
+
+                btn_addProduct.Enabled = true;
+                btn_deleteCategory.Enabled = true;
+                btn_deleteProduct.Enabled = true;
+                btn_search.Enabled = true;
+                btn_search.Enabled = true;
+                btn_setAll_sellPrice.Enabled = true;
+                btn_setAll_buyPrice.Enabled = true;
+                btn_setAll_quantity.Enabled = true;
+                btn_setAll_maxStock.Enabled = true;
+                btn_setAll_coefficient.Enabled = true;
+                btn_nextEntry.Enabled = true;
+                btn_productUp.Enabled = true;
+                btn_productDown.Enabled = true;
+                btn_categoryUp.Enabled = true;
+                btn_categoryDown.Enabled = true;
+
+                tb_productName.Enabled = true;
+                tb_buyPrice.Enabled = true;
+                tb_sellPrice.Enabled = true;
+                tb_productCoefficient.Enabled = true;
+                tb_maxStock.Enabled = true;
+                tb_tradeQuantity.Enabled = true;
+                tb_searchBar.Enabled = true;
+
                 cb_autoCalculation.Enabled = true;
                 cb_autoDestockAtRestart.Enabled = true;
                 cb_defaultTraderStock.Enabled = true;
 
                 btn_closeFile.Visible = true;
 
-                lv_categories.Enabled = true; 
+                lv_categories.Enabled = true;
                 tb_newCategoryName.Enabled = true;
 
                 btn_exportFile.Enabled = false;
                 btn_loadFile.Visible = false;
 
-                ShowNotification("PriceConfig successfully importet!", Properties.Resources.okay, Color.Beige);
+                UpdateCategoryListView();
+
+                ShowNotification("PriceConfig successfully imported!", Properties.Resources.okay, Color.Beige);
             }
         }
 
@@ -270,34 +295,42 @@ namespace TraderPlusEditor
             filePath = string.Empty;
 
             Application.Restart();
-        } 
+        }
+
+        private void UpdateCategoryListView()
+        {
+            // Vorhandene Kategorien in der Reihenfolge der lv_products sichern
+            List<string> existingCategories = new List<string>();
+            foreach (ListViewGroup group in lv_products.Groups)
+            {
+                string groupName = group.Header;
+                existingCategories.Add(groupName);
+            }
+
+            // Vorhandene Kategorien entfernen
+            lv_categories.Items.Clear();
+
+            // Kategorien in der Reihenfolge der lv_products in lv_categories übernehmen
+            foreach (string category in existingCategories)
+            {
+                lv_categories.Items.Add(category);
+            }
+        }
 
         private void lv_categories_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
-                lv_products.Enabled = true;
+                ListViewItem selectedItem = lv_categories.SelectedItems[0];
 
-                btn_addProduct.Enabled = true;
-                btn_deleteCategory.Enabled = true;
-                btn_deleteProduct.Enabled = true;
-                btn_search.Enabled = true;
-                btn_search.Enabled = true;
-                btn_setAll_sellPrice.Enabled = true;
-                btn_setAll_buyPrice.Enabled = true;
-                btn_setAll_quantity.Enabled = true;
-                btn_setAll_maxStock.Enabled = true;
-                btn_setAll_coefficient.Enabled = true;
-                btn_nextEntry.Enabled = true;
+                tb_newCategoryName.Text = selectedItem.SubItems[0].Text;
+            }
+        }
 
-                tb_productName.Enabled = true;
-                tb_buyPrice.Enabled = true;
-                tb_sellPrice.Enabled = true;
-                tb_productCoefficient.Enabled = true;
-                tb_maxStock.Enabled = true;
-                tb_tradeQuantity.Enabled = true;
-                tb_searchBar.Enabled = true;
-
+        private void lv_categories_DoubleClick(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
                 ListViewItem selectedItem = lv_categories.SelectedItems[0];
 
                 tb_newCategoryName.Text = selectedItem.SubItems[0].Text;
@@ -328,6 +361,10 @@ namespace TraderPlusEditor
                 else
                 {
                     ShowNotification("No products in category. Add products first!", Properties.Resources.error, Color.Beige);
+
+                    // Den doppelt geklickten Eintrag wieder markieren
+                    selectedItem.Selected = true;
+                    selectedItem.EnsureVisible();
                 }
             }
         }
@@ -347,6 +384,8 @@ namespace TraderPlusEditor
 
                 ListViewGroup selectedGroup = selectedItem.Group;
                 string categoryName = selectedGroup.Header;
+
+                tb_newCategoryName.Text = categoryName; // Eintragen des Kategorienamens in tb_newCategory
 
                 foreach (ListViewItem categoryItem in lv_categories.Items)
                 {
@@ -369,6 +408,7 @@ namespace TraderPlusEditor
                 tb_tradeQuantity.Text = string.Empty;
                 tb_buyPrice.Text = string.Empty;
                 tb_sellPrice.Text = string.Empty;
+                tb_newCategoryName.Text = string.Empty; // Zurücksetzen des Kategorienamens
 
                 // Kein Eintrag ausgewählt, setze den aktuellen Eintrag auf -1
                 currentEntryIndex = -1;
@@ -418,7 +458,37 @@ namespace TraderPlusEditor
                     btn_exportFile.Enabled = true;
                 }
             }
+
+            if (lv_products.Items.Count > 0)
+            {
+                if (currentEntryIndex == -1)
+                {
+                    // Wenn kein Eintrag markiert ist, mit dem ersten Eintrag starten
+                    if (lv_products.SelectedItems.Count > 0)
+                    {
+                        currentEntryIndex = lv_products.SelectedItems[0].Index;
+                    }
+                    else
+                    {
+                        currentEntryIndex = 0;
+                    }
+                }
+                else
+                {
+                    // Den nächsten Eintrag markieren und anzeigen
+                    currentEntryIndex++;
+                    if (currentEntryIndex >= lv_products.Items.Count)
+                    {
+                        currentEntryIndex = 0; // Falls das Ende erreicht ist, zurück zum Anfang gehen
+                    }
+                }
+
+                lv_products.Items[currentEntryIndex].Selected = true;
+                lv_products.Items[currentEntryIndex].EnsureVisible();
+            }
         }
+
+        private int currentEntryIndex = -1; // Variable zur Verfolgung des aktuellen Eintrags
 
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
@@ -490,12 +560,12 @@ namespace TraderPlusEditor
                     newItem.EnsureVisible();
 
                     // Zurücksetzen der Textboxen
-                    tb_productName.Clear();
-                    tb_productCoefficient.Clear();
-                    tb_maxStock.Clear();
-                    tb_tradeQuantity.Clear();
-                    tb_buyPrice.Clear();
-                    tb_sellPrice.Clear();
+                    //tb_productName.Clear();
+                    //tb_productCoefficient.Clear();
+                    //tb_maxStock.Clear();
+                    //tb_tradeQuantity.Clear();
+                    //tb_buyPrice.Clear();
+                    //tb_sellPrice.Clear();
 
                     ShowNotification("Product successfully added!", Properties.Resources.okay, Color.Beige);
 
@@ -629,7 +699,22 @@ namespace TraderPlusEditor
             ENABLENEWCATEGORYBUTTON();
         }
 
-        private void btn_searchProduct_Click(object sender, EventArgs e)
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            PerformSearch();
+        }
+
+        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PerformSearch();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void PerformSearch()
         {
             string searchText = tb_searchBar.Text.Trim();
 
@@ -680,39 +765,6 @@ namespace TraderPlusEditor
             catch
             {
                 ShowNotification("Browser could not get started. Donation link is: paypal.me/dheil53", Properties.Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private int currentEntryIndex = -1; // Variable zur Verfolgung des aktuellen Eintrags
-
-        private void btn_nextEntry_Click(object sender, EventArgs e)
-        {
-            if (lv_products.Items.Count > 0)
-            {
-                if (currentEntryIndex == -1)
-                {
-                    // Wenn kein Eintrag markiert ist, mit dem ersten Eintrag starten
-                    if (lv_products.SelectedItems.Count > 0)
-                    {
-                        currentEntryIndex = lv_products.SelectedItems[0].Index;
-                    }
-                    else
-                    {
-                        currentEntryIndex = 0;
-                    }
-                }
-                else
-                {
-                    // Den nächsten Eintrag markieren und anzeigen
-                    currentEntryIndex++;
-                    if (currentEntryIndex >= lv_products.Items.Count)
-                    {
-                        currentEntryIndex = 0; // Falls das Ende erreicht ist, zurück zum Anfang gehen
-                    }
-                }
-
-                lv_products.Items[currentEntryIndex].Selected = true;
-                lv_products.Items[currentEntryIndex].EnsureVisible();
             }
         }
 
@@ -829,6 +881,26 @@ namespace TraderPlusEditor
             {
                 ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
             }
+        }
+
+        private void btn_categoryUp_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_categoryDown_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_productUp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_productDown_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
