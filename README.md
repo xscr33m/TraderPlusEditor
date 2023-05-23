@@ -15,7 +15,7 @@ With this editor formatting errors are a thing of the past.
    4. Click on "Load File" and select your TraderPlusPriceConfig.json.
    5. Enjoy editing the prices.
    6. When you are finished editing, simply click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder, which you can access using the "Open Export Folder" button.
-   7.Replace the old TraderPlusPriceConfig.json on your server with the new one.
+   7. Replace the old TraderPlusPriceConfig.json on your server with the new one.
    
 
 ## Features
