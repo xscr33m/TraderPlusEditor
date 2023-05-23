@@ -17,6 +17,7 @@ Don't forget to save the values.
 - Searchbar for product names
 - Clean exports free of typing errors
 - Dark Grey Themed
+- Set variables for all products in a category
 - Easily add and remove products and categories
 
 ![Logo](https://i.imgur.com/5PJYqOI.png)
@@ -24,7 +25,6 @@ Don't forget to save the values.
 ## Upcoming
 
 - Allow sorting by click n drop
-- Set variables for all products in a category
 - Temp Autosave of changes
 - Maybe more ? ....
 
