@@ -1,12 +1,22 @@
 ![Logo](https://i.imgur.com/HL4128el.png)
 
 # xscr33m's TraderPlusEditor
-Editor for DayZ Mod [TraderPlus](https://steamcommunity.com/sharedfiles/filedetails/?id=2458896948). 
-It makes the edit of PriceConfig much easier and act as a .json validator aswell.
-This tool is intended to intuitively simplify the editing of TraderPlusPriceConfig.json. 
-Load your existing PriceConfig into the tool and click through the categories and products to adjust the individual variables. 
-Don't forget to save the values.
+Editor for the amazing [TraderPlus](https://steamcommunity.com/sharedfiles/filedetails/?id=2458896948) Mod by [Dmitri060](https://steamcommunity.com/id/Dmitri060). 
+This editor is intended to facilitate the editing of the PriceConfig. 
+The .json file is very fragile - one comma too much or one space in the wrong place and the whole mod doesn't work anymore. 
+With this editor formatting errors are a thing of the past.
 
+
+## How-To-Use
+
+   1. download the Zip-file: [TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases/download/v1.0/xscr33m.s.TraderPlusEditor.zip). 
+   2. Unzip the TraderPlusEditor.zip file using 7Zip or another program.
+   3. Run TraderPlusEditor.exe located inside the TraderPlusEditor folder.
+   4. Click on "Load File" and select your TraderPlusPriceConfig.json.
+   5. Enjoy editing the prices.
+   6. When you are finished editing, simply click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder, which you can access using the "Open Export Folder" button.
+   7.Replace the old TraderPlusPriceConfig.json on your server with the new one.
+   
 
 ## Features
 
@@ -18,10 +28,16 @@ Don't forget to save the values.
 - Dark Grey Themed
 - Set variables for all products in a category
 - Easily add and remove products and categories
+- Completly Open-Source! Adaption for other Trader files absolutly possible
+
+
+## Sneak-Preview
 
 ![Logo](https://i.imgur.com/5PJYqOI.png)
 
+
 ## Upcoming Features
+
 [Check this out](https://github.com/xscr33m/TraderPlusEditor/discussions/2)
 
 
@@ -30,17 +46,6 @@ Don't forget to save the values.
 - Tell me
 
 
-## How-To-Use
-
-   1. download the Zip-file: [TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases/download/v1.0/xscr33m.s.TraderPlusEditor.zip). 
-   2. unzip the TraderPlusEditor.zip file with 7Zip or another program.
-   3. run TraderPlusEditor.exe inside the folder TraderPlusEditor.
-   4. click on "Load File" and choose your TraderPlusPriceConfig.json.
-   5. have fun editing the prices.
-   6. when you done editing, just click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder accessible via the "Open Export Folder" button.
-   7. replace the old TraderPlusPriceConfig.json on your server with the new one.
-    
-    
 ## Feedback
 
 If you have any feedback, please reach out to me!
@@ -49,8 +54,8 @@ I would appreciate it very much!
 
 [Spend a coffee if you like the tool, to keep me awake!](https://www.paypal.com/paypalme/dheil53)
 
+made with ♥ for this amazing community!
 
 ## License
 
 [MIT License](https://spdx.org/licenses/)
-
