@@ -32,6 +32,7 @@ namespace TraderPlusEditor
         static public string editorFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TraderPlusEditor", "EXPORTS");
         private string filePath;
         private JsonData loadedJsonData;
+        private int currentEntryIndex = -1; // Variable zur Verfolgung des aktuellen Eintrags
 
         public F_Main()
         {
@@ -113,8 +114,10 @@ namespace TraderPlusEditor
 
         private void btn_loadFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON Files (TraderPlusPriceConfig.json)|TraderPlusPriceConfig.json";
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "JSON Files (TraderPlusPriceConfig.json)|TraderPlusPriceConfig.json"
+            };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -146,7 +149,7 @@ namespace TraderPlusEditor
                         // Produktinformationen aus der Datenzeichenkette extrahieren
                         string[] productData = product.Split(',');
 
-                        if (productData.Length == 6)
+                        if (productData.Length >= 6)
                         {
                             string productName = productData[0];
                             string productCoefficient = productData[1];
@@ -154,6 +157,7 @@ namespace TraderPlusEditor
                             string tradeQuantity = productData[3];
                             string buyPrice = productData[4];
                             string sellPrice = productData[5];
+                            string destockCoefficient = productData.Length >= 7 ? productData[6] : string.Empty;
 
                             // Produktobjekt erstellen und mit den Daten füllen
                             Product productObj = new Product
@@ -164,7 +168,8 @@ namespace TraderPlusEditor
                                 MaxStock = maxStock,
                                 TradeQuantity = tradeQuantity,
                                 BuyPrice = buyPrice,
-                                SellPrice = sellPrice
+                                SellPrice = sellPrice,
+                                DestockCoefficient = destockCoefficient
                             };
 
                             // ListViewItem erstellen und zur Produkte-ListView hinzufügen
@@ -174,6 +179,7 @@ namespace TraderPlusEditor
                             item.SubItems.Add(tradeQuantity);
                             item.SubItems.Add(buyPrice);
                             item.SubItems.Add(sellPrice);
+                            item.SubItems.Add(destockCoefficient);
                             item.Group = group;
                             item.Tag = productObj; // Produktobjekt als Tag speichern
                             lv_products.Items.Add(item);
@@ -193,11 +199,12 @@ namespace TraderPlusEditor
                 btn_setAll_quantity.Enabled = true;
                 btn_setAll_maxStock.Enabled = true;
                 btn_setAll_coefficient.Enabled = true;
+                btn_setAll_destock.Enabled = true;
                 btn_nextEntry.Enabled = true;
-                btn_productUp.Enabled = true;
-                btn_productDown.Enabled = true;
-                btn_categoryUp.Enabled = true;
-                btn_categoryDown.Enabled = true;
+                //btn_productUp.Enabled = true; // Coming soon
+                //btn_productDown.Enabled = true; // Coming soon
+                //btn_categoryUp.Enabled = true; // Coming soon
+                //btn_categoryDown.Enabled = true; // Coming soon
 
                 tb_productName.Enabled = true;
                 tb_buyPrice.Enabled = true;
@@ -205,6 +212,7 @@ namespace TraderPlusEditor
                 tb_productCoefficient.Enabled = true;
                 tb_maxStock.Enabled = true;
                 tb_tradeQuantity.Enabled = true;
+                tb_destock.Enabled = true;
                 tb_searchBar.Enabled = true;
 
                 cb_autoCalculation.Enabled = true;
@@ -247,8 +255,24 @@ namespace TraderPlusEditor
                         string tradeQuantity = item.SubItems[3].Text;
                         string buyPrice = item.SubItems[4].Text;
                         string sellPrice = item.SubItems[5].Text;
+                        string destockCoefficient = string.Empty;
 
-                        string productData = $"{productName},{productCoefficient},{maxStock},{tradeQuantity},{buyPrice},{sellPrice}";
+                        if (item.SubItems.Count >= 7)
+                        {
+                            destockCoefficient = item.SubItems[6].Text;
+                        }
+
+                        string productData;
+
+                        if (!string.IsNullOrEmpty(destockCoefficient))
+                        {
+                            productData = $"{productName},{productCoefficient},{maxStock},{tradeQuantity},{buyPrice},{sellPrice},{destockCoefficient}";
+                        }
+                        else
+                        {
+                            productData = $"{productName},{productCoefficient},{maxStock},{tradeQuantity},{buyPrice},{sellPrice}";
+                        }
+
                         products.Add(productData);
                     }
 
@@ -399,6 +423,17 @@ namespace TraderPlusEditor
 
                 // Aktualisiere den aktuellen Eintrag
                 currentEntryIndex = selectedItem.Index;
+
+                // Überprüfe, ob ein Destock-Koeffizient vorhanden ist und aktualisiere das Textfeld tb_destock entsprechend
+                if (selectedItem.SubItems.Count >= 7)
+                {
+                    string destockCoefficient = selectedItem.SubItems[6].Text;
+                    tb_destock.Text = destockCoefficient;
+                }
+                else
+                {
+                    tb_destock.Text = string.Empty;
+                }
             }
             else
             {
@@ -409,6 +444,7 @@ namespace TraderPlusEditor
                 tb_buyPrice.Text = string.Empty;
                 tb_sellPrice.Text = string.Empty;
                 tb_newCategoryName.Text = string.Empty; // Zurücksetzen des Kategorienamens
+                tb_destock.Text = string.Empty; // Zurücksetzen des Destock-Koeffizienten
 
                 // Kein Eintrag ausgewählt, setze den aktuellen Eintrag auf -1
                 currentEntryIndex = -1;
@@ -427,6 +463,7 @@ namespace TraderPlusEditor
                 string originalTradeQuantity = selectedItem.SubItems[3].Text;
                 string originalBuyPrice = selectedItem.SubItems[4].Text;
                 string originalSellPrice = selectedItem.SubItems[5].Text;
+                string originalDestockCoefficient = selectedItem.SubItems[6].Text;
 
                 string newProductName = tb_productName.Text;
                 string newProductCoefficient = tb_productCoefficient.Text;
@@ -434,6 +471,7 @@ namespace TraderPlusEditor
                 string newTradeQuantity = tb_tradeQuantity.Text;
                 string newBuyPrice = tb_buyPrice.Text;
                 string newSellPrice = tb_sellPrice.Text;
+                string newDestockCoefficient = tb_destock.Text;
 
                 // Überprüfen, ob sich die Werte geändert haben
                 bool isModified = (originalProductName != newProductName) ||
@@ -441,7 +479,8 @@ namespace TraderPlusEditor
                     (originalMaxStock != newMaxStock) ||
                     (originalTradeQuantity != newTradeQuantity) ||
                     (originalBuyPrice != newBuyPrice) ||
-                    (originalSellPrice != newSellPrice);
+                    (originalSellPrice != newSellPrice) ||
+                    (originalDestockCoefficient != newDestockCoefficient);
 
                 if (isModified)
                 {
@@ -451,6 +490,7 @@ namespace TraderPlusEditor
                     selectedItem.SubItems[3].Text = newTradeQuantity;
                     selectedItem.SubItems[4].Text = newBuyPrice;
                     selectedItem.SubItems[5].Text = newSellPrice;
+                    selectedItem.SubItems[6].Text = newDestockCoefficient;
                     selectedItem.BackColor = Color.LightPink;
 
                     ShowNotification("Product successfully saved!", Properties.Resources.okay, Color.Beige);
@@ -488,8 +528,6 @@ namespace TraderPlusEditor
             }
         }
 
-        private int currentEntryIndex = -1; // Variable zur Verfolgung des aktuellen Eintrags
-
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
@@ -508,6 +546,13 @@ namespace TraderPlusEditor
                     string buyPrice = tb_buyPrice.Text;
                     string sellPrice = tb_sellPrice.Text;
 
+                    string destockCoefficient = string.Empty; // Standardwert für den Destock-Koeffizienten
+
+                    if (!string.IsNullOrWhiteSpace(tb_destock.Text))
+                    {
+                        destockCoefficient = tb_destock.Text; // Wert aus der Textbox nur verwenden, wenn sie nicht leer ist
+                    }
+
                     Product productObj = new Product
                     {
                         Name = productName,
@@ -516,7 +561,8 @@ namespace TraderPlusEditor
                         MaxStock = maxStock,
                         TradeQuantity = tradeQuantity,
                         BuyPrice = buyPrice,
-                        SellPrice = sellPrice
+                        SellPrice = sellPrice,
+                        DestockCoefficient = destockCoefficient
                     };
 
                     // Überprüfen, ob die Kategorie-Gruppe bereits vorhanden ist, sonst erstellen
@@ -544,11 +590,14 @@ namespace TraderPlusEditor
                         maxStock,
                         tradeQuantity,
                         buyPrice,
-                        sellPrice
+                        sellPrice,
+                        destockCoefficient
                     };
-                    ListViewItem newItem = new ListViewItem(productData);
-                    newItem.Group = categoryGroup;
-                    newItem.Tag = productObj;
+                    ListViewItem newItem = new ListViewItem(productData)
+                    {
+                        Group = categoryGroup,
+                        Tag = productObj
+                    };
 
                     // Hinzufügen des neuen Eintrags zur lv_products
                     lv_products.Items.Add(newItem);
@@ -558,14 +607,6 @@ namespace TraderPlusEditor
                     newItem.Focused = true;
                     lv_products.Focus();
                     newItem.EnsureVisible();
-
-                    // Zurücksetzen der Textboxen
-                    //tb_productName.Clear();
-                    //tb_productCoefficient.Clear();
-                    //tb_maxStock.Clear();
-                    //tb_tradeQuantity.Clear();
-                    //tb_buyPrice.Clear();
-                    //tb_sellPrice.Clear();
 
                     ShowNotification("Product successfully added!", Properties.Resources.okay, Color.Beige);
 
@@ -733,7 +774,7 @@ namespace TraderPlusEditor
                 }
                 else
                 {
-                    ShowNotification("No products found!", Properties.Resources.okay, Color.Beige);
+                    ShowNotification("No product found!", Properties.Resources.okay, Color.Beige);
                 }
             }
             else
@@ -765,6 +806,20 @@ namespace TraderPlusEditor
             catch
             {
                 ShowNotification("Browser could not get started. Donation link is: paypal.me/dheil53", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
+        private void btn_gitHub_Click(object sender, EventArgs e)
+        {
+            string url = "https://github.com/xscr33m/TraderPlusEditor";
+
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                ShowNotification("Browser could not get started.", Properties.Resources.warn, Color.LightCoral);
             }
         }
 
@@ -883,6 +938,29 @@ namespace TraderPlusEditor
             }
         }
 
+        private void btn_setAll_destock_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                foreach (ListViewItem item in lv_products.Items)
+                {
+                    if (item.Group.Header == categoryName)
+                    {
+                        item.SubItems[6].Text = tb_destock.Text;
+                        item.BackColor = Color.LightPink;
+                    }
+                }
+
+                ShowNotification("Destock coefficient updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+            }
+            else
+            {
+                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+            }
+        }
+
         private void btn_categoryUp_Click(object sender, EventArgs e)
         {
             
@@ -895,7 +973,7 @@ namespace TraderPlusEditor
 
         private void btn_productUp_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_productDown_Click(object sender, EventArgs e)

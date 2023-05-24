@@ -166,9 +166,6 @@
     <EmbeddedResource Include="Resources\folder.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\import.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\settings.png" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\exportfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\import.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

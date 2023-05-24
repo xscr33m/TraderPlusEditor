@@ -26,5 +26,6 @@ namespace TraderPlusEditor
         public string TradeQuantity { get; set; }
         public string BuyPrice { get; set; }
         public string SellPrice { get; set; }
+        public string DestockCoefficient { get; set; }
     }
 }
