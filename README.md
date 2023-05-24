@@ -43,7 +43,7 @@ With this editor formatting errors are a thing of the past.
 
 ## Known Issues
 
-- Tell me
+[Check this out](https://github.com/xscr33m/TraderPlusEditor/issues)
 
 
 ## Feedback
