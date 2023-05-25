@@ -33,7 +33,7 @@ With this editor formatting errors are a thing of the past.
 
 ## Sneak-Preview
 
-![Logo](https://i.imgur.com/5PJYqOI.png)
+![Logo](https://i.imgur.com/Xx0U4iz.png)
 
 
 ## Upcoming Features
