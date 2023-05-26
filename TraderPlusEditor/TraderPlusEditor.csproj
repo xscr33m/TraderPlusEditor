@@ -76,6 +76,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=6.0.0.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.6.0.0\lib\netstandard2.0\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -89,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F_Msg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Msg.Designer.cs">
+      <DependentUpon>F_Msg.cs</DependentUpon>
+    </Compile>
     <Compile Include="JsonData.cs" />
     <Compile Include="F_Main.cs">
       <SubType>Form</SubType>
@@ -100,6 +109,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="F_Main.resx">
       <DependentUpon>F_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Msg.resx">
+      <DependentUpon>F_Msg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -185,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\discord.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

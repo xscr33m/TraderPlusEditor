@@ -90,18 +90,20 @@
             this.groupBox_categories = new System.Windows.Forms.GroupBox();
             this.lv_categories = new System.Windows.Forms.ListView();
             this.columnHeader_categories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox_categorieControls = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tb_newCategoryName = new System.Windows.Forms.TextBox();
-            this.btn_deleteCategory = new System.Windows.Forms.Button();
-            this.btn_addCategory = new System.Windows.Forms.Button();
             this.panel_categoryMovement = new System.Windows.Forms.Panel();
             this.groupBox_categoryMovement = new System.Windows.Forms.GroupBox();
             this.btn_categoryDown = new System.Windows.Forms.Button();
             this.btn_categoryUp = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox_categorieControls = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tb_newCategoryName = new System.Windows.Forms.TextBox();
+            this.btn_deleteCategory = new System.Windows.Forms.Button();
+            this.btn_addCategory = new System.Windows.Forms.Button();
             this.panel_topGround = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_wiki = new System.Windows.Forms.Button();
+            this.btn_discord = new System.Windows.Forms.Button();
             this.btn_gitHub = new System.Windows.Forms.Button();
             this.panel_controls = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -117,9 +119,9 @@
             this.pnl_pushNotifications.SuspendLayout();
             this.panel_categories.SuspendLayout();
             this.groupBox_categories.SuspendLayout();
-            this.groupBox_categorieControls.SuspendLayout();
             this.panel_categoryMovement.SuspendLayout();
             this.groupBox_categoryMovement.SuspendLayout();
+            this.groupBox_categorieControls.SuspendLayout();
             this.panel_topGround.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel_controls.SuspendLayout();
@@ -132,12 +134,12 @@
             this.panel_products.Controls.Add(this.groupBox_products);
             this.panel_products.Controls.Add(this.groupBox_productControls);
             this.panel_products.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_products.Location = new System.Drawing.Point(223, 127);
+            this.panel_products.Location = new System.Drawing.Point(223, 128);
             this.panel_products.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel_products.MinimumSize = new System.Drawing.Size(926, 678);
             this.panel_products.Name = "panel_products";
             this.panel_products.Padding = new System.Windows.Forms.Padding(3, 4, 5, 4);
-            this.panel_products.Size = new System.Drawing.Size(926, 684);
+            this.panel_products.Size = new System.Drawing.Size(926, 683);
             this.panel_products.TabIndex = 0;
             // 
             // groupBox_products
@@ -150,7 +152,7 @@
             this.groupBox_products.Margin = new System.Windows.Forms.Padding(5, 0, 5, 4);
             this.groupBox_products.Name = "groupBox_products";
             this.groupBox_products.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox_products.Size = new System.Drawing.Size(918, 563);
+            this.groupBox_products.Size = new System.Drawing.Size(918, 562);
             this.groupBox_products.TabIndex = 0;
             this.groupBox_products.TabStop = false;
             this.groupBox_products.Text = "Products";
@@ -177,7 +179,7 @@
             this.lv_products.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lv_products.MultiSelect = false;
             this.lv_products.Name = "lv_products";
-            this.lv_products.Size = new System.Drawing.Size(908, 493);
+            this.lv_products.Size = new System.Drawing.Size(908, 492);
             this.lv_products.TabIndex = 1;
             this.lv_products.TabStop = false;
             this.lv_products.UseCompatibleStateImageBehavior = false;
@@ -221,8 +223,8 @@
             // 
             // panel_productTopControl
             // 
-            this.panel_productTopControl.Controls.Add(this.groupBox_productMovement);
             this.panel_productTopControl.Controls.Add(this.groupBox_search);
+            this.panel_productTopControl.Controls.Add(this.groupBox_productMovement);
             this.panel_productTopControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_productTopControl.Location = new System.Drawing.Point(5, 20);
             this.panel_productTopControl.Margin = new System.Windows.Forms.Padding(0);
@@ -295,29 +297,31 @@
             // 
             // groupBox_search
             // 
+            this.groupBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_search.Controls.Add(this.tb_searchBar);
             this.groupBox_search.Controls.Add(this.btn_search);
             this.groupBox_search.Controls.Add(this.label9);
-            this.groupBox_search.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox_search.Location = new System.Drawing.Point(632, 0);
+            this.groupBox_search.Location = new System.Drawing.Point(80, 0);
             this.groupBox_search.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox_search.Name = "groupBox_search";
             this.groupBox_search.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox_search.Size = new System.Drawing.Size(276, 46);
+            this.groupBox_search.Size = new System.Drawing.Size(828, 46);
             this.groupBox_search.TabIndex = 0;
             this.groupBox_search.TabStop = false;
             this.groupBox_search.Text = "Search";
             // 
             // tb_searchBar
             // 
-            this.tb_searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_searchBar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_searchBar.Enabled = false;
-            this.tb_searchBar.Location = new System.Drawing.Point(7, 17);
-            this.tb_searchBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tb_searchBar.Location = new System.Drawing.Point(6, 17);
+            this.tb_searchBar.Margin = new System.Windows.Forms.Padding(0);
             this.tb_searchBar.Name = "tb_searchBar";
-            this.tb_searchBar.Size = new System.Drawing.Size(224, 21);
+            this.tb_searchBar.Size = new System.Drawing.Size(776, 21);
             this.tb_searchBar.TabIndex = 25;
             this.tb_searchBar.TabStop = false;
             this.tb_searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_search_KeyDown);
@@ -332,7 +336,7 @@
             this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.btn_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_search.Image")));
-            this.btn_search.Location = new System.Drawing.Point(235, 8);
+            this.btn_search.Location = new System.Drawing.Point(787, 8);
             this.btn_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(40, 36);
@@ -379,7 +383,7 @@
             this.groupBox_productControls.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox_productControls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox_productControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox_productControls.Location = new System.Drawing.Point(3, 567);
+            this.groupBox_productControls.Location = new System.Drawing.Point(3, 566);
             this.groupBox_productControls.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox_productControls.Name = "groupBox_productControls";
             this.groupBox_productControls.Padding = new System.Windows.Forms.Padding(0, 0, 5, 4);
@@ -711,7 +715,7 @@
             this.panel_fileSettings.Location = new System.Drawing.Point(340, 38);
             this.panel_fileSettings.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel_fileSettings.Name = "panel_fileSettings";
-            this.panel_fileSettings.Size = new System.Drawing.Size(292, 89);
+            this.panel_fileSettings.Size = new System.Drawing.Size(292, 90);
             this.panel_fileSettings.TabIndex = 0;
             // 
             // groupBox1
@@ -728,7 +732,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(292, 89);
+            this.groupBox1.Size = new System.Drawing.Size(292, 90);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Settings";
@@ -739,7 +743,7 @@
             this.cb_defaultTraderStock.AutoSize = true;
             this.cb_defaultTraderStock.Enabled = false;
             this.cb_defaultTraderStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cb_defaultTraderStock.Location = new System.Drawing.Point(95, 59);
+            this.cb_defaultTraderStock.Location = new System.Drawing.Point(95, 60);
             this.cb_defaultTraderStock.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_defaultTraderStock.Name = "cb_defaultTraderStock";
             this.cb_defaultTraderStock.Size = new System.Drawing.Size(179, 19);
@@ -755,7 +759,7 @@
             this.cb_autoDestockAtRestart.AutoSize = true;
             this.cb_autoDestockAtRestart.Enabled = false;
             this.cb_autoDestockAtRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cb_autoDestockAtRestart.Location = new System.Drawing.Point(95, 21);
+            this.cb_autoDestockAtRestart.Location = new System.Drawing.Point(95, 22);
             this.cb_autoDestockAtRestart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_autoDestockAtRestart.Name = "cb_autoDestockAtRestart";
             this.cb_autoDestockAtRestart.Size = new System.Drawing.Size(194, 19);
@@ -771,7 +775,7 @@
             this.cb_autoCalculation.AutoSize = true;
             this.cb_autoCalculation.Enabled = false;
             this.cb_autoCalculation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cb_autoCalculation.Location = new System.Drawing.Point(95, 40);
+            this.cb_autoCalculation.Location = new System.Drawing.Point(95, 41);
             this.cb_autoCalculation.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_autoCalculation.Name = "cb_autoCalculation";
             this.cb_autoCalculation.Size = new System.Drawing.Size(156, 19);
@@ -787,7 +791,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(18, 25);
+            this.label1.Location = new System.Drawing.Point(18, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 15);
@@ -799,7 +803,7 @@
             this.tb_version.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tb_version.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tb_version.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_version.Location = new System.Drawing.Point(14, 45);
+            this.tb_version.Location = new System.Drawing.Point(14, 46);
             this.tb_version.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_version.Name = "tb_version";
             this.tb_version.ReadOnly = true;
@@ -812,11 +816,11 @@
             this.btn_donate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_donate.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.btn_donate.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_donate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
+            this.btn_donate.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_donate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_donate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.btn_donate.Image = global::TraderPlusEditor.Properties.Resources.donate;
-            this.btn_donate.Location = new System.Drawing.Point(57, 39);
+            this.btn_donate.Location = new System.Drawing.Point(113, 40);
             this.btn_donate.Margin = new System.Windows.Forms.Padding(5);
             this.btn_donate.Name = "btn_donate";
             this.btn_donate.Size = new System.Drawing.Size(57, 48);
@@ -934,18 +938,18 @@
             // panel_categories
             // 
             this.panel_categories.Controls.Add(this.groupBox_categories);
+            this.panel_categories.Controls.Add(this.groupBox_categorieControls);
             this.panel_categories.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_categories.Location = new System.Drawing.Point(0, 127);
+            this.panel_categories.Location = new System.Drawing.Point(0, 128);
             this.panel_categories.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel_categories.Name = "panel_categories";
             this.panel_categories.Padding = new System.Windows.Forms.Padding(5, 4, 3, 4);
-            this.panel_categories.Size = new System.Drawing.Size(223, 684);
+            this.panel_categories.Size = new System.Drawing.Size(223, 683);
             this.panel_categories.TabIndex = 0;
             // 
             // groupBox_categories
             // 
             this.groupBox_categories.Controls.Add(this.lv_categories);
-            this.groupBox_categories.Controls.Add(this.groupBox_categorieControls);
             this.groupBox_categories.Controls.Add(this.panel_categoryMovement);
             this.groupBox_categories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_categories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -953,7 +957,7 @@
             this.groupBox_categories.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox_categories.Name = "groupBox_categories";
             this.groupBox_categories.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox_categories.Size = new System.Drawing.Size(215, 676);
+            this.groupBox_categories.Size = new System.Drawing.Size(215, 562);
             this.groupBox_categories.TabIndex = 0;
             this.groupBox_categories.TabStop = false;
             this.groupBox_categories.Text = "Categories";
@@ -974,7 +978,7 @@
             this.lv_categories.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lv_categories.MultiSelect = false;
             this.lv_categories.Name = "lv_categories";
-            this.lv_categories.Size = new System.Drawing.Size(205, 497);
+            this.lv_categories.Size = new System.Drawing.Size(205, 492);
             this.lv_categories.TabIndex = 2;
             this.lv_categories.TabStop = false;
             this.lv_categories.UseCompatibleStateImageBehavior = false;
@@ -986,86 +990,6 @@
             // 
             this.columnHeader_categories.Text = "Categories";
             this.columnHeader_categories.Width = 185;
-            // 
-            // groupBox_categorieControls
-            // 
-            this.groupBox_categorieControls.Controls.Add(this.label8);
-            this.groupBox_categorieControls.Controls.Add(this.tb_newCategoryName);
-            this.groupBox_categorieControls.Controls.Add(this.btn_deleteCategory);
-            this.groupBox_categorieControls.Controls.Add(this.btn_addCategory);
-            this.groupBox_categorieControls.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox_categorieControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox_categorieControls.Location = new System.Drawing.Point(5, 563);
-            this.groupBox_categorieControls.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox_categorieControls.Name = "groupBox_categorieControls";
-            this.groupBox_categorieControls.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox_categorieControls.Size = new System.Drawing.Size(205, 109);
-            this.groupBox_categorieControls.TabIndex = 1;
-            this.groupBox_categorieControls.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(8, 11);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 15);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "New category name:";
-            // 
-            // tb_newCategoryName
-            // 
-            this.tb_newCategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tb_newCategoryName.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_newCategoryName.Enabled = false;
-            this.tb_newCategoryName.Location = new System.Drawing.Point(7, 29);
-            this.tb_newCategoryName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tb_newCategoryName.Name = "tb_newCategoryName";
-            this.tb_newCategoryName.Size = new System.Drawing.Size(191, 21);
-            this.tb_newCategoryName.TabIndex = 10;
-            this.tb_newCategoryName.TabStop = false;
-            this.tb_newCategoryName.TextChanged += new System.EventHandler(this.tb_newCategoryName_TextChanged);
-            // 
-            // btn_deleteCategory
-            // 
-            this.btn_deleteCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_deleteCategory.Enabled = false;
-            this.btn_deleteCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_deleteCategory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_deleteCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
-            this.btn_deleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_deleteCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_deleteCategory.Location = new System.Drawing.Point(102, 61);
-            this.btn_deleteCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_deleteCategory.Name = "btn_deleteCategory";
-            this.btn_deleteCategory.Size = new System.Drawing.Size(102, 46);
-            this.btn_deleteCategory.TabIndex = 1;
-            this.btn_deleteCategory.TabStop = false;
-            this.btn_deleteCategory.Text = "Remove category";
-            this.btn_deleteCategory.UseVisualStyleBackColor = true;
-            this.btn_deleteCategory.Click += new System.EventHandler(this.btn_deleteCategory_Click);
-            // 
-            // btn_addCategory
-            // 
-            this.btn_addCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_addCategory.Enabled = false;
-            this.btn_addCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_addCategory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_addCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_addCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_addCategory.Location = new System.Drawing.Point(1, 61);
-            this.btn_addCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_addCategory.Name = "btn_addCategory";
-            this.btn_addCategory.Size = new System.Drawing.Size(102, 46);
-            this.btn_addCategory.TabIndex = 0;
-            this.btn_addCategory.TabStop = false;
-            this.btn_addCategory.Text = "Add new category";
-            this.btn_addCategory.UseVisualStyleBackColor = true;
-            this.btn_addCategory.Click += new System.EventHandler(this.btn_addCategory_Click);
             // 
             // panel_categoryMovement
             // 
@@ -1139,6 +1063,86 @@
             this.label11.Size = new System.Drawing.Size(0, 15);
             this.label11.TabIndex = 0;
             // 
+            // groupBox_categorieControls
+            // 
+            this.groupBox_categorieControls.Controls.Add(this.label8);
+            this.groupBox_categorieControls.Controls.Add(this.tb_newCategoryName);
+            this.groupBox_categorieControls.Controls.Add(this.btn_deleteCategory);
+            this.groupBox_categorieControls.Controls.Add(this.btn_addCategory);
+            this.groupBox_categorieControls.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox_categorieControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.groupBox_categorieControls.Location = new System.Drawing.Point(5, 566);
+            this.groupBox_categorieControls.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.groupBox_categorieControls.Name = "groupBox_categorieControls";
+            this.groupBox_categorieControls.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox_categorieControls.Size = new System.Drawing.Size(215, 113);
+            this.groupBox_categorieControls.TabIndex = 1;
+            this.groupBox_categorieControls.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(8, 15);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(119, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "New category name:";
+            // 
+            // tb_newCategoryName
+            // 
+            this.tb_newCategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tb_newCategoryName.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tb_newCategoryName.Enabled = false;
+            this.tb_newCategoryName.Location = new System.Drawing.Point(7, 33);
+            this.tb_newCategoryName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tb_newCategoryName.Name = "tb_newCategoryName";
+            this.tb_newCategoryName.Size = new System.Drawing.Size(201, 21);
+            this.tb_newCategoryName.TabIndex = 10;
+            this.tb_newCategoryName.TabStop = false;
+            this.tb_newCategoryName.TextChanged += new System.EventHandler(this.tb_newCategoryName_TextChanged);
+            // 
+            // btn_deleteCategory
+            // 
+            this.btn_deleteCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_deleteCategory.Enabled = false;
+            this.btn_deleteCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_deleteCategory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_deleteCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.btn_deleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deleteCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_deleteCategory.Location = new System.Drawing.Point(108, 65);
+            this.btn_deleteCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_deleteCategory.Name = "btn_deleteCategory";
+            this.btn_deleteCategory.Size = new System.Drawing.Size(106, 46);
+            this.btn_deleteCategory.TabIndex = 1;
+            this.btn_deleteCategory.TabStop = false;
+            this.btn_deleteCategory.Text = "Remove category";
+            this.btn_deleteCategory.UseVisualStyleBackColor = true;
+            this.btn_deleteCategory.Click += new System.EventHandler(this.btn_deleteCategory_Click);
+            // 
+            // btn_addCategory
+            // 
+            this.btn_addCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_addCategory.Enabled = false;
+            this.btn_addCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_addCategory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_addCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_addCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_addCategory.Location = new System.Drawing.Point(1, 65);
+            this.btn_addCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_addCategory.Name = "btn_addCategory";
+            this.btn_addCategory.Size = new System.Drawing.Size(108, 46);
+            this.btn_addCategory.TabIndex = 0;
+            this.btn_addCategory.TabStop = false;
+            this.btn_addCategory.Text = "Add new category";
+            this.btn_addCategory.UseVisualStyleBackColor = true;
+            this.btn_addCategory.Click += new System.EventHandler(this.btn_addCategory_Click);
+            // 
             // panel_topGround
             // 
             this.panel_topGround.Controls.Add(this.groupBox2);
@@ -1150,35 +1154,75 @@
             this.panel_topGround.Location = new System.Drawing.Point(0, 0);
             this.panel_topGround.Name = "panel_topGround";
             this.panel_topGround.Padding = new System.Windows.Forms.Padding(5, 4, 5, 0);
-            this.panel_topGround.Size = new System.Drawing.Size(1149, 127);
+            this.panel_topGround.Size = new System.Drawing.Size(1149, 128);
             this.panel_topGround.TabIndex = 2;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_wiki);
+            this.groupBox2.Controls.Add(this.btn_discord);
             this.groupBox2.Controls.Add(this.btn_gitHub);
             this.groupBox2.Controls.Add(this.btn_donate);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox2.Location = new System.Drawing.Point(1029, 38);
+            this.groupBox2.Location = new System.Drawing.Point(973, 38);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox2.Size = new System.Drawing.Size(115, 89);
+            this.groupBox2.Size = new System.Drawing.Size(171, 90);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Info";
+            // 
+            // btn_wiki
+            // 
+            this.btn_wiki.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_wiki.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_wiki.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_wiki.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_wiki.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_wiki.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.btn_wiki.Location = new System.Drawing.Point(1, 17);
+            this.btn_wiki.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_wiki.Name = "btn_wiki";
+            this.btn_wiki.Size = new System.Drawing.Size(169, 24);
+            this.btn_wiki.TabIndex = 26;
+            this.btn_wiki.TabStop = false;
+            this.btn_wiki.Text = "TraderPlusWiki by Dmitri";
+            this.btn_wiki.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_wiki.UseVisualStyleBackColor = true;
+            this.btn_wiki.Click += new System.EventHandler(this.btn_wiki_Click);
+            // 
+            // btn_discord
+            // 
+            this.btn_discord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_discord.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_discord.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_discord.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_discord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_discord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_discord.Image = global::TraderPlusEditor.Properties.Resources.discord;
+            this.btn_discord.Location = new System.Drawing.Point(1, 40);
+            this.btn_discord.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_discord.Name = "btn_discord";
+            this.btn_discord.Size = new System.Drawing.Size(57, 48);
+            this.btn_discord.TabIndex = 25;
+            this.btn_discord.TabStop = false;
+            this.btn_discord.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_discord.UseVisualStyleBackColor = true;
+            this.btn_discord.Click += new System.EventHandler(this.btn_discord_Click);
             // 
             // btn_gitHub
             // 
             this.btn_gitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_gitHub.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.btn_gitHub.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_gitHub.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
+            this.btn_gitHub.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_gitHub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_gitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.btn_gitHub.Image = ((System.Drawing.Image)(resources.GetObject("btn_gitHub.Image")));
-            this.btn_gitHub.Location = new System.Drawing.Point(1, 39);
+            this.btn_gitHub.Location = new System.Drawing.Point(57, 40);
             this.btn_gitHub.Margin = new System.Windows.Forms.Padding(5);
             this.btn_gitHub.Name = "btn_gitHub";
             this.btn_gitHub.Size = new System.Drawing.Size(57, 48);
@@ -1195,7 +1239,7 @@
             this.panel_controls.Location = new System.Drawing.Point(5, 38);
             this.panel_controls.Margin = new System.Windows.Forms.Padding(5);
             this.panel_controls.Name = "panel_controls";
-            this.panel_controls.Size = new System.Drawing.Size(335, 89);
+            this.panel_controls.Size = new System.Drawing.Size(335, 90);
             this.panel_controls.TabIndex = 2;
             // 
             // groupBox7
@@ -1211,7 +1255,7 @@
             this.groupBox7.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox7.Size = new System.Drawing.Size(335, 89);
+            this.groupBox7.Size = new System.Drawing.Size(335, 90);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Controls";
@@ -1256,11 +1300,11 @@
             this.pnl_pushNotifications.ResumeLayout(false);
             this.panel_categories.ResumeLayout(false);
             this.groupBox_categories.ResumeLayout(false);
-            this.groupBox_categorieControls.ResumeLayout(false);
-            this.groupBox_categorieControls.PerformLayout();
             this.panel_categoryMovement.ResumeLayout(false);
             this.groupBox_categoryMovement.ResumeLayout(false);
             this.groupBox_categoryMovement.PerformLayout();
+            this.groupBox_categorieControls.ResumeLayout(false);
+            this.groupBox_categorieControls.PerformLayout();
             this.panel_topGround.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel_controls.ResumeLayout(false);
@@ -1349,6 +1393,8 @@
         public System.Windows.Forms.TextBox tb_destock;
         private System.Windows.Forms.ColumnHeader product_destock;
         private System.Windows.Forms.Button btn_gitHub;
+        private System.Windows.Forms.Button btn_discord;
+        private System.Windows.Forms.Button btn_wiki;
     }
 }
 

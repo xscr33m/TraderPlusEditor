@@ -21,14 +21,21 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Octokit;
+using System.Media;
+using TraderPlusEditor.Properties;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TraderPlusEditor
 {
     public partial class F_Main : Form
     {
+        readonly string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static public string editorFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TraderPlusEditor", "EXPORTS");
         private string filePath;
         private JsonData loadedJsonData;
@@ -39,6 +46,16 @@ namespace TraderPlusEditor
             InitializeComponent();
         }
 
+        private void F_Main_Load(object sender, EventArgs e)
+        {
+            this.Text = "xscr33m'S TraderPlusEditor - v." + version;
+            CHECKFORINSTANCE();
+            GENERATEPATH();
+            CheckForUpdates();
+
+            ShowNotification("xscr33m's TraderPlusEditor successfully started!", Properties.Resources.okay, Color.LightGreen);
+        }
+
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
         [DllImport("user32.dll")]
@@ -46,14 +63,6 @@ namespace TraderPlusEditor
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
         private const int SW_SHOWNORMAL = 1;
-
-        private void F_Main_Load(object sender, EventArgs e)
-        {
-            CHECKFORINSTANCE();
-            GENERATEPATH();
-            // menuStrip1.Renderer = new CustomMenuRenderer();
-            ShowNotification("xscr33m's TraderPlusEditor successfully started!", Properties.Resources.okay, Color.Beige);
-        }
 
         private async void CHECKFORINSTANCE()
         {
@@ -71,7 +80,7 @@ namespace TraderPlusEditor
                     {
                         ShowWindow(runningProcess.MainWindowHandle, SW_SHOWNORMAL);
                         SetForegroundWindow(runningProcess.MainWindowHandle);
-                        Application.Exit();
+                        System.Windows.Forms.Application.Exit();
                     }
                 }
             }
@@ -83,6 +92,61 @@ namespace TraderPlusEditor
             if (!Directory.Exists(editorFolderPath))
             {
                 Directory.CreateDirectory(editorFolderPath);
+            }
+        }
+
+        private async void CheckForUpdates()
+        {
+            try
+            {
+                // Erzeuge eine GitHubClient-Instanz
+                var github = new GitHubClient(new Octokit.ProductHeaderValue("TraderPlusEditor"));
+
+                // Setze den Benutzer und das Repository deines öffentlichen GitHub-Repos
+                string owner = "xscr33m";
+                string repo = "TraderPlusEditor";
+
+                // Rufe die Liste der neuesten Releases ab
+                var releases = await github.Repository.Release.GetAll(owner, repo);
+
+                // Sortiere die Releases absteigend nach dem Veröffentlichungsdatum
+                var sortedReleases = releases.OrderByDescending(r => r.PublishedAt);
+
+                // Vergleiche die AssemblyVersion mit dem neuesten Tag
+                Version currentVersion = Assembly.GetEntryAssembly().GetName().Version;
+                Version latestVersion = new Version(sortedReleases.FirstOrDefault()?.TagName.TrimStart('v'));
+
+                if (latestVersion != null && latestVersion > currentVersion)
+                {
+                    // Eine neuere Version wurde gefunden, zeige eine entsprechende Benachrichtigung an
+                    F_Msg messageBoxForm = new F_Msg();
+                    SystemSounds.Exclamation.Play();
+                    messageBoxForm.button3.Visible = false;
+                    messageBoxForm.pictureBox1.Image = Resources.info;
+                    messageBoxForm.label1.Text = "A newer version is available! \n\r \n\rDo you want to download it now?";
+                    messageBoxForm.Text = "Update available!";
+                    messageBoxForm.button2.Visible = true;
+                    messageBoxForm.button1.Visible = true;
+
+                    if (messageBoxForm.ShowDialog() == DialogResult.Yes)
+                    {
+                        string downloadUrl = string.Format("https://github.com/{0}/{1}/releases/download/{2}/xscr33m.s.TraderPlusEditor.zip", owner, repo, sortedReleases.FirstOrDefault()?.TagName);
+
+                        try
+                        {
+                            Process.Start(downloadUrl);
+                        }
+                        catch
+                        {
+                            ShowNotification("Browser could not be started.", Resources.warn, Color.LightCoral);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Behandle Fehler bei der Verbindung zur GitHub-API
+                ShowNotification("Fehler beim Überprüfen auf Updates: " + ex.Message, Resources.warn, Color.LightCoral);
             }
         }
 
@@ -229,7 +293,7 @@ namespace TraderPlusEditor
 
                 UpdateCategoryListView();
 
-                ShowNotification("PriceConfig successfully imported!", Properties.Resources.okay, Color.Beige);
+                ShowNotification("PriceConfig successfully imported!", Resources.okay, Color.LightGreen);
             }
         }
 
@@ -306,7 +370,7 @@ namespace TraderPlusEditor
 
                 File.WriteAllText(newFilePath, serializedJson);
 
-                ShowNotification("Data successfully saved!", Properties.Resources.okay, Color.Beige);
+                ShowNotification("Data successfully saved!", Resources.okay, Color.LightGreen);
 
                 btn_exportFile.Enabled = false;
             }
@@ -318,7 +382,7 @@ namespace TraderPlusEditor
             loadedJsonData = null;
             filePath = string.Empty;
 
-            Application.Restart();
+            System.Windows.Forms.Application.Restart();
         }
 
         private void UpdateCategoryListView()
@@ -384,7 +448,7 @@ namespace TraderPlusEditor
                 }
                 else
                 {
-                    ShowNotification("No products in category. Add products first!", Properties.Resources.error, Color.Beige);
+                    ShowNotification("No products in category. Add products first!", Resources.error, Color.LightCoral);
 
                     // Den doppelt geklickten Eintrag wieder markieren
                     selectedItem.Selected = true;
@@ -493,7 +557,7 @@ namespace TraderPlusEditor
                     selectedItem.SubItems[6].Text = newDestockCoefficient;
                     selectedItem.BackColor = Color.LightPink;
 
-                    ShowNotification("Product successfully saved!", Properties.Resources.okay, Color.Beige);
+                    ShowNotification("Product successfully saved!", Resources.okay, Color.LightGreen);
 
                     btn_exportFile.Enabled = true;
                 }
@@ -608,13 +672,13 @@ namespace TraderPlusEditor
                     lv_products.Focus();
                     newItem.EnsureVisible();
 
-                    ShowNotification("Product successfully added!", Properties.Resources.okay, Color.Beige);
+                    ShowNotification("Product successfully added!", Resources.okay, Color.LightGreen);
 
                     btn_exportFile.Enabled = true;
                 }
                 else
                 {
-                    ShowNotification("Fill all the boxes!", Properties.Resources.error, Color.LightCoral);
+                    ShowNotification("Fill all the boxes!", Resources.error, Color.LightCoral);
                 }
             }
         }
@@ -626,7 +690,7 @@ namespace TraderPlusEditor
                 ListViewItem selectedItem = lv_products.SelectedItems[0];
                 lv_products.Items.Remove(selectedItem);
 
-                ShowNotification("Product successfully deleted!", Properties.Resources.warn, Color.Beige);
+                ShowNotification("Product successfully deleted!", Resources.warn, Color.Beige);
 
                 btn_exportFile.Enabled = true;
             }
@@ -674,13 +738,13 @@ namespace TraderPlusEditor
                     ListViewGroup newCategoryGroup = new ListViewGroup(categoryName);
                     lv_products.Groups.Add(newCategoryGroup);
 
-                    ShowNotification("Category successfully added!", Properties.Resources.okay, Color.Beige);
+                    ShowNotification("Category successfully added!", Resources.okay, Color.LightGreen);
 
                     btn_exportFile.Enabled = true;
                 }
                 else
                 {
-                    ShowNotification("Category already exists!", Properties.Resources.error, Color.LightCoral);
+                    ShowNotification("Category already exists!", Resources.error, Color.LightCoral);
                 }
             }
         }
@@ -774,7 +838,7 @@ namespace TraderPlusEditor
                 }
                 else
                 {
-                    ShowNotification("No product found!", Properties.Resources.okay, Color.Beige);
+                    ShowNotification("No product found!", Properties.Resources.okay, Color.LightGreen);
                 }
             }
             else
@@ -823,6 +887,34 @@ namespace TraderPlusEditor
             }
         }
 
+        private void btn_discord_Click(object sender, EventArgs e)
+        {
+            string url = "https://discord.com/invite/K9mkHyuGG8";
+
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                ShowNotification("Browser could not get started.", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
+        private void btn_wiki_Click(object sender, EventArgs e)
+        {
+            string url = "https://traderpluswiki.notion.site/TraderPlusPriceConfig-json-bafb5261d89349f1ac68f82e53eb3b46";
+
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                ShowNotification("Browser could not get started.", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
         private void btn_setAll_coefficient_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
@@ -838,11 +930,13 @@ namespace TraderPlusEditor
                     }
                 }
 
-                ShowNotification("Coefficient updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+                btn_exportFile.Enabled = true;
+
+                ShowNotification("Coefficient updated for all products in the category.", Resources.okay, Color.LightGreen);
             }
             else
             {
-                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+                ShowNotification("No category selected. Please select a category first.", Resources.error, Color.LightCoral);
             }
         }
 
@@ -861,11 +955,13 @@ namespace TraderPlusEditor
                     }
                 }
 
-                ShowNotification("Max stock updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+                btn_exportFile.Enabled = true;
+
+                ShowNotification("Max stock updated for all products in the category.", Resources.okay, Color.LightGreen);
             }
             else
             {
-                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+                ShowNotification("No category selected. Please select a category first.", Resources.error, Color.LightCoral);
             }
         }
 
@@ -884,11 +980,13 @@ namespace TraderPlusEditor
                     }
                 }
 
-                ShowNotification("Trade quantity updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+                btn_exportFile.Enabled = true;
+
+                ShowNotification("Trade quantity updated for all products in the category.", Resources.okay, Color.LightGreen);
             }
             else
             {
-                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+                ShowNotification("No category selected. Please select a category first.", Resources.error, Color.LightCoral);
             }
         }
 
@@ -907,11 +1005,13 @@ namespace TraderPlusEditor
                     }
                 }
 
-                ShowNotification("Buy price updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+                btn_exportFile.Enabled = true;
+
+                ShowNotification("Buy price updated for all products in the category.", Resources.okay, Color.LightGreen);
             }
             else
             {
-                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+                ShowNotification("No category selected. Please select a category first.", Resources.error, Color.LightCoral);
             }
         }
 
@@ -930,11 +1030,13 @@ namespace TraderPlusEditor
                     }
                 }
 
-                ShowNotification("Sell price updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+                btn_exportFile.Enabled = true;
+
+                ShowNotification("Sell price updated for all products in the category.", Resources.okay, Color.LightGreen);
             }
             else
             {
-                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+                ShowNotification("No category selected. Please select a category first.", Resources.error, Color.LightCoral);
             }
         }
 
@@ -953,11 +1055,13 @@ namespace TraderPlusEditor
                     }
                 }
 
-                ShowNotification("Destock coefficient updated for all products in the category.", Properties.Resources.okay, Color.Beige);
+                btn_exportFile.Enabled = true;
+
+                ShowNotification("Destock coefficient updated for all products in the category.", Resources.okay, Color.LightGreen);
             }
             else
             {
-                ShowNotification("No category selected. Please select a category first.", Properties.Resources.error, Color.Beige);
+                ShowNotification("No category selected. Please select a category first.", Resources.error, Color.LightCoral);
             }
         }
 
