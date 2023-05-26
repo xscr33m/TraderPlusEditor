@@ -40,14 +40,14 @@
             this.product_sellPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.product_destock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel_productTopControl = new System.Windows.Forms.Panel();
-            this.groupBox_productMovement = new System.Windows.Forms.GroupBox();
-            this.btn_productDown = new System.Windows.Forms.Button();
-            this.btn_productUp = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox_search = new System.Windows.Forms.GroupBox();
             this.tb_searchBar = new System.Windows.Forms.TextBox();
             this.btn_search = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox_productMovement = new System.Windows.Forms.GroupBox();
+            this.btn_productDown = new System.Windows.Forms.Button();
+            this.btn_productUp = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox_productControls = new System.Windows.Forms.GroupBox();
             this.btn_setAll_destock = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -111,8 +111,8 @@
             this.panel_products.SuspendLayout();
             this.groupBox_products.SuspendLayout();
             this.panel_productTopControl.SuspendLayout();
-            this.groupBox_productMovement.SuspendLayout();
             this.groupBox_search.SuspendLayout();
+            this.groupBox_productMovement.SuspendLayout();
             this.groupBox_productControls.SuspendLayout();
             this.panel_fileSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -184,7 +184,7 @@
             this.lv_products.TabStop = false;
             this.lv_products.UseCompatibleStateImageBehavior = false;
             this.lv_products.View = System.Windows.Forms.View.Details;
-            this.lv_products.SelectedIndexChanged += new System.EventHandler(this.lv_products_SelectedIndexChanged);
+            this.lv_products.SelectedIndexChanged += new System.EventHandler(this.Lv_products_SelectedIndexChanged);
             // 
             // product_class
             // 
@@ -232,6 +232,66 @@
             this.panel_productTopControl.Size = new System.Drawing.Size(908, 46);
             this.panel_productTopControl.TabIndex = 2;
             // 
+            // groupBox_search
+            // 
+            this.groupBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_search.Controls.Add(this.tb_searchBar);
+            this.groupBox_search.Controls.Add(this.btn_search);
+            this.groupBox_search.Controls.Add(this.label9);
+            this.groupBox_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.groupBox_search.Location = new System.Drawing.Point(80, 0);
+            this.groupBox_search.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox_search.Name = "groupBox_search";
+            this.groupBox_search.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox_search.Size = new System.Drawing.Size(828, 46);
+            this.groupBox_search.TabIndex = 0;
+            this.groupBox_search.TabStop = false;
+            this.groupBox_search.Text = "Search";
+            // 
+            // tb_searchBar
+            // 
+            this.tb_searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_searchBar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tb_searchBar.Enabled = false;
+            this.tb_searchBar.Location = new System.Drawing.Point(6, 17);
+            this.tb_searchBar.Margin = new System.Windows.Forms.Padding(0);
+            this.tb_searchBar.Name = "tb_searchBar";
+            this.tb_searchBar.Size = new System.Drawing.Size(776, 21);
+            this.tb_searchBar.TabIndex = 25;
+            this.tb_searchBar.TabStop = false;
+            this.tb_searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_search_KeyDown);
+            // 
+            // btn_search
+            // 
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_search.Enabled = false;
+            this.btn_search.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_search.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_search.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_search.Image")));
+            this.btn_search.Location = new System.Drawing.Point(787, 8);
+            this.btn_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(40, 36);
+            this.btn_search.TabIndex = 24;
+            this.btn_search.TabStop = false;
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.Btn_search_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 15);
+            this.label9.TabIndex = 0;
+            // 
             // groupBox_productMovement
             // 
             this.groupBox_productMovement.Controls.Add(this.btn_productDown);
@@ -265,7 +325,7 @@
             this.btn_productDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_productDown.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_productDown.UseVisualStyleBackColor = true;
-            this.btn_productDown.Click += new System.EventHandler(this.btn_productDown_Click);
+            this.btn_productDown.Click += new System.EventHandler(this.Btn_productDown_Click);
             // 
             // btn_productUp
             // 
@@ -285,7 +345,7 @@
             this.btn_productUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_productUp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_productUp.UseVisualStyleBackColor = true;
-            this.btn_productUp.Click += new System.EventHandler(this.btn_productUp_Click);
+            this.btn_productUp.Click += new System.EventHandler(this.Btn_productUp_Click);
             // 
             // label10
             // 
@@ -294,66 +354,6 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 15);
             this.label10.TabIndex = 0;
-            // 
-            // groupBox_search
-            // 
-            this.groupBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_search.Controls.Add(this.tb_searchBar);
-            this.groupBox_search.Controls.Add(this.btn_search);
-            this.groupBox_search.Controls.Add(this.label9);
-            this.groupBox_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox_search.Location = new System.Drawing.Point(80, 0);
-            this.groupBox_search.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox_search.Name = "groupBox_search";
-            this.groupBox_search.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox_search.Size = new System.Drawing.Size(828, 46);
-            this.groupBox_search.TabIndex = 0;
-            this.groupBox_search.TabStop = false;
-            this.groupBox_search.Text = "Search";
-            // 
-            // tb_searchBar
-            // 
-            this.tb_searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_searchBar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_searchBar.Enabled = false;
-            this.tb_searchBar.Location = new System.Drawing.Point(6, 17);
-            this.tb_searchBar.Margin = new System.Windows.Forms.Padding(0);
-            this.tb_searchBar.Name = "tb_searchBar";
-            this.tb_searchBar.Size = new System.Drawing.Size(776, 21);
-            this.tb_searchBar.TabIndex = 25;
-            this.tb_searchBar.TabStop = false;
-            this.tb_searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_search_KeyDown);
-            // 
-            // btn_search
-            // 
-            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_search.Enabled = false;
-            this.btn_search.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_search.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_search.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_search.Image")));
-            this.btn_search.Location = new System.Drawing.Point(787, 8);
-            this.btn_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(40, 36);
-            this.btn_search.TabIndex = 24;
-            this.btn_search.TabStop = false;
-            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 15);
-            this.label9.TabIndex = 0;
             // 
             // groupBox_productControls
             // 
@@ -407,7 +407,7 @@
             this.btn_setAll_destock.TabStop = false;
             this.btn_setAll_destock.Text = "Set all in category";
             this.btn_setAll_destock.UseVisualStyleBackColor = true;
-            this.btn_setAll_destock.Click += new System.EventHandler(this.btn_setAll_destock_Click);
+            this.btn_setAll_destock.Click += new System.EventHandler(this.Btn_setAll_destock_Click);
             // 
             // label12
             // 
@@ -447,7 +447,7 @@
             this.btn_setAll_coefficient.TabStop = false;
             this.btn_setAll_coefficient.Text = "Set all in category";
             this.btn_setAll_coefficient.UseVisualStyleBackColor = true;
-            this.btn_setAll_coefficient.Click += new System.EventHandler(this.btn_setAll_coefficient_Click);
+            this.btn_setAll_coefficient.Click += new System.EventHandler(this.Btn_setAll_coefficient_Click);
             // 
             // btn_setAll_maxStock
             // 
@@ -465,7 +465,7 @@
             this.btn_setAll_maxStock.TabStop = false;
             this.btn_setAll_maxStock.Text = "Set all in category";
             this.btn_setAll_maxStock.UseVisualStyleBackColor = true;
-            this.btn_setAll_maxStock.Click += new System.EventHandler(this.btn_setAll_maxStock_Click);
+            this.btn_setAll_maxStock.Click += new System.EventHandler(this.Btn_setAll_maxStock_Click);
             // 
             // btn_setAll_quantity
             // 
@@ -483,7 +483,7 @@
             this.btn_setAll_quantity.TabStop = false;
             this.btn_setAll_quantity.Text = "Set all in category";
             this.btn_setAll_quantity.UseVisualStyleBackColor = true;
-            this.btn_setAll_quantity.Click += new System.EventHandler(this.btn_setAll_quantity_Click);
+            this.btn_setAll_quantity.Click += new System.EventHandler(this.Btn_setAll_quantity_Click);
             // 
             // btn_setAll_buyPrice
             // 
@@ -501,7 +501,7 @@
             this.btn_setAll_buyPrice.TabStop = false;
             this.btn_setAll_buyPrice.Text = "Set all in category";
             this.btn_setAll_buyPrice.UseVisualStyleBackColor = true;
-            this.btn_setAll_buyPrice.Click += new System.EventHandler(this.btn_setAll_buyPrice_Click);
+            this.btn_setAll_buyPrice.Click += new System.EventHandler(this.Btn_setAll_buyPrice_Click);
             // 
             // btn_nextEntry
             // 
@@ -519,7 +519,7 @@
             this.btn_nextEntry.TabIndex = 8;
             this.btn_nextEntry.Text = "Save and Next";
             this.btn_nextEntry.UseVisualStyleBackColor = false;
-            this.btn_nextEntry.Click += new System.EventHandler(this.saveProduct_Click);
+            this.btn_nextEntry.Click += new System.EventHandler(this.SaveProduct_Click);
             // 
             // btn_setAll_sellPrice
             // 
@@ -537,7 +537,7 @@
             this.btn_setAll_sellPrice.TabStop = false;
             this.btn_setAll_sellPrice.Text = "Set all in category";
             this.btn_setAll_sellPrice.UseVisualStyleBackColor = true;
-            this.btn_setAll_sellPrice.Click += new System.EventHandler(this.btn_setAll_sellPrice_Click);
+            this.btn_setAll_sellPrice.Click += new System.EventHandler(this.Btn_setAll_sellPrice_Click);
             // 
             // btn_deleteProduct
             // 
@@ -555,7 +555,7 @@
             this.btn_deleteProduct.TabStop = false;
             this.btn_deleteProduct.Text = "Delete selected";
             this.btn_deleteProduct.UseVisualStyleBackColor = true;
-            this.btn_deleteProduct.Click += new System.EventHandler(this.btn_deleteProduct_Click);
+            this.btn_deleteProduct.Click += new System.EventHandler(this.Btn_deleteProduct_Click);
             // 
             // label7
             // 
@@ -706,7 +706,7 @@
             this.btn_addProduct.TabStop = false;
             this.btn_addProduct.Text = "Add product";
             this.btn_addProduct.UseVisualStyleBackColor = true;
-            this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
+            this.btn_addProduct.Click += new System.EventHandler(this.Btn_addProduct_Click);
             // 
             // panel_fileSettings
             // 
@@ -828,7 +828,7 @@
             this.btn_donate.TabStop = false;
             this.btn_donate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_donate.UseVisualStyleBackColor = true;
-            this.btn_donate.Click += new System.EventHandler(this.btn_donate_Click);
+            this.btn_donate.Click += new System.EventHandler(this.Btn_donate_Click);
             // 
             // btn_openExports
             // 
@@ -847,7 +847,7 @@
             this.btn_openExports.Text = "Open Exports";
             this.btn_openExports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_openExports.UseVisualStyleBackColor = true;
-            this.btn_openExports.Click += new System.EventHandler(this.btn_openExports_Click);
+            this.btn_openExports.Click += new System.EventHandler(this.Btn_openExports_Click);
             // 
             // btn_closeFile
             // 
@@ -867,7 +867,7 @@
             this.btn_closeFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_closeFile.UseVisualStyleBackColor = true;
             this.btn_closeFile.Visible = false;
-            this.btn_closeFile.Click += new System.EventHandler(this.btn_closeFile_Click);
+            this.btn_closeFile.Click += new System.EventHandler(this.Btn_closeFile_Click);
             // 
             // btn_exportFile
             // 
@@ -887,7 +887,7 @@
             this.btn_exportFile.Text = "Export File";
             this.btn_exportFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_exportFile.UseVisualStyleBackColor = true;
-            this.btn_exportFile.Click += new System.EventHandler(this.btn_exportFile_Click);
+            this.btn_exportFile.Click += new System.EventHandler(this.Btn_exportFile_Click);
             // 
             // btn_loadFile
             // 
@@ -906,7 +906,7 @@
             this.btn_loadFile.Text = "Load File";
             this.btn_loadFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_loadFile.UseVisualStyleBackColor = true;
-            this.btn_loadFile.Click += new System.EventHandler(this.btn_loadFile_Click);
+            this.btn_loadFile.Click += new System.EventHandler(this.Btn_loadFile_Click);
             // 
             // pnl_pushNotifications
             // 
@@ -983,8 +983,8 @@
             this.lv_categories.TabStop = false;
             this.lv_categories.UseCompatibleStateImageBehavior = false;
             this.lv_categories.View = System.Windows.Forms.View.Details;
-            this.lv_categories.SelectedIndexChanged += new System.EventHandler(this.lv_categories_SelectedIndexChanged);
-            this.lv_categories.DoubleClick += new System.EventHandler(this.lv_categories_DoubleClick);
+            this.lv_categories.SelectedIndexChanged += new System.EventHandler(this.Lv_categories_SelectedIndexChanged);
+            this.lv_categories.DoubleClick += new System.EventHandler(this.Lv_categories_DoubleClick);
             // 
             // columnHeader_categories
             // 
@@ -1033,7 +1033,7 @@
             this.btn_categoryDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_categoryDown.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_categoryDown.UseVisualStyleBackColor = true;
-            this.btn_categoryDown.Click += new System.EventHandler(this.btn_categoryDown_Click);
+            this.btn_categoryDown.Click += new System.EventHandler(this.Btn_categoryDown_Click);
             // 
             // btn_categoryUp
             // 
@@ -1053,7 +1053,7 @@
             this.btn_categoryUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_categoryUp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_categoryUp.UseVisualStyleBackColor = true;
-            this.btn_categoryUp.Click += new System.EventHandler(this.btn_categoryUp_Click);
+            this.btn_categoryUp.Click += new System.EventHandler(this.Btn_categoryUp_Click);
             // 
             // label11
             // 
@@ -1103,7 +1103,7 @@
             this.tb_newCategoryName.Size = new System.Drawing.Size(201, 21);
             this.tb_newCategoryName.TabIndex = 10;
             this.tb_newCategoryName.TabStop = false;
-            this.tb_newCategoryName.TextChanged += new System.EventHandler(this.tb_newCategoryName_TextChanged);
+            this.tb_newCategoryName.TextChanged += new System.EventHandler(this.Tb_newCategoryName_TextChanged);
             // 
             // btn_deleteCategory
             // 
@@ -1122,7 +1122,7 @@
             this.btn_deleteCategory.TabStop = false;
             this.btn_deleteCategory.Text = "Remove category";
             this.btn_deleteCategory.UseVisualStyleBackColor = true;
-            this.btn_deleteCategory.Click += new System.EventHandler(this.btn_deleteCategory_Click);
+            this.btn_deleteCategory.Click += new System.EventHandler(this.Btn_deleteCategory_Click);
             // 
             // btn_addCategory
             // 
@@ -1141,7 +1141,7 @@
             this.btn_addCategory.TabStop = false;
             this.btn_addCategory.Text = "Add new category";
             this.btn_addCategory.UseVisualStyleBackColor = true;
-            this.btn_addCategory.Click += new System.EventHandler(this.btn_addCategory_Click);
+            this.btn_addCategory.Click += new System.EventHandler(this.Btn_addCategory_Click);
             // 
             // panel_topGround
             // 
@@ -1192,7 +1192,7 @@
             this.btn_wiki.Text = "TraderPlusWiki by Dmitri";
             this.btn_wiki.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_wiki.UseVisualStyleBackColor = true;
-            this.btn_wiki.Click += new System.EventHandler(this.btn_wiki_Click);
+            this.btn_wiki.Click += new System.EventHandler(this.Btn_wiki_Click);
             // 
             // btn_discord
             // 
@@ -1211,7 +1211,7 @@
             this.btn_discord.TabStop = false;
             this.btn_discord.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_discord.UseVisualStyleBackColor = true;
-            this.btn_discord.Click += new System.EventHandler(this.btn_discord_Click);
+            this.btn_discord.Click += new System.EventHandler(this.Btn_discord_Click);
             // 
             // btn_gitHub
             // 
@@ -1230,7 +1230,7 @@
             this.btn_gitHub.TabStop = false;
             this.btn_gitHub.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_gitHub.UseVisualStyleBackColor = true;
-            this.btn_gitHub.Click += new System.EventHandler(this.btn_gitHub_Click);
+            this.btn_gitHub.Click += new System.EventHandler(this.Btn_gitHub_Click);
             // 
             // panel_controls
             // 
@@ -1288,10 +1288,10 @@
             this.panel_products.ResumeLayout(false);
             this.groupBox_products.ResumeLayout(false);
             this.panel_productTopControl.ResumeLayout(false);
-            this.groupBox_productMovement.ResumeLayout(false);
-            this.groupBox_productMovement.PerformLayout();
             this.groupBox_search.ResumeLayout(false);
             this.groupBox_search.PerformLayout();
+            this.groupBox_productMovement.ResumeLayout(false);
+            this.groupBox_productMovement.PerformLayout();
             this.groupBox_productControls.ResumeLayout(false);
             this.groupBox_productControls.PerformLayout();
             this.panel_fileSettings.ResumeLayout(false);
@@ -1321,7 +1321,6 @@
         private System.Windows.Forms.Panel panel_categories;
         private System.Windows.Forms.GroupBox groupBox_categories;
         private System.Windows.Forms.GroupBox groupBox_products;
-        private System.Windows.Forms.ListView lv_products;
         private System.Windows.Forms.ColumnHeader product_class;
         private System.Windows.Forms.ColumnHeader product_coeffcient;
         private System.Windows.Forms.ColumnHeader product_maxStock;
@@ -1330,17 +1329,12 @@
         private System.Windows.Forms.ColumnHeader product_sellPrice;
         private System.Windows.Forms.GroupBox groupBox_productControls;
         private System.Windows.Forms.GroupBox groupBox_categorieControls;
-        private System.Windows.Forms.Button btn_addCategory;
-        private System.Windows.Forms.Button btn_addProduct;
-        private System.Windows.Forms.Button btn_deleteCategory;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_deleteProduct;
-        private System.Windows.Forms.Button btn_setAll_sellPrice;
         public System.Windows.Forms.TextBox tb_sellPrice;
         public System.Windows.Forms.TextBox tb_buyPrice;
         public System.Windows.Forms.TextBox tb_tradeQuantity;
@@ -1349,8 +1343,6 @@
         public System.Windows.Forms.TextBox tb_productName;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox tb_newCategoryName;
-        private System.Windows.Forms.Panel pnl_pushNotifications;
-        private System.Windows.Forms.Label lbl_pushNotifications;
         private System.Windows.Forms.Panel panel_productTopControl;
         private System.Windows.Forms.GroupBox groupBox_search;
         private System.Windows.Forms.Button btn_search;
@@ -1358,24 +1350,14 @@
         private System.Windows.Forms.Button btn_loadFile;
         private System.Windows.Forms.Button btn_exportFile;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cb_defaultTraderStock;
-        private System.Windows.Forms.CheckBox cb_autoDestockAtRestart;
-        private System.Windows.Forms.CheckBox cb_autoCalculation;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_version;
         private System.Windows.Forms.Button btn_closeFile;
         private System.Windows.Forms.TextBox tb_searchBar;
         private System.Windows.Forms.Button btn_openExports;
         private System.Windows.Forms.Button btn_donate;
-        private System.Windows.Forms.Button btn_nextEntry;
-        private System.Windows.Forms.Button btn_setAll_coefficient;
-        private System.Windows.Forms.Button btn_setAll_maxStock;
-        private System.Windows.Forms.Button btn_setAll_quantity;
-        private System.Windows.Forms.Button btn_setAll_buyPrice;
         private System.Windows.Forms.Panel panel_topGround;
         private System.Windows.Forms.Panel panel_controls;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Panel panel_notifyGround;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox_productMovement;
         private System.Windows.Forms.Button btn_productUp;
@@ -1386,15 +1368,33 @@
         private System.Windows.Forms.Button btn_categoryDown;
         private System.Windows.Forms.Button btn_categoryUp;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListView lv_categories;
         private System.Windows.Forms.ColumnHeader columnHeader_categories;
-        private System.Windows.Forms.Button btn_setAll_destock;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox tb_destock;
         private System.Windows.Forms.ColumnHeader product_destock;
         private System.Windows.Forms.Button btn_gitHub;
         private System.Windows.Forms.Button btn_discord;
         private System.Windows.Forms.Button btn_wiki;
+        public System.Windows.Forms.Panel panel_notifyGround;
+        public System.Windows.Forms.Panel pnl_pushNotifications;
+        public System.Windows.Forms.Label lbl_pushNotifications;
+        public System.Windows.Forms.ListView lv_products;
+        public System.Windows.Forms.Button btn_addCategory;
+        public System.Windows.Forms.Button btn_addProduct;
+        public System.Windows.Forms.Button btn_deleteCategory;
+        public System.Windows.Forms.Button btn_deleteProduct;
+        public System.Windows.Forms.Button btn_setAll_sellPrice;
+        public System.Windows.Forms.CheckBox cb_defaultTraderStock;
+        public System.Windows.Forms.CheckBox cb_autoDestockAtRestart;
+        public System.Windows.Forms.CheckBox cb_autoCalculation;
+        public System.Windows.Forms.TextBox tb_version;
+        public System.Windows.Forms.Button btn_nextEntry;
+        public System.Windows.Forms.Button btn_setAll_coefficient;
+        public System.Windows.Forms.Button btn_setAll_maxStock;
+        public System.Windows.Forms.Button btn_setAll_quantity;
+        public System.Windows.Forms.Button btn_setAll_buyPrice;
+        public System.Windows.Forms.ListView lv_categories;
+        public System.Windows.Forms.Button btn_setAll_destock;
     }
 }
 

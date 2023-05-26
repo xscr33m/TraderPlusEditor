@@ -80,7 +80,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.button2.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ScrollBar;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSpringGreen;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(133, 7);
@@ -98,14 +98,14 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.button1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ScrollBar;
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(6, 7);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 37);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 9;
             this.button1.Text = "YES";
             this.button1.UseVisualStyleBackColor = true;
             // 

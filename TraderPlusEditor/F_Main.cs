@@ -14,22 +14,17 @@
 ///                                                                                                                                              ///
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
+using System.Media;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Octokit;
-using System.Media;
 using TraderPlusEditor.Properties;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TraderPlusEditor
 {
@@ -38,119 +33,27 @@ namespace TraderPlusEditor
         readonly string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static public string editorFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TraderPlusEditor", "EXPORTS");
         private string filePath;
+        private int currentEntryIndex = -1;
         private JsonData loadedJsonData;
-        private int currentEntryIndex = -1; // Variable zur Verfolgung des aktuellen Eintrags
+        private readonly Timer notificationTimer = new Timer();
 
         public F_Main()
         {
             InitializeComponent();
         }
 
-        private void F_Main_Load(object sender, EventArgs e)
+        private async void F_Main_Load(object sender, EventArgs e)
         {
-            this.Text = "xscr33m'S TraderPlusEditor - v." + version;
-            CHECKFORINSTANCE();
-            GENERATEPATH();
-            CheckForUpdates();
+            Text = "xscr33m'S TraderPlusEditor - v." + version;
+            await MainStartUp.CheckForInstance();
+            await MainStartUp.GENERATEPATH();
+            await MainStartUp.CheckForUpdates(this);
 
-            ShowNotification("xscr33m's TraderPlusEditor successfully started!", Properties.Resources.okay, Color.LightGreen);
+            await ShowNotification("xscr33m's TraderPlusEditor successfully started!", Resources.okay, Color.LightGreen);
         }
 
-        [DllImport("user32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        [DllImport("user32.dll")]
-        public static extern IntPtr GetForegroundWindow();
-        private const int SW_SHOWNORMAL = 1;
-
-        private async void CHECKFORINSTANCE()
-        {
-            Process[] processes = Process.GetProcessesByName("TraderPlusEditor");
-            if (processes.Length > 1)
-            {
-                for (int i = 0; i < processes.Length; i++)
-                {
-                    Process runningProcess = processes[i];
-                    if (runningProcess.MainWindowHandle == GetForegroundWindow())
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        ShowWindow(runningProcess.MainWindowHandle, SW_SHOWNORMAL);
-                        SetForegroundWindow(runningProcess.MainWindowHandle);
-                        System.Windows.Forms.Application.Exit();
-                    }
-                }
-            }
-            await Task.Delay(2000);
-        }
-
-        private void GENERATEPATH()
-        {
-            if (!Directory.Exists(editorFolderPath))
-            {
-                Directory.CreateDirectory(editorFolderPath);
-            }
-        }
-
-        private async void CheckForUpdates()
-        {
-            try
-            {
-                // Erzeuge eine GitHubClient-Instanz
-                var github = new GitHubClient(new Octokit.ProductHeaderValue("TraderPlusEditor"));
-
-                // Setze den Benutzer und das Repository deines öffentlichen GitHub-Repos
-                string owner = "xscr33m";
-                string repo = "TraderPlusEditor";
-
-                // Rufe die Liste der neuesten Releases ab
-                var releases = await github.Repository.Release.GetAll(owner, repo);
-
-                // Sortiere die Releases absteigend nach dem Veröffentlichungsdatum
-                var sortedReleases = releases.OrderByDescending(r => r.PublishedAt);
-
-                // Vergleiche die AssemblyVersion mit dem neuesten Tag
-                Version currentVersion = Assembly.GetEntryAssembly().GetName().Version;
-                Version latestVersion = new Version(sortedReleases.FirstOrDefault()?.TagName.TrimStart('v'));
-
-                if (latestVersion != null && latestVersion > currentVersion)
-                {
-                    // Eine neuere Version wurde gefunden, zeige eine entsprechende Benachrichtigung an
-                    F_Msg messageBoxForm = new F_Msg();
-                    SystemSounds.Exclamation.Play();
-                    messageBoxForm.button3.Visible = false;
-                    messageBoxForm.pictureBox1.Image = Resources.info;
-                    messageBoxForm.label1.Text = "A newer version is available! \n\r \n\rDo you want to download it now?";
-                    messageBoxForm.Text = "Update available!";
-                    messageBoxForm.button2.Visible = true;
-                    messageBoxForm.button1.Visible = true;
-
-                    if (messageBoxForm.ShowDialog() == DialogResult.Yes)
-                    {
-                        string downloadUrl = string.Format("https://github.com/{0}/{1}/releases/download/{2}/xscr33m.s.TraderPlusEditor.zip", owner, repo, sortedReleases.FirstOrDefault()?.TagName);
-
-                        try
-                        {
-                            Process.Start(downloadUrl);
-                        }
-                        catch
-                        {
-                            ShowNotification("Browser could not be started.", Resources.warn, Color.LightCoral);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Behandle Fehler bei der Verbindung zur GitHub-API
-                ShowNotification("Fehler beim Überprüfen auf Updates: " + ex.Message, Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private async Task ShowNotification(string text, Image image, Color panelColor)
+        // --- Benachrichtigungen --- //
+        public async Task ShowNotification(string text, Image image, Color panelColor)
         {
             // Setze den Text des Labels
             lbl_pushNotifications.Text = text;
@@ -161,22 +64,31 @@ namespace TraderPlusEditor
             // Setze die Farbe des Panels
             pnl_pushNotifications.BackColor = panelColor;
 
-            // Warte für 1 Sekunden
-            await Task.Delay(1000);
-
             // Mache das Panel und das Label sichtbar
             pnl_pushNotifications.Visible = true;
             lbl_pushNotifications.Visible = true;
 
-            // Warte für 5 Sekunden
-            await Task.Delay(5000);
+            // Stoppe den aktuellen Timer, falls einer läuft
+            notificationTimer.Stop();
 
+            // Starte einen neuen Timer mit einer Verzögerung von 5 Sekunden
+            notificationTimer.Interval = 5000;
+            notificationTimer.Tick += NotificationTimer_Tick;
+            notificationTimer.Start();
+        }
+
+        private void NotificationTimer_Tick(object sender, EventArgs e)
+        {
             // Blende das Panel und das Label aus
             pnl_pushNotifications.Visible = false;
             lbl_pushNotifications.Visible = false;
+
+            // Stoppe den Timer
+            notificationTimer.Stop();
         }
 
-        private void btn_loadFile_Click(object sender, EventArgs e)
+        // --- Import-Button --- //
+        private async void Btn_loadFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -188,203 +100,209 @@ namespace TraderPlusEditor
                 // Dateipfad speichern
                 filePath = openFileDialog.FileName;
 
-                // JSON-Datei lesen und deserialisieren
-                string json = File.ReadAllText(filePath);
-                loadedJsonData = JsonConvert.DeserializeObject<JsonData>(json);
+                // Datei mit Hilfe der FileHelper-Klasse laden
+                loadedJsonData = FileHelper.LoadFile(filePath);
 
-                // Grundlegende Informationen anzeigen
-                tb_version.Text = loadedJsonData.Version;
-                cb_autoCalculation.Checked = Convert.ToBoolean(loadedJsonData.EnableAutoCalculation);
-                cb_autoDestockAtRestart.Checked = Convert.ToBoolean(loadedJsonData.EnableAutoDestockAtRestart);
-                cb_defaultTraderStock.Checked = Convert.ToBoolean(loadedJsonData.EnableDefaultTraderStock);
+                UpdateUIAfterFileLoad();
 
-                // Kategorien und Produkte in den ListViews anzeigen
-                lv_products.Items.Clear();
-                lv_products.Groups.Clear();
-
-                foreach (var category in loadedJsonData.TraderCategories)
-                {
-                    // ListView-Gruppe für die Kategorie erstellen
-                    ListViewGroup group = new ListViewGroup(category.CategoryName);
-                    lv_products.Groups.Add(group);
-
-                    foreach (var product in category.Products)
-                    {
-                        // Produktinformationen aus der Datenzeichenkette extrahieren
-                        string[] productData = product.Split(',');
-
-                        if (productData.Length >= 6)
-                        {
-                            string productName = productData[0];
-                            string productCoefficient = productData[1];
-                            string maxStock = productData[2];
-                            string tradeQuantity = productData[3];
-                            string buyPrice = productData[4];
-                            string sellPrice = productData[5];
-                            string destockCoefficient = productData.Length >= 7 ? productData[6] : string.Empty;
-
-                            // Produktobjekt erstellen und mit den Daten füllen
-                            Product productObj = new Product
-                            {
-                                Name = productName,
-                                Category = category.CategoryName,
-                                Coefficient = productCoefficient,
-                                MaxStock = maxStock,
-                                TradeQuantity = tradeQuantity,
-                                BuyPrice = buyPrice,
-                                SellPrice = sellPrice,
-                                DestockCoefficient = destockCoefficient
-                            };
-
-                            // ListViewItem erstellen und zur Produkte-ListView hinzufügen
-                            ListViewItem item = new ListViewItem(productName);
-                            item.SubItems.Add(productCoefficient);
-                            item.SubItems.Add(maxStock);
-                            item.SubItems.Add(tradeQuantity);
-                            item.SubItems.Add(buyPrice);
-                            item.SubItems.Add(sellPrice);
-                            item.SubItems.Add(destockCoefficient);
-                            item.Group = group;
-                            item.Tag = productObj; // Produktobjekt als Tag speichern
-                            lv_products.Items.Add(item);
-                        }
-                    }
-                }
-
-                lv_products.Enabled = true;
-
-                btn_addProduct.Enabled = true;
-                btn_deleteCategory.Enabled = true;
-                btn_deleteProduct.Enabled = true;
-                btn_search.Enabled = true;
-                btn_search.Enabled = true;
-                btn_setAll_sellPrice.Enabled = true;
-                btn_setAll_buyPrice.Enabled = true;
-                btn_setAll_quantity.Enabled = true;
-                btn_setAll_maxStock.Enabled = true;
-                btn_setAll_coefficient.Enabled = true;
-                btn_setAll_destock.Enabled = true;
-                btn_nextEntry.Enabled = true;
-                //btn_productUp.Enabled = true; // Coming soon
-                //btn_productDown.Enabled = true; // Coming soon
-                //btn_categoryUp.Enabled = true; // Coming soon
-                //btn_categoryDown.Enabled = true; // Coming soon
-
-                tb_productName.Enabled = true;
-                tb_buyPrice.Enabled = true;
-                tb_sellPrice.Enabled = true;
-                tb_productCoefficient.Enabled = true;
-                tb_maxStock.Enabled = true;
-                tb_tradeQuantity.Enabled = true;
-                tb_destock.Enabled = true;
-                tb_searchBar.Enabled = true;
-
-                cb_autoCalculation.Enabled = true;
-                cb_autoDestockAtRestart.Enabled = true;
-                cb_defaultTraderStock.Enabled = true;
-
-                btn_closeFile.Visible = true;
-
-                lv_categories.Enabled = true;
-                tb_newCategoryName.Enabled = true;
-
-                btn_exportFile.Enabled = false;
-                btn_loadFile.Visible = false;
-
-                UpdateCategoryListView();
-
-                ShowNotification("PriceConfig successfully imported!", Resources.okay, Color.LightGreen);
+                await ShowNotification("PriceConfig successfully imported!", Resources.okay, Color.LightGreen);
             }
         }
 
-        private void btn_exportFile_Click(object sender, EventArgs e)
+        // --- Export-Button --- //
+        private void Btn_exportFile_Click(object sender, EventArgs e)
         {
             if (loadedJsonData != null)
             {
-                // Übertrage die Änderungen aus den ListViews zurück in die loadedJsonData-Instanz
+                // Datei mit Hilfe der FileHelper-Klasse exportieren
+                FileHelper.ExportFile(filePath, loadedJsonData, lv_products, editorFolderPath);
 
-                // Kategorien aktualisieren
-                loadedJsonData.TraderCategories.Clear();
-                foreach (ListViewGroup group in lv_products.Groups)
-                {
-                    string categoryName = group.Header;
-                    List<string> products = new List<string>();
-
-                    // Produkte für die Kategorie sammeln
-                    foreach (ListViewItem item in group.Items)
-                    {
-                        string productName = item.SubItems[0].Text;
-                        string productCoefficient = item.SubItems[1].Text;
-                        string maxStock = item.SubItems[2].Text;
-                        string tradeQuantity = item.SubItems[3].Text;
-                        string buyPrice = item.SubItems[4].Text;
-                        string sellPrice = item.SubItems[5].Text;
-                        string destockCoefficient = string.Empty;
-
-                        if (item.SubItems.Count >= 7)
-                        {
-                            destockCoefficient = item.SubItems[6].Text;
-                        }
-
-                        string productData;
-
-                        if (!string.IsNullOrEmpty(destockCoefficient))
-                        {
-                            productData = $"{productName},{productCoefficient},{maxStock},{tradeQuantity},{buyPrice},{sellPrice},{destockCoefficient}";
-                        }
-                        else
-                        {
-                            productData = $"{productName},{productCoefficient},{maxStock},{tradeQuantity},{buyPrice},{sellPrice}";
-                        }
-
-                        products.Add(productData);
-                    }
-
-                    Category category = new Category
-                    {
-                        CategoryName = categoryName,
-                        Products = products
-                    };
-
-                    loadedJsonData.TraderCategories.Add(category);
-                }
-
-                // Geladene Daten in eine neue JSON-Datei serialisieren und speichern
-                string serializedJson = JsonConvert.SerializeObject(loadedJsonData, Formatting.Indented);
-                string newFilePath = Path.Combine(editorFolderPath, "TraderPlusPriceConfig.json");
-
-                // Existierende Datei archivieren, falls vorhanden
-                if (File.Exists(newFilePath))
-                {
-                    int counter = 1;
-                    string oldFilePath = $"{newFilePath}.old{counter}";
-
-                    while (File.Exists(oldFilePath))
-                    {
-                        counter++;
-                        oldFilePath = $"{newFilePath}.old{counter}";
-                    }
-
-                    File.Move(newFilePath, oldFilePath);
-                }
-
-                File.WriteAllText(newFilePath, serializedJson);
-
-                ShowNotification("Data successfully saved!", Resources.okay, Color.LightGreen);
+                ShowNotification("New PriceConfig.json successfully exported!", Resources.okay, Color.LightGreen);
 
                 btn_exportFile.Enabled = false;
             }
         }
 
-        private void btn_closeFile_Click(object sender, EventArgs e)
+        // --- Schließen-Button --- //
+        private void Btn_closeFile_Click(object sender, EventArgs e)
         {
-            // Daten zurücksetzen
-            loadedJsonData = null;
-            filePath = string.Empty;
+            bool hasLightPinkEntries = false;
 
-            System.Windows.Forms.Application.Restart();
+            foreach (ListViewItem item in lv_products.Items)
+            {
+                if (item.BackColor == Color.LightPink)
+                {
+                    hasLightPinkEntries = true;
+                    break;
+                }
+            }
+            // Eintrag Hat Änderungen
+            if (hasLightPinkEntries)
+            {
+                F_Msg messageBoxForm = new F_Msg();
+                SystemSounds.Exclamation.Play();
+                messageBoxForm.button3.Visible = false;
+                messageBoxForm.pictureBox1.Image = Resources.warning_50;
+                messageBoxForm.label1.Text = "There are unsaved changes! \n\r \n\rAre you sure you want to close the file without exporting it?";
+                messageBoxForm.Text = "WARNING: Unsafed changes!";
+                messageBoxForm.button2.Visible = true;
+                messageBoxForm.button1.Visible = true;
+
+                if (messageBoxForm.ShowDialog() == DialogResult.Yes)
+                {
+                    // Daten zurücksetzen
+                    loadedJsonData = null;
+                    filePath = string.Empty;
+
+                    Application.Restart();
+                }
+            }
         }
 
+        // --- Export-öffnen-Button --- //
+        private async void Btn_openExports_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(editorFolderPath))
+            {
+                Process.Start("explorer.exe", editorFolderPath);
+            }
+            else
+            {
+                await ShowNotification("The folder does not exist!", Properties.Resources.warn, Color.LightCoral);
+            }
+        }
+
+        // --- Info Buttons --- //
+        private void Btn_donate_Click(object sender, EventArgs e)
+        {
+            string url = "https://www.paypal.me/dheil53";
+            WebsiteLauncher.OpenWebsite(url);
+        }
+
+        private void Btn_gitHub_Click(object sender, EventArgs e)
+        {
+            string url = "https://github.com/xscr33m/TraderPlusEditor";
+            WebsiteLauncher.OpenWebsite(url);
+        }
+
+        private void Btn_discord_Click(object sender, EventArgs e)
+        {
+            string url = "https://discord.com/invite/K9mkHyuGG8";
+            WebsiteLauncher.OpenWebsite(url);
+        }
+
+        private void Btn_wiki_Click(object sender, EventArgs e)
+        {
+            string url = "https://traderpluswiki.notion.site/TraderPlusPriceConfig-json-bafb5261d89349f1ac68f82e53eb3b46";
+            WebsiteLauncher.OpenWebsite(url);
+        }
+
+        // --- UI Laden nach Start --- //
+        private void UpdateUIAfterFileLoad()
+        {
+            // Grundlegende Informationen anzeigen
+            tb_version.Text = loadedJsonData.Version;
+            cb_autoCalculation.Checked = Convert.ToBoolean(loadedJsonData.EnableAutoCalculation);
+            cb_autoDestockAtRestart.Checked = Convert.ToBoolean(loadedJsonData.EnableAutoDestockAtRestart);
+            cb_defaultTraderStock.Checked = Convert.ToBoolean(loadedJsonData.EnableDefaultTraderStock);
+
+            // Kategorien und Produkte in den ListViews anzeigen
+            lv_products.Items.Clear();
+            lv_products.Groups.Clear();
+
+            foreach (var category in loadedJsonData.TraderCategories)
+            {
+                // ListView-Gruppe für die Kategorie erstellen
+                ListViewGroup group = new ListViewGroup(category.CategoryName);
+                lv_products.Groups.Add(group);
+
+                foreach (var product in category.Products)
+                {
+                    // Produktinformationen aus der Datenzeichenkette extrahieren
+                    string[] productData = product.Split(',');
+
+                    if (productData.Length >= 6)
+                    {
+                        string productName = productData[0];
+                        string productCoefficient = productData[1];
+                        string maxStock = productData[2];
+                        string tradeQuantity = productData[3];
+                        string buyPrice = productData[4];
+                        string sellPrice = productData[5];
+                        string destockCoefficient = productData.Length >= 7 ? productData[6] : string.Empty;
+
+                        // Produktobjekt erstellen und mit den Daten füllen
+                        Product productObj = new Product
+                        {
+                            Name = productName,
+                            Category = category.CategoryName,
+                            Coefficient = productCoefficient,
+                            MaxStock = maxStock,
+                            TradeQuantity = tradeQuantity,
+                            BuyPrice = buyPrice,
+                            SellPrice = sellPrice,
+                            DestockCoefficient = destockCoefficient
+                        };
+
+                        // ListViewItem erstellen und zur Produkte-ListView hinzufügen
+                        ListViewItem item = new ListViewItem(productName);
+                        item.SubItems.Add(productCoefficient);
+                        item.SubItems.Add(maxStock);
+                        item.SubItems.Add(tradeQuantity);
+                        item.SubItems.Add(buyPrice);
+                        item.SubItems.Add(sellPrice);
+                        item.SubItems.Add(destockCoefficient);
+                        item.Group = group;
+                        item.Tag = productObj; // Produktobjekt als Tag speichern
+                        lv_products.Items.Add(item);
+                    }
+                }
+            }
+
+            lv_products.Enabled = true;
+
+            btn_addProduct.Enabled = true;
+            btn_deleteCategory.Enabled = true;
+            btn_deleteProduct.Enabled = true;
+            btn_search.Enabled = true;
+            btn_search.Enabled = true;
+            btn_setAll_sellPrice.Enabled = true;
+            btn_setAll_buyPrice.Enabled = true;
+            btn_setAll_quantity.Enabled = true;
+            btn_setAll_maxStock.Enabled = true;
+            btn_setAll_coefficient.Enabled = true;
+            btn_setAll_destock.Enabled = true;
+            btn_nextEntry.Enabled = true;
+            //btn_productUp.Enabled = true; // Coming soon
+            //btn_productDown.Enabled = true; // Coming soon
+            //btn_categoryUp.Enabled = true; // Coming soon
+            //btn_categoryDown.Enabled = true; // Coming soon
+
+            tb_productName.Enabled = true;
+            tb_buyPrice.Enabled = true;
+            tb_sellPrice.Enabled = true;
+            tb_productCoefficient.Enabled = true;
+            tb_maxStock.Enabled = true;
+            tb_tradeQuantity.Enabled = true;
+            tb_destock.Enabled = true;
+            tb_searchBar.Enabled = true;
+
+            cb_autoCalculation.Enabled = true;
+            cb_autoDestockAtRestart.Enabled = true;
+            cb_defaultTraderStock.Enabled = true;
+
+            btn_closeFile.Visible = true;
+
+            lv_categories.Enabled = true;
+            tb_newCategoryName.Enabled = true;
+
+            btn_exportFile.Enabled = false;
+            btn_loadFile.Visible = false;
+
+            UpdateCategoryListView();
+        }
+
+        // --- Kategorien in eigene Listview übernehmen --- //
         private void UpdateCategoryListView()
         {
             // Vorhandene Kategorien in der Reihenfolge der lv_products sichern
@@ -405,7 +323,8 @@ namespace TraderPlusEditor
             }
         }
 
-        private void lv_categories_SelectedIndexChanged(object sender, EventArgs e)
+        // --- Kategorien markieren --- //
+        private void Lv_categories_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
@@ -415,7 +334,8 @@ namespace TraderPlusEditor
             }
         }
 
-        private void lv_categories_DoubleClick(object sender, EventArgs e)
+        // --- Zur Kategorie springen --- //
+        private void Lv_categories_DoubleClick(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
@@ -457,7 +377,119 @@ namespace TraderPlusEditor
             }
         }
 
-        private void lv_products_SelectedIndexChanged(object sender, EventArgs e)
+        // --- Kategorie hinzufügen --- //
+        private void Btn_addCategory_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(tb_newCategoryName.Text))
+            {
+                string categoryName = tb_newCategoryName.Text;
+
+                // Überprüfen, ob die Kategorie bereits vorhanden ist
+                bool categoryExists = false;
+                foreach (ListViewItem item in lv_categories.Items)
+                {
+                    if (item.Text == categoryName)
+                    {
+                        categoryExists = true;
+                        break;
+                    }
+                }
+
+                if (!categoryExists)
+                {
+                    // Erstellen eines neuen ListViewItem mit dem Wert aus der Textbox
+                    string[] categoryData = new string[]
+                    {
+                        categoryName
+                    };
+                    ListViewItem newCategoryItem = new ListViewItem(categoryData);
+
+                    // Hinzufügen des neuen Eintrags zur lv_categories
+                    lv_categories.Items.Add(newCategoryItem);
+
+                    // Markieren des neuen Eintrags
+                    newCategoryItem.Selected = true;
+                    newCategoryItem.Focused = true;
+                    lv_categories.Focus();
+                    newCategoryItem.EnsureVisible();
+
+                    // Zurücksetzen der Textbox
+                    tb_newCategoryName.Clear();
+
+                    // Erstellen einer neuen ListView-Gruppe in lv_products
+                    ListViewGroup newCategoryGroup = new ListViewGroup(categoryName);
+                    lv_products.Groups.Add(newCategoryGroup);
+
+                    ShowNotification("Category successfully added!", Resources.okay, Color.LightGreen);
+
+                    btn_exportFile.Enabled = true;
+                }
+                else
+                {
+                    ShowNotification("Category already exists!", Resources.error, Color.LightCoral);
+                }
+            }
+        }
+
+        // --- Kategorie löschen --- //
+        private void Btn_deleteCategory_Click(object sender, EventArgs e)
+        {
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = lv_categories.SelectedItems[0];
+
+                // ListView-Gruppe für die ausgewählte Kategorie finden und entfernen
+                string categoryName = selectedItem.Text;
+                ListViewGroup categoryGroup = lv_products.Groups.Cast<ListViewGroup>()
+                    .FirstOrDefault(group => group.Header == categoryName);
+
+                if (categoryGroup != null)
+                {
+                    // Produkte der Kategorie aus der lv_products entfernen
+                    List<ListViewItem> itemsToRemove = new List<ListViewItem>();
+                    foreach (ListViewItem item in categoryGroup.Items)
+                    {
+                        itemsToRemove.Add(item);
+                    }
+
+                    foreach (ListViewItem itemToRemove in itemsToRemove)
+                    {
+                        lv_products.Items.Remove(itemToRemove);
+                    }
+
+                    // ListView-Gruppe entfernen
+                    lv_products.Groups.Remove(categoryGroup);
+                }
+
+                // Kategorie aus lv_categories entfernen
+                lv_categories.Items.Remove(selectedItem);
+
+                ShowNotification("Category successfully deleted!", Resources.warn, Color.LightCoral);
+
+                btn_exportFile.Enabled = true;
+            }
+        }
+
+        // --- Neue Kategorie Button aktivieren --- //
+        private void Tb_newCategoryName_TextChanged(object sender, EventArgs e)
+        {
+            ENABLENEWCATEGORYBUTTON();
+        }
+
+        private void ENABLENEWCATEGORYBUTTON()
+        {
+            if (tb_newCategoryName.Text == string.Empty)
+            {
+                btn_addCategory.Enabled = false;
+            }
+            else
+            {
+                btn_addCategory.Enabled = true;
+            }
+        }
+
+        // --- Produkt markieren --- //
+        private void Lv_products_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_products.SelectedItems.Count > 0)
             {
@@ -515,7 +547,8 @@ namespace TraderPlusEditor
             }
         }
 
-        private void saveProduct_Click(object sender, EventArgs e)
+        // --- Produkt speichern --- //
+        private void SaveProduct_Click(object sender, EventArgs e)
         {
             if (lv_products.SelectedItems.Count > 0)
             {
@@ -592,7 +625,8 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_addProduct_Click(object sender, EventArgs e)
+        // --- Produkt hinzufügen --- //
+        private void Btn_addProduct_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
@@ -683,7 +717,8 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_deleteProduct_Click(object sender, EventArgs e)
+        // --- Produkt löschen --- //
+        private void Btn_deleteProduct_Click(object sender, EventArgs e)
         {
             if (lv_products.SelectedItems.Count > 0)
             {
@@ -696,120 +731,14 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_addCategory_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(tb_newCategoryName.Text))
-            {
-                string categoryName = tb_newCategoryName.Text;
-
-                // Überprüfen, ob die Kategorie bereits vorhanden ist
-                bool categoryExists = false;
-                foreach (ListViewItem item in lv_categories.Items)
-                {
-                    if (item.Text == categoryName)
-                    {
-                        categoryExists = true;
-                        break;
-                    }
-                }
-
-                if (!categoryExists)
-                {
-                    // Erstellen eines neuen ListViewItem mit dem Wert aus der Textbox
-                    string[] categoryData = new string[]
-                    {
-                        categoryName
-                    };
-                    ListViewItem newCategoryItem = new ListViewItem(categoryData);
-
-                    // Hinzufügen des neuen Eintrags zur lv_categories
-                    lv_categories.Items.Add(newCategoryItem);
-
-                    // Markieren des neuen Eintrags
-                    newCategoryItem.Selected = true;
-                    newCategoryItem.Focused = true;
-                    lv_categories.Focus();
-                    newCategoryItem.EnsureVisible();
-
-                    // Zurücksetzen der Textbox
-                    tb_newCategoryName.Clear();
-
-                    // Erstellen einer neuen ListView-Gruppe in lv_products
-                    ListViewGroup newCategoryGroup = new ListViewGroup(categoryName);
-                    lv_products.Groups.Add(newCategoryGroup);
-
-                    ShowNotification("Category successfully added!", Resources.okay, Color.LightGreen);
-
-                    btn_exportFile.Enabled = true;
-                }
-                else
-                {
-                    ShowNotification("Category already exists!", Resources.error, Color.LightCoral);
-                }
-            }
-        }
-
-        private void btn_deleteCategory_Click(object sender, EventArgs e)
-        {
-            if (lv_categories.SelectedItems.Count > 0)
-            {
-                ListViewItem selectedItem = lv_categories.SelectedItems[0];
-
-                // ListView-Gruppe für die ausgewählte Kategorie finden und entfernen
-                string categoryName = selectedItem.Text;
-                ListViewGroup categoryGroup = lv_products.Groups.Cast<ListViewGroup>()
-                    .FirstOrDefault(group => group.Header == categoryName);
-
-                if (categoryGroup != null)
-                {
-                    // Produkte der Kategorie aus der lv_products entfernen
-                    List<ListViewItem> itemsToRemove = new List<ListViewItem>();
-                    foreach (ListViewItem item in categoryGroup.Items)
-                    {
-                        itemsToRemove.Add(item);
-                    }
-
-                    foreach (ListViewItem itemToRemove in itemsToRemove)
-                    {
-                        lv_products.Items.Remove(itemToRemove);
-                    }
-
-                    // ListView-Gruppe entfernen
-                    lv_products.Groups.Remove(categoryGroup);
-                }
-
-                // Kategorie aus lv_categories entfernen
-                lv_categories.Items.Remove(selectedItem);
-
-                ShowNotification("Category successfully deleted!", Properties.Resources.warn, Color.LightCoral);
-
-                btn_exportFile.Enabled = true;
-            }
-        }
-
-        private void ENABLENEWCATEGORYBUTTON()
-        {
-            if (tb_newCategoryName.Text == string.Empty)
-            {
-                btn_addCategory.Enabled = false;
-            }
-            else
-            {
-                btn_addCategory.Enabled = true;
-            }
-        }
-
-        private void tb_newCategoryName_TextChanged(object sender, EventArgs e)
-        {
-            ENABLENEWCATEGORYBUTTON();
-        }
-
-        private void btn_search_Click(object sender, EventArgs e)
+        // --- Suche Button--- //
+        private void Btn_search_Click(object sender, EventArgs e)
         {
             PerformSearch();
         }
 
-        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        // --- Suche Enter --- //
+        private void Tb_search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -819,7 +748,8 @@ namespace TraderPlusEditor
             }
         }
 
-        private void PerformSearch()
+        // --- Suche Methode --- //
+        private async void PerformSearch()
         {
             string searchText = tb_searchBar.Text.Trim();
 
@@ -838,101 +768,49 @@ namespace TraderPlusEditor
                 }
                 else
                 {
-                    ShowNotification("No product found!", Properties.Resources.okay, Color.LightGreen);
+                    await ShowNotification("No product found!", Properties.Resources.okay, Color.LightGreen);
                 }
             }
             else
             {
-                ShowNotification("Please enter a search term.", Properties.Resources.warn, Color.LightCoral);
+                await ShowNotification("Please enter a search term.", Properties.Resources.warn, Color.LightCoral);
             }
         }
 
-        private void btn_openExports_Click(object sender, EventArgs e)
-        {
-            if (Directory.Exists(editorFolderPath))
-            {
-                Process.Start("explorer.exe", editorFolderPath);
-            }
-            else
-            {
-                ShowNotification("The folder does not exist!", Properties.Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private void btn_donate_Click(object sender, EventArgs e)
-        {
-            string url = "https://www.paypal.me/dheil53";
-
-            try
-            {
-                Process.Start(url);
-            }
-            catch
-            {
-                ShowNotification("Browser could not get started. Donation link is: paypal.me/dheil53", Properties.Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private void btn_gitHub_Click(object sender, EventArgs e)
-        {
-            string url = "https://github.com/xscr33m/TraderPlusEditor";
-
-            try
-            {
-                Process.Start(url);
-            }
-            catch
-            {
-                ShowNotification("Browser could not get started.", Properties.Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private void btn_discord_Click(object sender, EventArgs e)
-        {
-            string url = "https://discord.com/invite/K9mkHyuGG8";
-
-            try
-            {
-                Process.Start(url);
-            }
-            catch
-            {
-                ShowNotification("Browser could not get started.", Properties.Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private void btn_wiki_Click(object sender, EventArgs e)
-        {
-            string url = "https://traderpluswiki.notion.site/TraderPlusPriceConfig-json-bafb5261d89349f1ac68f82e53eb3b46";
-
-            try
-            {
-                Process.Start(url);
-            }
-            catch
-            {
-                ShowNotification("Browser could not get started.", Properties.Resources.warn, Color.LightCoral);
-            }
-        }
-
-        private void btn_setAll_coefficient_Click(object sender, EventArgs e)
+        // --- SetAll coeff --- //
+        private void Btn_setAll_coefficient_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
                 string categoryName = lv_categories.SelectedItems[0].Text;
+                string newCoefficient = tb_productCoefficient.Text;
+                bool isAnyValueChanged = false;
 
                 foreach (ListViewItem item in lv_products.Items)
                 {
                     if (item.Group.Header == categoryName)
                     {
-                        item.SubItems[1].Text = tb_productCoefficient.Text;
-                        item.BackColor = Color.LightPink;
+                        string currentCoefficient = item.SubItems[1].Text;
+
+                        if (currentCoefficient != newCoefficient)
+                        {
+                            item.SubItems[1].Text = newCoefficient;
+                            item.BackColor = Color.LightPink;
+                            isAnyValueChanged = true;
+                        }
                     }
                 }
 
-                btn_exportFile.Enabled = true;
+                if (isAnyValueChanged)
+                {
+                    btn_exportFile.Enabled = true;
 
-                ShowNotification("Coefficient updated for all products in the category.", Resources.okay, Color.LightGreen);
+                    ShowNotification("Coefficient updated for applicable products in the category.", Resources.okay, Color.LightGreen);
+                }
+                else if (!isAnyValueChanged)
+                {
+                    ShowNotification("All Product already have the same coefficient value.", Resources.warn, Color.Beige);
+                }
             }
             else
             {
@@ -940,24 +818,40 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_setAll_maxStock_Click(object sender, EventArgs e)
+        // --- SetAll maxStock --- //
+        private void Btn_setAll_maxStock_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
                 string categoryName = lv_categories.SelectedItems[0].Text;
+                string newMaxStock = tb_maxStock.Text;
+                bool isAnyValueChanged = false;
 
                 foreach (ListViewItem item in lv_products.Items)
                 {
                     if (item.Group.Header == categoryName)
                     {
-                        item.SubItems[2].Text = tb_maxStock.Text;
-                        item.BackColor = Color.LightPink;
+                        string currentMaxStock = item.SubItems[2].Text;
+
+                        if (currentMaxStock != newMaxStock)
+                        {
+                            item.SubItems[2].Text = newMaxStock;
+                            item.BackColor = Color.LightPink;
+                            isAnyValueChanged = true;
+                        }
                     }
                 }
 
-                btn_exportFile.Enabled = true;
+                if (isAnyValueChanged)
+                {
+                    btn_exportFile.Enabled = true;
 
-                ShowNotification("Max stock updated for all products in the category.", Resources.okay, Color.LightGreen);
+                    ShowNotification("Max stock updated for applicable products in the category.", Resources.okay, Color.LightGreen);
+                }
+                else if (!isAnyValueChanged)
+                {
+                    ShowNotification("All Product already have the same max stock value.", Resources.warn, Color.Beige);
+                }
             }
             else
             {
@@ -965,24 +859,40 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_setAll_quantity_Click(object sender, EventArgs e)
+        // --- SetAll qty --- //
+        private void Btn_setAll_quantity_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
                 string categoryName = lv_categories.SelectedItems[0].Text;
+                string newTradeQuantity = tb_tradeQuantity.Text;
+                bool isAnyValueChanged = false;
 
                 foreach (ListViewItem item in lv_products.Items)
                 {
                     if (item.Group.Header == categoryName)
                     {
-                        item.SubItems[3].Text = tb_tradeQuantity.Text;
-                        item.BackColor = Color.LightPink;
+                        string currentTradeQuantity = item.SubItems[3].Text;
+
+                        if (currentTradeQuantity != newTradeQuantity)
+                        {
+                            item.SubItems[3].Text = newTradeQuantity;
+                            item.BackColor = Color.LightPink;
+                            isAnyValueChanged = true;
+                        }
                     }
                 }
 
-                btn_exportFile.Enabled = true;
+                if (isAnyValueChanged)
+                {
+                    btn_exportFile.Enabled = true;
 
-                ShowNotification("Trade quantity updated for all products in the category.", Resources.okay, Color.LightGreen);
+                    ShowNotification("Trade quantity updated for applicable products in the category.", Resources.okay, Color.LightGreen);
+                }
+                else if (!isAnyValueChanged)
+                {
+                    ShowNotification("All Product already have the same trade quantity value.", Resources.warn, Color.Beige);
+                }
             }
             else
             {
@@ -990,24 +900,40 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_setAll_buyPrice_Click(object sender, EventArgs e)
+        // --- SetAll EK --- //
+        private void Btn_setAll_buyPrice_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
                 string categoryName = lv_categories.SelectedItems[0].Text;
+                string newBuyPrice = tb_buyPrice.Text;
+                bool isAnyValueChanged = false;
 
                 foreach (ListViewItem item in lv_products.Items)
                 {
                     if (item.Group.Header == categoryName)
                     {
-                        item.SubItems[4].Text = tb_buyPrice.Text;
-                        item.BackColor = Color.LightPink;
+                        string currentBuyPrice = item.SubItems[4].Text;
+
+                        if (currentBuyPrice != newBuyPrice)
+                        {
+                            item.SubItems[4].Text = newBuyPrice;
+                            item.BackColor = Color.LightPink;
+                            isAnyValueChanged = true;
+                        }
                     }
                 }
 
-                btn_exportFile.Enabled = true;
+                if (isAnyValueChanged)
+                {
+                    btn_exportFile.Enabled = true;
 
-                ShowNotification("Buy price updated for all products in the category.", Resources.okay, Color.LightGreen);
+                    ShowNotification("Buy price updated for applicable products in the category.", Resources.okay, Color.LightGreen);
+                }
+                else if (!isAnyValueChanged)
+                {
+                    ShowNotification("All Product already have the same buy price value.", Resources.warn, Color.Beige);
+                }
             }
             else
             {
@@ -1015,24 +941,40 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_setAll_sellPrice_Click(object sender, EventArgs e)
+        // --- SetAll VK --- //
+        private void Btn_setAll_sellPrice_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
                 string categoryName = lv_categories.SelectedItems[0].Text;
+                string newSellPrice = tb_sellPrice.Text;
+                bool isAnyValueChanged = false;
 
                 foreach (ListViewItem item in lv_products.Items)
                 {
                     if (item.Group.Header == categoryName)
                     {
-                        item.SubItems[5].Text = tb_sellPrice.Text;
-                        item.BackColor = Color.LightPink;
+                        string currentSellPrice = item.SubItems[5].Text;
+
+                        if (currentSellPrice != newSellPrice)
+                        {
+                            item.SubItems[5].Text = newSellPrice;
+                            item.BackColor = Color.LightPink;
+                            isAnyValueChanged = true;
+                        }
                     }
                 }
 
-                btn_exportFile.Enabled = true;
+                if (isAnyValueChanged)
+                {
+                    btn_exportFile.Enabled = true;
 
-                ShowNotification("Sell price updated for all products in the category.", Resources.okay, Color.LightGreen);
+                    ShowNotification("Sell price updated for applicable products in the category.", Resources.okay, Color.LightGreen);
+                }
+                else if (!isAnyValueChanged)
+                {
+                    ShowNotification("All Product already have the same sell price value.", Resources.warn, Color.Beige);
+                }
             }
             else
             {
@@ -1040,24 +982,39 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_setAll_destock_Click(object sender, EventArgs e)
+        // --- SetAll Destock --- //
+        private void Btn_setAll_destock_Click(object sender, EventArgs e)
         {
             if (lv_categories.SelectedItems.Count > 0)
             {
                 string categoryName = lv_categories.SelectedItems[0].Text;
+                string newDestockCoefficient = tb_destock.Text;
+                bool isAnyValueChanged = false;
 
                 foreach (ListViewItem item in lv_products.Items)
                 {
                     if (item.Group.Header == categoryName)
                     {
-                        item.SubItems[6].Text = tb_destock.Text;
-                        item.BackColor = Color.LightPink;
+                        string currentDestockCoefficient = item.SubItems[6].Text;
+
+                        if (currentDestockCoefficient != newDestockCoefficient)
+                        {
+                            item.SubItems[6].Text = newDestockCoefficient;
+                            item.BackColor = Color.LightPink;
+                            isAnyValueChanged = true;
+                        }
                     }
                 }
 
-                btn_exportFile.Enabled = true;
-
-                ShowNotification("Destock coefficient updated for all products in the category.", Resources.okay, Color.LightGreen);
+                if (isAnyValueChanged)
+                {
+                    btn_exportFile.Enabled = true;
+                    ShowNotification("Destock coefficient updated for applicable products in the category.", Resources.okay, Color.LightGreen);
+                }
+                else if (!isAnyValueChanged)
+                {
+                    ShowNotification("All Product already have the same destock coefficient value.", Resources.warn, Color.Beige);
+                }
             }
             else
             {
@@ -1065,22 +1022,22 @@ namespace TraderPlusEditor
             }
         }
 
-        private void btn_categoryUp_Click(object sender, EventArgs e)
+        private void Btn_categoryUp_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void btn_categoryDown_Click(object sender, EventArgs e)
+        private void Btn_categoryDown_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void btn_productUp_Click(object sender, EventArgs e)
+        private void Btn_productUp_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void btn_productDown_Click(object sender, EventArgs e)
+        private void Btn_productDown_Click(object sender, EventArgs e)
         {
 
         }

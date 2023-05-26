@@ -33,7 +33,7 @@ With this editor formatting errors are a thing of the past.
 
 ## Sneak-Preview
 
-![Logo](https://i.imgur.com/5PJYqOI.png)
+![Logo](https://i.imgur.com/fKmtNSI.png)
 
 
 ## Upcoming Features
@@ -49,8 +49,9 @@ With this editor formatting errors are a thing of the past.
 ## Feedback
 
 If you have any feedback, please reach out to me!
-Add me on Discord: xscr33m#4443 or create a Issue on GitHub.
 I would appreciate it very much! 
+
+[![Logo](https://cdn.discordapp.com/attachments/1103457256164569120/1109278528354127982/Join_Discord-logo.png)](https://discord.com/invite/K9mkHyuGG8)
 
 [Spend a coffee if you like the tool, to keep me awake!](https://www.paypal.com/paypalme/dheil53)
 
