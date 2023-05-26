@@ -49,8 +49,9 @@ With this editor formatting errors are a thing of the past.
 ## Feedback
 
 If you have any feedback, please reach out to me!
-Add me on Discord: xscr33m#4443 or create a Issue on GitHub.
 I would appreciate it very much! 
+
+[JOIN THE DISCORD FOR CONTACT, MORE INFO AND NEWS](https://discord.com/invite/K9mkHyuGG8)
 
 [Spend a coffee if you like the tool, to keep me awake!](https://www.paypal.com/paypalme/dheil53)
 
