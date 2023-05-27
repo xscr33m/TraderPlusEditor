@@ -45,6 +45,7 @@ namespace TraderPlusEditor
         private async void F_Main_Load(object sender, EventArgs e)
         {
             Text = "xscr33m'S TraderPlusEditor - v." + version;
+            ContextMenu_products.Renderer = new CustomMenuRenderer();
             await MainStartUp.CheckForInstance();
             await MainStartUp.GENERATEPATH();
             await MainStartUp.CheckForUpdates(this);
@@ -157,6 +158,14 @@ namespace TraderPlusEditor
                     Application.Restart();
                 }
             }
+            else
+            {
+                // Daten zurücksetzen
+                loadedJsonData = null;
+                filePath = string.Empty;
+
+                Application.Restart();
+            }
         }
 
         // --- Export-öffnen-Button --- //
@@ -252,6 +261,7 @@ namespace TraderPlusEditor
                         item.SubItems.Add(buyPrice);
                         item.SubItems.Add(sellPrice);
                         item.SubItems.Add(destockCoefficient);
+                        item.SubItems.Add(string.Empty); // Platzhalter für die ID-Spalte
                         item.Group = group;
                         item.Tag = productObj; // Produktobjekt als Tag speichern
                         lv_products.Items.Add(item);
@@ -265,7 +275,7 @@ namespace TraderPlusEditor
             btn_deleteCategory.Enabled = true;
             btn_deleteProduct.Enabled = true;
             btn_search.Enabled = true;
-            btn_search.Enabled = true;
+            btn_searchCategory.Enabled = true;
             btn_setAll_sellPrice.Enabled = true;
             btn_setAll_buyPrice.Enabled = true;
             btn_setAll_quantity.Enabled = true;
@@ -286,6 +296,7 @@ namespace TraderPlusEditor
             tb_tradeQuantity.Enabled = true;
             tb_destock.Enabled = true;
             tb_searchBar.Enabled = true;
+            tb_searchCategory.Enabled = true;
 
             cb_autoCalculation.Enabled = true;
             cb_autoDestockAtRestart.Enabled = true;
@@ -300,6 +311,23 @@ namespace TraderPlusEditor
             btn_loadFile.Visible = false;
 
             UpdateCategoryListView();
+
+            CreateProductIDs();
+        }
+
+        // --- ID erstellen --- //
+        private void CreateProductIDs()
+        {
+            foreach (ListViewGroup group in lv_products.Groups)
+            {
+                int productID = 1;
+
+                foreach (ListViewItem item in group.Items)
+                {
+                    item.SubItems[item.SubItems.Count - 1].Text = productID.ToString();
+                    productID++;
+                }
+            }
         }
 
         // --- Kategorien in eigene Listview übernehmen --- //
@@ -680,6 +708,23 @@ namespace TraderPlusEditor
                         lv_products.Groups.Add(categoryGroup);
                     }
 
+                    // Bestimme die ID für den neuen Eintrag
+                    int productID = 1;
+
+                    // Prüfe den letzten Eintrag der ausgewählten ListView-Gruppe
+                    if (lv_products.SelectedItems.Count > 0)
+                    {
+                        ListViewGroup selectedGroup = lv_products.SelectedItems[0].Group;
+                        if (selectedGroup.Items.Count > 0)
+                        {
+                            ListViewItem lastItemInGroup = selectedGroup.Items[selectedGroup.Items.Count - 1];
+                            if (int.TryParse(lastItemInGroup.SubItems[lastItemInGroup.SubItems.Count - 1].Text, out int lastItemID))
+                            {
+                                productID = lastItemID + 1;
+                            }
+                        }
+                    }
+
                     // Erstellen eines neuen ListViewItems mit den Werten aus den Textboxen
                     string[] productData = new string[]
                     {
@@ -689,12 +734,15 @@ namespace TraderPlusEditor
                         tradeQuantity,
                         buyPrice,
                         sellPrice,
-                        destockCoefficient
+                        destockCoefficient,
+                        productID.ToString()
                     };
+
                     ListViewItem newItem = new ListViewItem(productData)
                     {
                         Group = categoryGroup,
-                        Tag = productObj
+                        Tag = productObj,
+                        BackColor = Color.LightPink
                     };
 
                     // Hinzufügen des neuen Eintrags zur lv_products
@@ -731,13 +779,13 @@ namespace TraderPlusEditor
             }
         }
 
-        // --- Suche Button--- //
+        // --- Produkt Suche Button--- //
         private void Btn_search_Click(object sender, EventArgs e)
         {
             PerformSearch();
         }
 
-        // --- Suche Enter --- //
+        // --- Produkt Suche Enter --- //
         private void Tb_search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -748,7 +796,7 @@ namespace TraderPlusEditor
             }
         }
 
-        // --- Suche Methode --- //
+        // --- Produkt Suche Methode --- //
         private async void PerformSearch()
         {
             string searchText = tb_searchBar.Text.Trim();
@@ -1022,24 +1070,19 @@ namespace TraderPlusEditor
             }
         }
 
-        private void Btn_categoryUp_Click(object sender, EventArgs e)
+        // --- KontextMenü Switch ID --- //
+        private void toggleProductIdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Btn_categoryDown_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Btn_productUp_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Btn_productDown_Click(object sender, EventArgs e)
-        {
-
+            if (toggleProductIdToolStripMenuItem.Checked)
+            {
+                lv_products.Columns[7].Width = 50;
+                lv_products.Columns[0].Width = 240;
+            }
+            else
+            {
+                lv_products.Columns[7].Width = 0;
+                lv_products.Columns[0].Width = 290;
+            }
         }
     }
 }
