@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿/// © 2023 by xscr33m   (Discord: xscr33m#4443)  
+using System.Collections.Generic;
 
 namespace TraderPlusEditor
 {

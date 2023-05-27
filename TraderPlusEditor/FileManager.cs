@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿/// © 2023 by xscr33m   (Discord: xscr33m#4443)  
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;

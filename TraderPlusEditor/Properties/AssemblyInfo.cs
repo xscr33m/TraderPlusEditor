@@ -1,6 +1,6 @@
-﻿using System.Resources;
+﻿/// © 2023 by xscr33m   (Discord: xscr33m#4443)  
 using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Resources;
 using System.Runtime.InteropServices;
 
 // Allgemeine Informationen über eine Assembly werden über die folgenden

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/// © 2023 by xscr33m   (Discord: xscr33m#4443)  
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using TraderPlusEditor.Properties;
 
 namespace TraderPlusEditor
