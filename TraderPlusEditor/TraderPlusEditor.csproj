@@ -92,6 +92,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="custom_MenuStrip.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="F_Msg.cs">
       <SubType>Form</SubType>

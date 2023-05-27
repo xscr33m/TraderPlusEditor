@@ -117,8 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ContextMenu_products.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btn_search.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAABgmlDQ1BJQ0MgcHJvZmlsZQAAKM+VkU8o
+        BFEcxz92iUQOtmxymANOlJActUTK1rZWWRzMzNqldsY2s3JxVK5bDv5cLA4uzlwdXJVS/pRcXZyIizR+
+        b1btplZ59Xqfvu99v733fRAoZk3Lre0Dy8478YmINpuc0+qfqaONVsKEddPNRafHE1QdH7fUqPWmV2Xx
+        v9GcWnJNqNGER8yckxdeFB5az+cU7wqHzGU9JXwq3OPIBYXvlW6U+EVxxueAygw5ifiocEhYy1SwUcHm
+        smMJDwp3pixb8gOzJU4p3lBsZdfMn3uqFzYt2TPTSpfZwQSTRImhYbDGClny9Mpqi+ISl/1IFX+774+J
+        yxDXCqY4xljFQvf9qD/43a2bHugvJTVFoO7J8966oH4bvgqe93noeV9HEHyEC7vsXy3C8LvohbLWeQAt
+        m3B2WdaMHTjfgvBDTnd0XwrKDKTT8Hoi35SE1mtonC/19rPP8R0kpKupK9jbh+6MZC9UeXdDZW9/nvH7
+        I/INf1ZyrOR4gKAAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAAHdElNRQfnBRcTGRBabMWZAAABxUlEQVRY
+        R+2WLzNGQRTG3yAKgiAIguADCILgAwiiIAiCIPoAZgRBEEVRFARBEERBFEVREASB5zdjZ57Z2fueu3sv
+        I3hmfuN15+75s2f3nDsJtCUuxJP4NJ7FpdgRM2JU4RQH7rCLF7EnBmtWkGnJScS1mBNNwvG9KBlm26/E
+        6fffvAyJR9EUQCnjG7EqSloW1D1fcyeqRI1zI33ruC3ehK89FL2VH67aA5QH/yp6bX++kK1u0blwO/si
+        VF7rrhpHWhBu51aE8pPL7yHy2/LOg0jpZeAaDdGJcHth3f3lMx4M0JFwe0tiqvzloZkfC7c3L6bKr9nQ
+        mnNTkq0PHkTKu9SKaBFZ4jDZ4fCFYiy6c4JpUb7lByIU85ix6AtpmTWiN3jWtNuw3km7wp2zmM7XRzim
+        nfp6Tn2VmMduAGiZi6IkMmOrPWN4ENVfNzQE5rEbSnB4aCBkhENOde40gXPeWxNVIgDmccloBE4h/U/p
+        1kW1mMd5HbvACZmy1XmHaw6AzyrGItOJIeFG2XJKwXXyU81W49DfbQ7ARUno1dEVwtGPBNBX/wH8yQC4
+        SV3Na3SVAtgQvyYPgMx7D56xxFXdFPrSnUy+ADWvD/D8D1NPAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btn_searchCategory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAABgmlDQ1BJQ0MgcHJvZmlsZQAAKM+VkU8o
         BFEcxz92iUQOtmxymANOlJActUTK1rZWWRzMzNqldsY2s3JxVK5bDv5cLA4uzlwdXJVS/pRcXZyIizR+
