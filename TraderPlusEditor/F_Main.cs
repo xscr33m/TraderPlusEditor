@@ -44,7 +44,7 @@ namespace TraderPlusEditor
 
         private async void F_Main_Load(object sender, EventArgs e)
         {
-            Text = "xscr33m'S TraderPlusEditor - v." + version;
+            Text = "xscr33m's TraderPlusEditor • v." + version;
             ContextMenu_products.Renderer = new CustomMenuRenderer();
             await MainStartUp.CheckForInstance();
             await MainStartUp.GENERATEPATH();
@@ -177,8 +177,24 @@ namespace TraderPlusEditor
             }
             else
             {
-                await ShowNotification("The folder does not exist!", Properties.Resources.warn, Color.LightCoral);
+                await ShowNotification("The folder does not exist!", Resources.warn, Color.LightCoral);
             }
+        }
+
+        // --- File Settings --- //
+        private void cb_autoDestockAtRestart_CheckedChanged(object sender, EventArgs e)
+        {
+            btn_exportFile.Enabled = true;
+        }
+
+        private void cb_autoCalculation_CheckedChanged(object sender, EventArgs e)
+        {
+            btn_exportFile.Enabled = true;
+        }
+
+        private void cb_defaultTraderStock_CheckedChanged(object sender, EventArgs e)
+        {
+            btn_exportFile.Enabled = true;
         }
 
         // --- Info Buttons --- //
@@ -782,7 +798,7 @@ namespace TraderPlusEditor
         // --- Produkt Suche Button--- //
         private void Btn_search_Click(object sender, EventArgs e)
         {
-            PerformSearch();
+            PerformSearchProduct();
         }
 
         // --- Produkt Suche Enter --- //
@@ -790,14 +806,14 @@ namespace TraderPlusEditor
         {
             if (e.KeyCode == Keys.Enter)
             {
-                PerformSearch();
+                PerformSearchProduct();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
         }
 
         // --- Produkt Suche Methode --- //
-        private async void PerformSearch()
+        private async void PerformSearchProduct()
         {
             string searchText = tb_searchBar.Text.Trim();
 
@@ -816,12 +832,98 @@ namespace TraderPlusEditor
                 }
                 else
                 {
-                    await ShowNotification("No product found!", Properties.Resources.okay, Color.LightGreen);
+                    await ShowNotification("No product found!", Resources.okay, Color.LightGreen);
                 }
             }
             else
             {
-                await ShowNotification("Please enter a search term.", Properties.Resources.warn, Color.LightCoral);
+                await ShowNotification("Please enter a search term.", Resources.warn, Color.LightCoral);
+            }
+        }
+
+        // --- Kategorie Suche Button --- //
+        private void btn_searchCategory_Click(object sender, EventArgs e)
+        {
+            PerformSearchCategory();
+        }
+
+        // --- Kategorie Suche ENTER --- //
+        private void tb_searchCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PerformSearchCategory();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        // --- Kategorie Suche Methode --- //
+        private async void PerformSearchCategory()
+        {
+            string searchText = tb_searchCategory.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                ListViewItem foundItem = lv_categories.Items.Cast<ListViewItem>()
+                    .FirstOrDefault(item => item.SubItems
+                        .Cast<ListViewItem.ListViewSubItem>()
+                        .Any(subItem => subItem.Text.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0));
+
+                if (foundItem != null)
+                {
+                    lv_categories.SelectedItems.Clear();
+                    foundItem.Selected = true;
+                    foundItem.EnsureVisible();
+                }
+                else
+                {
+                    await ShowNotification("No category found!", Resources.okay, Color.LightGreen);
+                }
+            }
+            else
+            {
+                await ShowNotification("Please enter a search term.", Resources.warn, Color.LightCoral);
+            }
+
+            // Kategorie auswählen und Produkte anzeigen
+            if (lv_categories.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = lv_categories.SelectedItems[0];
+
+                tb_newCategoryName.Text = selectedItem.SubItems[0].Text;
+
+                string categoryName = lv_categories.SelectedItems[0].Text;
+
+                // Suchen der entsprechenden ListView-Gruppe in lv_products
+                ListViewGroup selectedGroup = null;
+                foreach (ListViewGroup group in lv_products.Groups)
+                {
+                    if (group.Header == categoryName)
+                    {
+                        selectedGroup = group;
+                        break;
+                    }
+                }
+
+                // Markieren und Anzeigen der Gruppe in lv_products
+                lv_products.SelectedItems.Clear();
+                lv_products.Focus();
+
+                if (selectedGroup != null && selectedGroup.Items.Count > 0)
+                {
+                    // Den ersten Eintrag in der Gruppe markieren
+                    selectedGroup.Items[0].Selected = true;
+                    selectedGroup.Items[0].EnsureVisible();
+                }
+                else
+                {
+                    ShowNotification("No products in category. Add products first!", Resources.error, Color.LightCoral);
+
+                    // Den doppelt geklickten Eintrag wieder markieren
+                    selectedItem.Selected = true;
+                    selectedItem.EnsureVisible();
+                }
             }
         }
 
@@ -1082,6 +1184,44 @@ namespace TraderPlusEditor
             {
                 lv_products.Columns[7].Width = 0;
                 lv_products.Columns[0].Width = 290;
+            }
+        }
+
+        // --- KontextMenü Produkt unten einfügen --- //
+        private async void InsertAsLastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lv_products.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = lv_products.SelectedItems[0];
+
+                // Tausche die Positionen des ausgewählten Eintrags mit dem letzten Eintrag in seiner Gruppe
+                ListViewItem lastItem = lv_products.Items[lv_products.Items.Count - 1];
+
+                // Kopiere das ausgewählte Element
+                ListViewItem selectedItemCopy = (ListViewItem)selectedItem.Clone();
+                selectedItemCopy.BackColor = Color.LightPink;
+
+                lv_products.BeginUpdate();
+
+                lv_products.Items.Remove(selectedItem);
+                lv_products.Items.Insert(lastItem.Index + 1, selectedItemCopy);
+
+                lv_products.EndUpdate();
+
+                // Aktualisiere die IDs, um sicherzustellen, dass sie korrekt angezeigt werden
+                CreateProductIDs();
+
+                await ShowNotification("Product successfully inserted as last entry!", Resources.okay, Color.LightGreen);
+
+                // Setze den ausgewählten Eintrag auf den verschobenen Eintrag
+                lv_products.SelectedItems.Clear();
+                selectedItemCopy.Selected = true;
+
+                btn_exportFile.Enabled = true;
+            }
+            else
+            {
+                await ShowNotification("No product selected!", Resources.warn, Color.Beige);
             }
         }
     }

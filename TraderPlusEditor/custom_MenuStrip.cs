@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿/// © 2023 by xscr33m   (Discord: xscr33m#4443)  
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace TraderPlusEditor

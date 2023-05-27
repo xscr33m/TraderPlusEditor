@@ -40,6 +40,10 @@
             this.product_buyPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.product_sellPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.product_destock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.product_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ContextMenu_products = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.InsertAsLastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toggleProductIdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_productTopControl = new System.Windows.Forms.Panel();
             this.groupBox_searchproduct = new System.Windows.Forms.GroupBox();
             this.tb_searchBar = new System.Windows.Forms.TextBox();
@@ -85,8 +89,13 @@
             this.lbl_pushNotifications = new System.Windows.Forms.Label();
             this.panel_categories = new System.Windows.Forms.Panel();
             this.groupBox_categories = new System.Windows.Forms.GroupBox();
+            this.groupBox_searchCategory = new System.Windows.Forms.GroupBox();
+            this.tb_searchCategory = new System.Windows.Forms.TextBox();
+            this.btn_searchCategory = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.lv_categories = new System.Windows.Forms.ListView();
             this.columnHeader_categories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel_categoryMovement = new System.Windows.Forms.Panel();
             this.groupBox_categorieControls = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_newCategoryName = new System.Windows.Forms.TextBox();
@@ -100,18 +109,9 @@
             this.panel_controls = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.panel_notifyGround = new System.Windows.Forms.Panel();
-            this.product_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ContextMenu_products = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.moveProductUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveProductDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toggleProductIdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_categoryMovement = new System.Windows.Forms.Panel();
-            this.groupBox_searchCategory = new System.Windows.Forms.GroupBox();
-            this.tb_searchCategory = new System.Windows.Forms.TextBox();
-            this.btn_searchCategory = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel_products.SuspendLayout();
             this.groupBox_products.SuspendLayout();
+            this.ContextMenu_products.SuspendLayout();
             this.panel_productTopControl.SuspendLayout();
             this.groupBox_searchproduct.SuspendLayout();
             this.groupBox_productControls.SuspendLayout();
@@ -120,14 +120,13 @@
             this.pnl_pushNotifications.SuspendLayout();
             this.panel_categories.SuspendLayout();
             this.groupBox_categories.SuspendLayout();
+            this.groupBox_searchCategory.SuspendLayout();
             this.groupBox_categorieControls.SuspendLayout();
             this.panel_topGround.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel_controls.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.panel_notifyGround.SuspendLayout();
-            this.ContextMenu_products.SuspendLayout();
-            this.groupBox_searchCategory.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_products
@@ -223,6 +222,34 @@
             // 
             this.product_destock.Text = "Destock coefficient";
             this.product_destock.Width = 100;
+            // 
+            // product_id
+            // 
+            this.product_id.Text = "ID";
+            this.product_id.Width = 0;
+            // 
+            // ContextMenu_products
+            // 
+            this.ContextMenu_products.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InsertAsLastToolStripMenuItem,
+            this.toggleProductIdToolStripMenuItem});
+            this.ContextMenu_products.Name = "ContextMenu_products";
+            this.ContextMenu_products.Size = new System.Drawing.Size(170, 48);
+            // 
+            // InsertAsLastToolStripMenuItem
+            // 
+            this.InsertAsLastToolStripMenuItem.Name = "InsertAsLastToolStripMenuItem";
+            this.InsertAsLastToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.InsertAsLastToolStripMenuItem.Text = "Insert product last";
+            this.InsertAsLastToolStripMenuItem.Click += new System.EventHandler(this.InsertAsLastToolStripMenuItem_Click);
+            // 
+            // toggleProductIdToolStripMenuItem
+            // 
+            this.toggleProductIdToolStripMenuItem.CheckOnClick = true;
+            this.toggleProductIdToolStripMenuItem.Name = "toggleProductIdToolStripMenuItem";
+            this.toggleProductIdToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.toggleProductIdToolStripMenuItem.Text = "Toggle product id";
+            this.toggleProductIdToolStripMenuItem.Click += new System.EventHandler(this.toggleProductIdToolStripMenuItem_Click);
             // 
             // panel_productTopControl
             // 
@@ -691,6 +718,7 @@
             this.cb_defaultTraderStock.Text = "Enable Default Trader Stock";
             this.cb_defaultTraderStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb_defaultTraderStock.UseVisualStyleBackColor = true;
+            this.cb_defaultTraderStock.CheckedChanged += new System.EventHandler(this.cb_defaultTraderStock_CheckedChanged);
             // 
             // cb_autoDestockAtRestart
             // 
@@ -707,6 +735,7 @@
             this.cb_autoDestockAtRestart.Text = "Enable Auto Destock At Restart";
             this.cb_autoDestockAtRestart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb_autoDestockAtRestart.UseVisualStyleBackColor = true;
+            this.cb_autoDestockAtRestart.CheckedChanged += new System.EventHandler(this.cb_autoDestockAtRestart_CheckedChanged);
             // 
             // cb_autoCalculation
             // 
@@ -723,6 +752,7 @@
             this.cb_autoCalculation.Text = "Enable Auto Calculation";
             this.cb_autoCalculation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb_autoCalculation.UseVisualStyleBackColor = true;
+            this.cb_autoCalculation.CheckedChanged += new System.EventHandler(this.cb_autoCalculation_CheckedChanged);
             // 
             // label1
             // 
@@ -902,6 +932,66 @@
             this.groupBox_categories.TabStop = false;
             this.groupBox_categories.Text = "Categories";
             // 
+            // groupBox_searchCategory
+            // 
+            this.groupBox_searchCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_searchCategory.Controls.Add(this.tb_searchCategory);
+            this.groupBox_searchCategory.Controls.Add(this.btn_searchCategory);
+            this.groupBox_searchCategory.Controls.Add(this.label10);
+            this.groupBox_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.groupBox_searchCategory.Location = new System.Drawing.Point(5, 20);
+            this.groupBox_searchCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox_searchCategory.Name = "groupBox_searchCategory";
+            this.groupBox_searchCategory.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox_searchCategory.Size = new System.Drawing.Size(205, 46);
+            this.groupBox_searchCategory.TabIndex = 26;
+            this.groupBox_searchCategory.TabStop = false;
+            this.groupBox_searchCategory.Text = "Search";
+            // 
+            // tb_searchCategory
+            // 
+            this.tb_searchCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_searchCategory.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tb_searchCategory.Enabled = false;
+            this.tb_searchCategory.Location = new System.Drawing.Point(6, 17);
+            this.tb_searchCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.tb_searchCategory.Name = "tb_searchCategory";
+            this.tb_searchCategory.Size = new System.Drawing.Size(153, 21);
+            this.tb_searchCategory.TabIndex = 25;
+            this.tb_searchCategory.TabStop = false;
+            this.tb_searchCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_searchCategory_KeyDown);
+            // 
+            // btn_searchCategory
+            // 
+            this.btn_searchCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_searchCategory.Enabled = false;
+            this.btn_searchCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_searchCategory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
+            this.btn_searchCategory.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_searchCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.btn_searchCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_searchCategory.Image")));
+            this.btn_searchCategory.Location = new System.Drawing.Point(164, 8);
+            this.btn_searchCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_searchCategory.Name = "btn_searchCategory";
+            this.btn_searchCategory.Size = new System.Drawing.Size(40, 36);
+            this.btn_searchCategory.TabIndex = 24;
+            this.btn_searchCategory.TabStop = false;
+            this.btn_searchCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_searchCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_searchCategory.UseVisualStyleBackColor = true;
+            this.btn_searchCategory.Click += new System.EventHandler(this.btn_searchCategory_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 15);
+            this.label10.TabIndex = 0;
+            // 
             // lv_categories
             // 
             this.lv_categories.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -930,6 +1020,14 @@
             // 
             this.columnHeader_categories.Text = "Categories";
             this.columnHeader_categories.Width = 185;
+            // 
+            // panel_categoryMovement
+            // 
+            this.panel_categoryMovement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_categoryMovement.Location = new System.Drawing.Point(5, 20);
+            this.panel_categoryMovement.Name = "panel_categoryMovement";
+            this.panel_categoryMovement.Size = new System.Drawing.Size(205, 46);
+            this.panel_categoryMovement.TabIndex = 1;
             // 
             // groupBox_categorieControls
             // 
@@ -1137,106 +1235,6 @@
             this.panel_notifyGround.Size = new System.Drawing.Size(1139, 34);
             this.panel_notifyGround.TabIndex = 24;
             // 
-            // product_id
-            // 
-            this.product_id.Text = "ID";
-            this.product_id.Width = 0;
-            // 
-            // ContextMenu_products
-            // 
-            this.ContextMenu_products.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moveProductUpToolStripMenuItem,
-            this.moveProductDownToolStripMenuItem,
-            this.toggleProductIdToolStripMenuItem});
-            this.ContextMenu_products.Name = "ContextMenu_products";
-            this.ContextMenu_products.Size = new System.Drawing.Size(183, 70);
-            // 
-            // moveProductUpToolStripMenuItem
-            // 
-            this.moveProductUpToolStripMenuItem.Name = "moveProductUpToolStripMenuItem";
-            this.moveProductUpToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.moveProductUpToolStripMenuItem.Text = "Move product up";
-            // 
-            // moveProductDownToolStripMenuItem
-            // 
-            this.moveProductDownToolStripMenuItem.Name = "moveProductDownToolStripMenuItem";
-            this.moveProductDownToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.moveProductDownToolStripMenuItem.Text = "Move product down";
-            // 
-            // toggleProductIdToolStripMenuItem
-            // 
-            this.toggleProductIdToolStripMenuItem.CheckOnClick = true;
-            this.toggleProductIdToolStripMenuItem.Name = "toggleProductIdToolStripMenuItem";
-            this.toggleProductIdToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.toggleProductIdToolStripMenuItem.Text = "Toggle product id";
-            this.toggleProductIdToolStripMenuItem.Click += new System.EventHandler(this.toggleProductIdToolStripMenuItem_Click);
-            // 
-            // panel_categoryMovement
-            // 
-            this.panel_categoryMovement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_categoryMovement.Location = new System.Drawing.Point(5, 20);
-            this.panel_categoryMovement.Name = "panel_categoryMovement";
-            this.panel_categoryMovement.Size = new System.Drawing.Size(205, 46);
-            this.panel_categoryMovement.TabIndex = 1;
-            // 
-            // groupBox_searchCategory
-            // 
-            this.groupBox_searchCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_searchCategory.Controls.Add(this.tb_searchCategory);
-            this.groupBox_searchCategory.Controls.Add(this.btn_searchCategory);
-            this.groupBox_searchCategory.Controls.Add(this.label10);
-            this.groupBox_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox_searchCategory.Location = new System.Drawing.Point(5, 20);
-            this.groupBox_searchCategory.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox_searchCategory.Name = "groupBox_searchCategory";
-            this.groupBox_searchCategory.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox_searchCategory.Size = new System.Drawing.Size(205, 46);
-            this.groupBox_searchCategory.TabIndex = 26;
-            this.groupBox_searchCategory.TabStop = false;
-            this.groupBox_searchCategory.Text = "Search";
-            // 
-            // tb_searchCategory
-            // 
-            this.tb_searchCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_searchCategory.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_searchCategory.Enabled = false;
-            this.tb_searchCategory.Location = new System.Drawing.Point(6, 17);
-            this.tb_searchCategory.Margin = new System.Windows.Forms.Padding(0);
-            this.tb_searchCategory.Name = "tb_searchCategory";
-            this.tb_searchCategory.Size = new System.Drawing.Size(153, 21);
-            this.tb_searchCategory.TabIndex = 25;
-            this.tb_searchCategory.TabStop = false;
-            // 
-            // btn_searchCategory
-            // 
-            this.btn_searchCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_searchCategory.Enabled = false;
-            this.btn_searchCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_searchCategory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btn_searchCategory.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_searchCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.btn_searchCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_searchCategory.Image")));
-            this.btn_searchCategory.Location = new System.Drawing.Point(164, 8);
-            this.btn_searchCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_searchCategory.Name = "btn_searchCategory";
-            this.btn_searchCategory.Size = new System.Drawing.Size(40, 36);
-            this.btn_searchCategory.TabIndex = 24;
-            this.btn_searchCategory.TabStop = false;
-            this.btn_searchCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_searchCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_searchCategory.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 15);
-            this.label10.TabIndex = 0;
-            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1255,6 +1253,7 @@
             this.Load += new System.EventHandler(this.F_Main_Load);
             this.panel_products.ResumeLayout(false);
             this.groupBox_products.ResumeLayout(false);
+            this.ContextMenu_products.ResumeLayout(false);
             this.panel_productTopControl.ResumeLayout(false);
             this.groupBox_searchproduct.ResumeLayout(false);
             this.groupBox_searchproduct.PerformLayout();
@@ -1266,6 +1265,8 @@
             this.pnl_pushNotifications.ResumeLayout(false);
             this.panel_categories.ResumeLayout(false);
             this.groupBox_categories.ResumeLayout(false);
+            this.groupBox_searchCategory.ResumeLayout(false);
+            this.groupBox_searchCategory.PerformLayout();
             this.groupBox_categorieControls.ResumeLayout(false);
             this.groupBox_categorieControls.PerformLayout();
             this.panel_topGround.ResumeLayout(false);
@@ -1273,9 +1274,6 @@
             this.panel_controls.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.panel_notifyGround.ResumeLayout(false);
-            this.ContextMenu_products.ResumeLayout(false);
-            this.groupBox_searchCategory.ResumeLayout(false);
-            this.groupBox_searchCategory.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1354,8 +1352,7 @@
         public System.Windows.Forms.Button btn_setAll_destock;
         private System.Windows.Forms.ColumnHeader product_id;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_products;
-        private System.Windows.Forms.ToolStripMenuItem moveProductUpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moveProductDownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InsertAsLastToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toggleProductIdToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox_searchCategory;
         private System.Windows.Forms.TextBox tb_searchCategory;
