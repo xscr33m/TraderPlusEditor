@@ -28,7 +28,6 @@ With this editor formatting errors are a thing of the past.
 - Dark Grey Themed
 - Set variables for all products in a category
 - Easily add and remove products and categories
-- Completly Open-Source! Adaption for other Trader files absolutly possible
 
 
 ## Sneak-Preview
@@ -57,6 +56,8 @@ I would appreciate it very much!
 
 made with ♥ for this amazing community!
 
-## License
+## Contributing
 
-[MIT License](https://spdx.org/licenses/)
+If you are interested in contributing to this project or making adjustments, please feel free to contact me for more information or to discuss ideas and suggestions. (Discord: xscr33m#4443)
+
+I look forward to your collaboration!
