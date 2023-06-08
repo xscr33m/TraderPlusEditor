@@ -1,5 +1,3 @@
-![Logo](https://cdn.discordapp.com/attachments/1116457342658170920/1116457373985415369/TraderPlusEditor_Logo.png)
-
 # xscr33m's TraderPlusEditor - The Original -
 Editor for the amazing [TraderPlus](https://steamcommunity.com/sharedfiles/filedetails/?id=2458896948) Mod by [Dmitri060](https://steamcommunity.com/id/Dmitri060). 
 This editor is intended to facilitate the editing of the PriceConfig. 
