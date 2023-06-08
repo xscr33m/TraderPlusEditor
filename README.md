@@ -1,6 +1,6 @@
-![Logo](https://i.imgur.com/HL4128el.png)
+![Logo](https://cdn.discordapp.com/attachments/1116457342658170920/1116457373985415369/TraderPlusEditor_Logo.png)
 
-# xscr33m's TraderPlusEditor
+# xscr33m's TraderPlusEditor - The Original -
 Editor for the amazing [TraderPlus](https://steamcommunity.com/sharedfiles/filedetails/?id=2458896948) Mod by [Dmitri060](https://steamcommunity.com/id/Dmitri060). 
 This editor is intended to facilitate the editing of the PriceConfig. 
 The .json file is very fragile - one comma too much or one space in the wrong place and the whole mod doesn't work anymore. 
@@ -32,7 +32,7 @@ With this editor formatting errors are a thing of the past.
 
 ## Sneak-Preview
 
-![Logo](https://i.imgur.com/fKmtNSI.png)
+![Logo](https://cdn.discordapp.com/attachments/1116457342658170920/1116457632203546795/SneakPreview.png)
 
 
 ## Upcoming Features
@@ -52,9 +52,9 @@ I would appreciate it very much!
 
 [![Logo](https://cdn.discordapp.com/attachments/1103457256164569120/1109278528354127982/Join_Discord-logo.png)](https://discord.com/invite/K9mkHyuGG8)
 
-[Spend a coffee if you like the tool, to keep me awake!](https://www.paypal.com/paypalme/dheil53)
+[![Logo](https://cdn.discordapp.com/attachments/1116457342658170920/1116458450138972230/PayPal.png)](https://www.paypal.com/paypalme/dheil53)
 
-Made with ♥ for this amazing community!
+# Made with ♥ for this amazing community!
 
 ## Contributing
 
