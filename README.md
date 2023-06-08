@@ -7,7 +7,7 @@ With this editor formatting errors are a thing of the past.
 
 ## How-To-Use
 
-   1. download the latest release of [xscr33m's TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases) 
+   1. download the latest release of [xscr33m's TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases)  →→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
    2. Unzip the TraderPlusEditor.zip file using 7Zip or another program.
    3. Run TraderPlusEditor.exe located inside the TraderPlusEditor folder.
    4. Click on "Load File" and select your TraderPlusPriceConfig.json.
