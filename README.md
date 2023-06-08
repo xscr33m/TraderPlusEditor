@@ -54,7 +54,7 @@ I would appreciate it very much!
 
 [Spend a coffee if you like the tool, to keep me awake!](https://www.paypal.com/paypalme/dheil53)
 
-made with ♥ for this amazing community!
+Made with ♥ for this amazing community!
 
 ## Contributing
 
