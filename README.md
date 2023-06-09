@@ -26,6 +26,10 @@ With this editor formatting errors are a thing of the past.
 - Dark Grey Themed
 - Set variables for all products in a category
 - Easily add and remove products and categories
+- Sort entries as you like
+- Optional preview of selected product
+- Auto search for updates
+- And much more!
 
 
 ## Sneak-Preview
