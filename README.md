@@ -52,7 +52,7 @@ With this editor formatting errors are a thing of the past.
 If you have any feedback, please reach out to me!
 I would appreciate it very much! 
 
-[![Logo](https://cdn.discordapp.com/attachments/1103457256164569120/1109278528354127982/Join_Discord-logo.png)](https://discord.com/invite/K9mkHyuGG8)
+[![Logo](https://cdn.discordapp.com/attachments/1103457256164569120/1109278528354127982/Join_Discord-logo.png)](https://discord.com/invite/PasvscT4Nh)
 
 [![Logo](https://cdn.discordapp.com/attachments/1116457342658170920/1116458450138972230/PayPal.png)](https://www.paypal.com/paypalme/dheil53)
 
