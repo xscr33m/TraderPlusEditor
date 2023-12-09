@@ -1,8 +1,8 @@
-![Pricing](https://img.shields.io/badge/Price-Free-green?style=for-the-badge&color=green)
-![Downloads](https://img.shields.io/github/downloads/xscr33m/TraderPlusEditor/total?style=for-the-badge&color=gold)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xscr33m/TraderPlusEditor/Master?style=for-the-badge&color=gold)
-![GitHub License](https://img.shields.io/github/license/xscr33m/TraderPlusEditor?style=for-the-badge&color=gold)
-![Discord](https://img.shields.io/discord/1102440447835648124?style=for-the-badge&label=Discord&color=gold)
+[![Pricing](https://img.shields.io/badge/Price-Free-green?style=for-the-badge&color=green)](https://github.com/xscr33m/TraderPlusEditor/)
+[![Downloads](https://img.shields.io/github/downloads/xscr33m/TraderPlusEditor/total?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/releases)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xscr33m/TraderPlusEditor/Master?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/commits/Master/)
+[![GitHub License](https://img.shields.io/github/license/xscr33m/TraderPlusEditor?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/)
+[![Discord](https://img.shields.io/discord/1102440447835648124?style=for-the-badge&label=Discord&color=gold)](https://discord.com/invite/PasvscT4Nh)
 
 
 # xscr33m's TraderPlusEditor - The Original -
