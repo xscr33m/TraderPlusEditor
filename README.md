@@ -1,3 +1,10 @@
+![Pricing](https://img.shields.io/badge/Price-Free-green?style=for-the-badge&color=green)
+![Downloads](https://img.shields.io/github/downloads/xscr33m/TraderPlusEditor/total?style=for-the-badge&color=gold)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xscr33m/TraderPlusEditor/Master?style=for-the-badge&color=gold)
+![GitHub License](https://img.shields.io/github/license/xscr33m/TraderPlusEditor?style=for-the-badge&color=gold)
+![Discord](https://img.shields.io/discord/1102440447835648124?style=for-the-badge&label=Discord&color=gold)
+
+
 # xscr33m's TraderPlusEditor - The Original -
 Editor for the amazing [TraderPlus](https://steamcommunity.com/sharedfiles/filedetails/?id=2458896948) Mod by [Dmitri060](https://steamcommunity.com/id/Dmitri060). 
 This editor is intended to facilitate the editing of the PriceConfig. 
