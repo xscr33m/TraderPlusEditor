@@ -14,9 +14,9 @@ With this editor formatting errors are a thing of the past.
 
 ## How-To-Use
 
-   1. download the latest release of [xscr33m's TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases)  →→→→→→→→→→→→→→→→→
-   2. Unzip the TraderPlusEditor.zip file using 7Zip or another program.
-   3. Run TraderPlusEditor.exe located inside the TraderPlusEditor folder.
+   1. download the latest release of [xscr33mLabs_TraderPlusEditor.zip](https://github.com/xscr33m/TraderPlusEditor/releases)  →→→→→→→→→→→→→→→→→
+   2. Unzip the xscr33mLabs_TraderPlusEditor.zip file using 7Zip or another program.
+   3. Run TraderPlusEditor.exe located inside the xscr33mLabs_TraderPlusEditor folder.
    4. Click on "Load File" and select your TraderPlusPriceConfig.json.
    5. Enjoy editing the prices.
    6. When you are finished editing, simply click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder, which you can access using the "Open Export Folder" button.
@@ -27,10 +27,12 @@ With this editor formatting errors are a thing of the past.
 
 - Intuitive to use
 - Simple editing
+- Translation in English, German and French
+- File Validation with Error-Pointing
 - Root file wont be changed
 - Searchbar for product names
 - Clean exports free of typing errors
-- Dark Grey Themed
+- Dark Mode Themed
 - Set variables for all products in a category
 - Easily add and remove products and categories
 - Sort entries as you like
@@ -41,7 +43,7 @@ With this editor formatting errors are a thing of the past.
 
 ## Sneak-Preview
 
-![Logo](https://cdn.discordapp.com/attachments/1183147757612040324/1183147757876289597/Editor_Preview.png?ex=65874737&is=6574d237&hm=f6ca4942aed6d977424b0aaf432114f5d2c2e80aa350870d2ac2e714bdb6fc28&)
+![Logo](https://cdn.discordapp.com/attachments/1183147757612040324/1208937087827574844/Preview.png?ex=65e51966&is=65d2a466&hm=c0adf9c64ef3f6b9624b8ca15d89ea6c2ee50fdda5f5a4b5353bada305e02181&)
 
 
 ## Feedback
