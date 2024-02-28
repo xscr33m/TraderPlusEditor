@@ -1,6 +1,6 @@
 [![Pricing](https://img.shields.io/badge/Price-Free-green?style=for-the-badge&color=green)](https://github.com/xscr33m/TraderPlusEditor/)
 [![Downloads](https://img.shields.io/github/downloads/xscr33m/TraderPlusEditor/total?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/releases)
-[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xscr33m/TraderPlusEditor/Master?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/commits/Master/)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xscr33m/TraderPlusEditor/master?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/commits/master/)
 [![GitHub License](https://img.shields.io/github/license/xscr33m/TraderPlusEditor?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/)
 [![Discord](https://img.shields.io/discord/1102440447835648124?style=for-the-badge&label=Discord&color=gold)](https://discord.com/invite/PasvscT4Nh)
 
@@ -62,6 +62,12 @@ I would appreciate it very much!
 If you are interested in contributing to this project or making adjustments, please feel free to contact me for more information or to discuss ideas and suggestions. (Discord: xscr33m#4443)
 
 I look forward to your collaboration!
+
+
+# License
+CC BY-NC-ND 4.0 DEED
+
+[Attribution-NonCommercial-NoDerivs 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 
 
