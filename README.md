@@ -43,7 +43,7 @@ With this editor formatting errors are a thing of the past.
 
 ## Sneak-Preview
 
-![Logo](https://cdn.discordapp.com/attachments/1183147757612040324/1208937087827574844/Preview.png?ex=65e51966&is=65d2a466&hm=c0adf9c64ef3f6b9624b8ca15d89ea6c2ee50fdda5f5a4b5353bada305e02181&)
+![Preview](https://imgur.com/tIwmAZK)
 
 
 ## Feedback
@@ -51,9 +51,9 @@ With this editor formatting errors are a thing of the past.
 If you have any feedback, please reach out to me!
 I would appreciate it very much! 
 
-[![Logo](https://cdn.discordapp.com/attachments/1182770512133361754/1183151523581153462/Discord_Banner.png)](https://discord.com/invite/PasvscT4Nh)
+[![Discord](https://imgur.com/aXJxMX0)](https://discord.com/invite/PasvscT4Nh)
 
-[![Logo](https://cdn.discordapp.com/attachments/1182770512133361754/1183155022419197982/PayPal_Donate.png)](https://www.paypal.com/paypalme/dheil53)
+[![PayPal](https://imgur.com/l04Zf8p)](https://www.paypal.com/paypalme/dheil53)
 
 # Made with ♥ for this amazing community!
 
