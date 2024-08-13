@@ -21,7 +21,6 @@ With this editor formatting errors are a thing of the past.
    5. Enjoy editing the prices.
    6. When you are finished editing, simply click "Export File". A new TraderPlusPriceConfig.json will be created in the export folder, which you can access using the "Open Export Folder" button.
    7. Replace the old TraderPlusPriceConfig.json on your server with the new one.
-   
 
 ## Features
 
@@ -40,20 +39,14 @@ With this editor formatting errors are a thing of the past.
 - Auto search for updates
 - And much more!
 
-
-## Sneak-Preview
-
-![Preview](https://imgur.com/tIwmAZK)
-
-
 ## Feedback
 
 If you have any feedback, please reach out to me!
 I would appreciate it very much! 
 
-[![Discord](https://imgur.com/aXJxMX0)](https://discord.com/invite/PasvscT4Nh)
+[Join the Discord](https://discord.com/invite/PasvscT4Nh)
 
-[![PayPal](https://imgur.com/l04Zf8p)](https://www.paypal.com/paypalme/dheil53)
+[Buy me a coffee](https://www.paypal.com/paypalme/dheil53)
 
 # Made with ♥ for this amazing community!
 
