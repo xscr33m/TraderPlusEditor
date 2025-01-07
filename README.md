@@ -2,7 +2,7 @@
 [![Downloads](https://img.shields.io/github/downloads/xscr33m/TraderPlusEditor/total?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/releases)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xscr33m/TraderPlusEditor/master?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/commits/master/)
 [![GitHub License](https://img.shields.io/github/license/xscr33m/TraderPlusEditor?style=for-the-badge&color=gold)](https://github.com/xscr33m/TraderPlusEditor/)
-[![Discord](https://img.shields.io/discord/1102440447835648124?style=for-the-badge&label=Discord&color=gold)](https://discord.gg/g3gThCNYcM)
+[![Discord](https://img.shields.io/discord/1102440447835648124?style=for-the-badge&label=Discord&color=gold)](https://discord.gg/5CrDj8ba6C)
 
 
 # xscr33m's TraderPlusEditor - The Original -
@@ -44,7 +44,7 @@ With this editor formatting errors are a thing of the past.
 If you have any feedback, please reach out to me!
 I would appreciate it very much! 
 
-[Join the Discord](https://discord.gg/g3gThCNYcM)
+[Join the Discord](https://discord.gg/5CrDj8ba6C)
 
 [Buy me a coffee](https://www.paypal.com/paypalme/dheil53)
 
