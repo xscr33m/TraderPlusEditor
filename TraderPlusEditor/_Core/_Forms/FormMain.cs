@@ -1182,6 +1182,8 @@ namespace TraderPlusEditor._Core._Forms
                         GridViewProducts.Rows.Remove(row);
                     }
 
+                    IsChangedEntry = true;
+
                     await Instance.ShowNotification(Notifications.ResourceManager.GetString(userLanguageKey + "_ProductDeleteSuccess"), IconChar.Check, Color.Green);
                 }
             }

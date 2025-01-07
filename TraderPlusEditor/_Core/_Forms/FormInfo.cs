@@ -38,7 +38,7 @@ namespace TraderPlusEditor._Core._Forms
 
         private void Button_Discord_Click(object sender, EventArgs e)
         {
-            string url = "https://discord.com/invite/PasvscT4Nh";
+            string url = "https://discord.gg/5CrDj8ba6C";
             WebsiteLauncher.OpenWebsite(url);
         }
 
