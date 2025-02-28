@@ -193,12 +193,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextboxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextboxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextboxSearch.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextboxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextboxSearch.ForeColor = System.Drawing.Color.White;
             this.TextboxSearch.Location = new System.Drawing.Point(0, 18);
             this.TextboxSearch.Margin = new System.Windows.Forms.Padding(0);
             this.TextboxSearch.Name = "TextboxSearch";
-            this.TextboxSearch.Size = new System.Drawing.Size(566, 22);
+            this.TextboxSearch.Size = new System.Drawing.Size(566, 19);
             this.TextboxSearch.TabIndex = 7;
             this.TextboxSearch.TabStop = false;
             this.TextboxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSearch_KeyDown);
@@ -301,7 +301,7 @@ namespace TraderPlusEditor._Core._Forms
             this.CheckBoxDefaultTraderStock.Location = new System.Drawing.Point(184, 34);
             this.CheckBoxDefaultTraderStock.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBoxDefaultTraderStock.Name = "CheckBoxDefaultTraderStock";
-            this.CheckBoxDefaultTraderStock.Size = new System.Drawing.Size(182, 21);
+            this.CheckBoxDefaultTraderStock.Size = new System.Drawing.Size(179, 19);
             this.CheckBoxDefaultTraderStock.TabIndex = 5;
             this.CheckBoxDefaultTraderStock.TabStop = false;
             this.CheckBoxDefaultTraderStock.Text = "Enable Default Trader Stock";
@@ -312,13 +312,13 @@ namespace TraderPlusEditor._Core._Forms
             // 
             this.TextBoxVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxVersion.Font = new System.Drawing.Font("Noto Sans", 9F);
+            this.TextBoxVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.TextBoxVersion.ForeColor = System.Drawing.Color.White;
             this.TextBoxVersion.Location = new System.Drawing.Point(68, 11);
             this.TextBoxVersion.Margin = new System.Windows.Forms.Padding(1);
             this.TextBoxVersion.Name = "TextBoxVersion";
             this.TextBoxVersion.ReadOnly = true;
-            this.TextBoxVersion.Size = new System.Drawing.Size(61, 17);
+            this.TextBoxVersion.Size = new System.Drawing.Size(61, 14);
             this.TextBoxVersion.TabIndex = 1;
             this.TextBoxVersion.TabStop = false;
             // 
@@ -329,7 +329,7 @@ namespace TraderPlusEditor._Core._Forms
             this.CheckBoxAutoCalculation.Location = new System.Drawing.Point(13, 34);
             this.CheckBoxAutoCalculation.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBoxAutoCalculation.Name = "CheckBoxAutoCalculation";
-            this.CheckBoxAutoCalculation.Size = new System.Drawing.Size(159, 21);
+            this.CheckBoxAutoCalculation.Size = new System.Drawing.Size(156, 19);
             this.CheckBoxAutoCalculation.TabIndex = 4;
             this.CheckBoxAutoCalculation.TabStop = false;
             this.CheckBoxAutoCalculation.Text = "Enable Auto Calculation";
@@ -343,7 +343,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelVersion.Location = new System.Drawing.Point(13, 10);
             this.LabelVersion.Margin = new System.Windows.Forms.Padding(1);
             this.LabelVersion.Name = "LabelVersion";
-            this.LabelVersion.Size = new System.Drawing.Size(53, 17);
+            this.LabelVersion.Size = new System.Drawing.Size(51, 15);
             this.LabelVersion.TabIndex = 2;
             this.LabelVersion.Text = "Version:";
             // 
@@ -354,7 +354,7 @@ namespace TraderPlusEditor._Core._Forms
             this.CheckBoxAutoDestock.Location = new System.Drawing.Point(184, 9);
             this.CheckBoxAutoDestock.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBoxAutoDestock.Name = "CheckBoxAutoDestock";
-            this.CheckBoxAutoDestock.Size = new System.Drawing.Size(199, 21);
+            this.CheckBoxAutoDestock.Size = new System.Drawing.Size(194, 19);
             this.CheckBoxAutoDestock.TabIndex = 3;
             this.CheckBoxAutoDestock.TabStop = false;
             this.CheckBoxAutoDestock.Text = "Enable Auto Destock at Restart";
@@ -366,12 +366,12 @@ namespace TraderPlusEditor._Core._Forms
             this.PanelFileControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelFileControls.BackColor = System.Drawing.Color.Transparent;
-            this.PanelFileControls.Controls.Add(this.ButtonOpenExports);
+            this.PanelFileControls.Controls.Add(this.ButtonOpenFile);
+            this.PanelFileControls.Controls.Add(this.ButtonSaveFile);
             this.PanelFileControls.Controls.Add(this.ButtonFileClose);
+            this.PanelFileControls.Controls.Add(this.ButtonOpenExports);
             this.PanelFileControls.Controls.Add(this.Button_Info);
             this.PanelFileControls.Controls.Add(this.ButtonSettings);
-            this.PanelFileControls.Controls.Add(this.ButtonSaveFile);
-            this.PanelFileControls.Controls.Add(this.ButtonOpenFile);
             this.PanelFileControls.Controls.Add(this.PictureBoxLogo);
             this.PanelFileControls.Location = new System.Drawing.Point(0, 0);
             this.PanelFileControls.Margin = new System.Windows.Forms.Padding(0);
@@ -382,17 +382,17 @@ namespace TraderPlusEditor._Core._Forms
             // ButtonOpenExports
             // 
             this.ButtonOpenExports.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonOpenExports.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonOpenExports.Dock = System.Windows.Forms.DockStyle.Right;
             this.ButtonOpenExports.FlatAppearance.BorderSize = 0;
             this.ButtonOpenExports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ButtonOpenExports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonOpenExports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonOpenExports.ForeColor = System.Drawing.Color.White;
-            this.ButtonOpenExports.IconChar = FontAwesome.Sharp.IconChar.FolderBlank;
+            this.ButtonOpenExports.IconChar = FontAwesome.Sharp.IconChar.Folder;
             this.ButtonOpenExports.IconColor = System.Drawing.Color.White;
             this.ButtonOpenExports.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonOpenExports.IconSize = 42;
-            this.ButtonOpenExports.Location = new System.Drawing.Point(394, 0);
+            this.ButtonOpenExports.Location = new System.Drawing.Point(1054, 0);
             this.ButtonOpenExports.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonOpenExports.Name = "ButtonOpenExports";
             this.ButtonOpenExports.Size = new System.Drawing.Size(60, 60);
@@ -404,7 +404,7 @@ namespace TraderPlusEditor._Core._Forms
             // ButtonFileClose
             // 
             this.ButtonFileClose.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonFileClose.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonFileClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.ButtonFileClose.FlatAppearance.BorderSize = 0;
             this.ButtonFileClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ButtonFileClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -414,7 +414,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonFileClose.IconColor = System.Drawing.Color.White;
             this.ButtonFileClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonFileClose.IconSize = 42;
-            this.ButtonFileClose.Location = new System.Drawing.Point(334, 0);
+            this.ButtonFileClose.Location = new System.Drawing.Point(994, 0);
             this.ButtonFileClose.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonFileClose.Name = "ButtonFileClose";
             this.ButtonFileClose.Size = new System.Drawing.Size(60, 60);
@@ -455,7 +455,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSettings.ForeColor = System.Drawing.Color.White;
-            this.ButtonSettings.IconChar = FontAwesome.Sharp.IconChar.Tools;
+            this.ButtonSettings.IconChar = FontAwesome.Sharp.IconChar.ScrewdriverWrench;
             this.ButtonSettings.IconColor = System.Drawing.Color.White;
             this.ButtonSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonSettings.IconSize = 42;
@@ -471,7 +471,7 @@ namespace TraderPlusEditor._Core._Forms
             // ButtonSaveFile
             // 
             this.ButtonSaveFile.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonSaveFile.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonSaveFile.Dock = System.Windows.Forms.DockStyle.Right;
             this.ButtonSaveFile.Enabled = false;
             this.ButtonSaveFile.FlatAppearance.BorderSize = 0;
             this.ButtonSaveFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -482,7 +482,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonSaveFile.IconColor = System.Drawing.Color.White;
             this.ButtonSaveFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonSaveFile.IconSize = 42;
-            this.ButtonSaveFile.Location = new System.Drawing.Point(274, 0);
+            this.ButtonSaveFile.Location = new System.Drawing.Point(934, 0);
             this.ButtonSaveFile.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonSaveFile.Name = "ButtonSaveFile";
             this.ButtonSaveFile.Size = new System.Drawing.Size(60, 60);
@@ -494,7 +494,6 @@ namespace TraderPlusEditor._Core._Forms
             // ButtonOpenFile
             // 
             this.ButtonOpenFile.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonOpenFile.Dock = System.Windows.Forms.DockStyle.Left;
             this.ButtonOpenFile.FlatAppearance.BorderSize = 0;
             this.ButtonOpenFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ButtonOpenFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -504,7 +503,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonOpenFile.IconColor = System.Drawing.Color.White;
             this.ButtonOpenFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonOpenFile.IconSize = 42;
-            this.ButtonOpenFile.Location = new System.Drawing.Point(214, 0);
+            this.ButtonOpenFile.Location = new System.Drawing.Point(994, 0);
             this.ButtonOpenFile.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonOpenFile.Name = "ButtonOpenFile";
             this.ButtonOpenFile.Size = new System.Drawing.Size(60, 60);
@@ -552,10 +551,10 @@ namespace TraderPlusEditor._Core._Forms
             this.ListViewCategories.FullRowSelect = true;
             this.ListViewCategories.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.ListViewCategories.HideSelection = false;
-            this.ListViewCategories.Location = new System.Drawing.Point(5, 217);
+            this.ListViewCategories.Location = new System.Drawing.Point(5, 215);
             this.ListViewCategories.MultiSelect = false;
             this.ListViewCategories.Name = "ListViewCategories";
-            this.ListViewCategories.Size = new System.Drawing.Size(290, 304);
+            this.ListViewCategories.Size = new System.Drawing.Size(290, 306);
             this.ListViewCategories.TabIndex = 6;
             this.ListViewCategories.TabStop = false;
             this.ListViewCategories.UseCompatibleStateImageBehavior = false;
@@ -572,11 +571,11 @@ namespace TraderPlusEditor._Core._Forms
             // 
             this.LabelCategories.AutoSize = true;
             this.LabelCategories.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LabelCategories.Font = new System.Drawing.Font("Noto Sans", 9F, System.Drawing.FontStyle.Underline);
+            this.LabelCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
             this.LabelCategories.ForeColor = System.Drawing.Color.White;
             this.LabelCategories.Location = new System.Drawing.Point(5, 200);
             this.LabelCategories.Name = "LabelCategories";
-            this.LabelCategories.Size = new System.Drawing.Size(69, 17);
+            this.LabelCategories.Size = new System.Drawing.Size(66, 15);
             this.LabelCategories.TabIndex = 6;
             this.LabelCategories.Text = "Categories";
             // 
@@ -605,7 +604,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonEditCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonEditCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonEditCategory.ForeColor = System.Drawing.Color.White;
-            this.ButtonEditCategory.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonEditCategory.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonEditCategory.IconColor = System.Drawing.Color.White;
             this.ButtonEditCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonEditCategory.IconSize = 30;
@@ -647,7 +646,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelNewCategory.Location = new System.Drawing.Point(4, 6);
             this.LabelNewCategory.Margin = new System.Windows.Forms.Padding(1);
             this.LabelNewCategory.Name = "LabelNewCategory";
-            this.LabelNewCategory.Size = new System.Drawing.Size(127, 17);
+            this.LabelNewCategory.Size = new System.Drawing.Size(123, 15);
             this.LabelNewCategory.TabIndex = 12;
             this.LabelNewCategory.Text = "New Category Name:";
             // 
@@ -657,12 +656,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxCategoryName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxCategoryName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxCategoryName.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxCategoryName.ForeColor = System.Drawing.Color.White;
             this.TextBoxCategoryName.Location = new System.Drawing.Point(4, 24);
             this.TextBoxCategoryName.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxCategoryName.Name = "TextBoxCategoryName";
-            this.TextBoxCategoryName.Size = new System.Drawing.Size(196, 22);
+            this.TextBoxCategoryName.Size = new System.Drawing.Size(196, 19);
             this.TextBoxCategoryName.TabIndex = 11;
             this.TextBoxCategoryName.TabStop = false;
             // 
@@ -675,7 +674,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonAddCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonAddCategory.ForeColor = System.Drawing.Color.White;
-            this.ButtonAddCategory.IconChar = FontAwesome.Sharp.IconChar.Add;
+            this.ButtonAddCategory.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.ButtonAddCategory.IconColor = System.Drawing.Color.White;
             this.ButtonAddCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonAddCategory.IconSize = 30;
@@ -741,7 +740,7 @@ namespace TraderPlusEditor._Core._Forms
             this.GridViewProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Noto Sans", 9F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -759,7 +758,7 @@ namespace TraderPlusEditor._Core._Forms
             this.products_destock});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -774,7 +773,7 @@ namespace TraderPlusEditor._Core._Forms
             this.GridViewProducts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Noto Sans", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -875,7 +874,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelNewProductName.Location = new System.Drawing.Point(10, 6);
             this.LabelNewProductName.Margin = new System.Windows.Forms.Padding(1);
             this.LabelNewProductName.Name = "LabelNewProductName";
-            this.LabelNewProductName.Size = new System.Drawing.Size(119, 17);
+            this.LabelNewProductName.Size = new System.Drawing.Size(117, 15);
             this.LabelNewProductName.TabIndex = 9;
             this.LabelNewProductName.Text = "New Product Name:";
             // 
@@ -885,12 +884,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxNewProductName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxNewProductName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxNewProductName.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxNewProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxNewProductName.ForeColor = System.Drawing.Color.White;
             this.TextBoxNewProductName.Location = new System.Drawing.Point(10, 24);
             this.TextBoxNewProductName.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxNewProductName.Name = "TextBoxNewProductName";
-            this.TextBoxNewProductName.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxNewProductName.Size = new System.Drawing.Size(148, 19);
             this.TextBoxNewProductName.TabIndex = 8;
             this.TextBoxNewProductName.TabStop = false;
             // 
@@ -903,7 +902,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonAddNewProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonAddNewProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonAddNewProduct.ForeColor = System.Drawing.Color.White;
-            this.ButtonAddNewProduct.IconChar = FontAwesome.Sharp.IconChar.Add;
+            this.ButtonAddNewProduct.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.ButtonAddNewProduct.IconColor = System.Drawing.Color.White;
             this.ButtonAddNewProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonAddNewProduct.IconSize = 30;
@@ -934,7 +933,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelCoefficent.Location = new System.Drawing.Point(10, 6);
             this.LabelCoefficent.Margin = new System.Windows.Forms.Padding(1);
             this.LabelCoefficent.Name = "LabelCoefficent";
-            this.LabelCoefficent.Size = new System.Drawing.Size(68, 17);
+            this.LabelCoefficent.Size = new System.Drawing.Size(64, 15);
             this.LabelCoefficent.TabIndex = 9;
             this.LabelCoefficent.Text = "Coefficent:";
             // 
@@ -944,12 +943,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxCoefficent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxCoefficent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxCoefficent.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxCoefficent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxCoefficent.ForeColor = System.Drawing.Color.White;
             this.TextBoxCoefficent.Location = new System.Drawing.Point(10, 24);
             this.TextBoxCoefficent.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxCoefficent.Name = "TextBoxCoefficent";
-            this.TextBoxCoefficent.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxCoefficent.Size = new System.Drawing.Size(148, 19);
             this.TextBoxCoefficent.TabIndex = 8;
             this.TextBoxCoefficent.TabStop = false;
             // 
@@ -962,7 +961,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonCoefficent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonCoefficent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonCoefficent.ForeColor = System.Drawing.Color.White;
-            this.ButtonCoefficent.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonCoefficent.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonCoefficent.IconColor = System.Drawing.Color.White;
             this.ButtonCoefficent.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonCoefficent.IconSize = 30;
@@ -993,7 +992,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelMaxStock.Location = new System.Drawing.Point(10, 6);
             this.LabelMaxStock.Margin = new System.Windows.Forms.Padding(1);
             this.LabelMaxStock.Name = "LabelMaxStock";
-            this.LabelMaxStock.Size = new System.Drawing.Size(68, 17);
+            this.LabelMaxStock.Size = new System.Drawing.Size(67, 15);
             this.LabelMaxStock.TabIndex = 9;
             this.LabelMaxStock.Text = "Max Stock:";
             // 
@@ -1003,12 +1002,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxMaxStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxMaxStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxMaxStock.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxMaxStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxMaxStock.ForeColor = System.Drawing.Color.White;
             this.TextBoxMaxStock.Location = new System.Drawing.Point(10, 24);
             this.TextBoxMaxStock.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxMaxStock.Name = "TextBoxMaxStock";
-            this.TextBoxMaxStock.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxMaxStock.Size = new System.Drawing.Size(148, 19);
             this.TextBoxMaxStock.TabIndex = 8;
             this.TextBoxMaxStock.TabStop = false;
             // 
@@ -1021,7 +1020,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonMaxStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonMaxStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonMaxStock.ForeColor = System.Drawing.Color.White;
-            this.ButtonMaxStock.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonMaxStock.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonMaxStock.IconColor = System.Drawing.Color.White;
             this.ButtonMaxStock.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonMaxStock.IconSize = 30;
@@ -1052,7 +1051,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelTradeQuantity.Location = new System.Drawing.Point(10, 6);
             this.LabelTradeQuantity.Margin = new System.Windows.Forms.Padding(1);
             this.LabelTradeQuantity.Name = "LabelTradeQuantity";
-            this.LabelTradeQuantity.Size = new System.Drawing.Size(93, 17);
+            this.LabelTradeQuantity.Size = new System.Drawing.Size(89, 15);
             this.LabelTradeQuantity.TabIndex = 9;
             this.LabelTradeQuantity.Text = "Trade Quantity:";
             // 
@@ -1062,12 +1061,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxTradeQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxTradeQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxTradeQuantity.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxTradeQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxTradeQuantity.ForeColor = System.Drawing.Color.White;
             this.TextBoxTradeQuantity.Location = new System.Drawing.Point(10, 24);
             this.TextBoxTradeQuantity.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxTradeQuantity.Name = "TextBoxTradeQuantity";
-            this.TextBoxTradeQuantity.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxTradeQuantity.Size = new System.Drawing.Size(148, 19);
             this.TextBoxTradeQuantity.TabIndex = 8;
             this.TextBoxTradeQuantity.TabStop = false;
             // 
@@ -1080,7 +1079,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonTradeQuantity.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonTradeQuantity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonTradeQuantity.ForeColor = System.Drawing.Color.White;
-            this.ButtonTradeQuantity.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonTradeQuantity.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonTradeQuantity.IconColor = System.Drawing.Color.White;
             this.ButtonTradeQuantity.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonTradeQuantity.IconSize = 30;
@@ -1111,7 +1110,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelBuyPrice.Location = new System.Drawing.Point(10, 6);
             this.LabelBuyPrice.Margin = new System.Windows.Forms.Padding(1);
             this.LabelBuyPrice.Name = "LabelBuyPrice";
-            this.LabelBuyPrice.Size = new System.Drawing.Size(63, 17);
+            this.LabelBuyPrice.Size = new System.Drawing.Size(61, 15);
             this.LabelBuyPrice.TabIndex = 9;
             this.LabelBuyPrice.Text = "Buy Price:";
             // 
@@ -1121,12 +1120,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxBuyPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxBuyPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxBuyPrice.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxBuyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxBuyPrice.ForeColor = System.Drawing.Color.White;
             this.TextBoxBuyPrice.Location = new System.Drawing.Point(10, 24);
             this.TextBoxBuyPrice.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxBuyPrice.Name = "TextBoxBuyPrice";
-            this.TextBoxBuyPrice.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxBuyPrice.Size = new System.Drawing.Size(148, 19);
             this.TextBoxBuyPrice.TabIndex = 8;
             this.TextBoxBuyPrice.TabStop = false;
             // 
@@ -1139,7 +1138,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonBuyPrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonBuyPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonBuyPrice.ForeColor = System.Drawing.Color.White;
-            this.ButtonBuyPrice.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonBuyPrice.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonBuyPrice.IconColor = System.Drawing.Color.White;
             this.ButtonBuyPrice.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonBuyPrice.IconSize = 30;
@@ -1170,7 +1169,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelSellPrice.Location = new System.Drawing.Point(10, 6);
             this.LabelSellPrice.Margin = new System.Windows.Forms.Padding(1);
             this.LabelSellPrice.Name = "LabelSellPrice";
-            this.LabelSellPrice.Size = new System.Drawing.Size(62, 17);
+            this.LabelSellPrice.Size = new System.Drawing.Size(62, 15);
             this.LabelSellPrice.TabIndex = 9;
             this.LabelSellPrice.Text = "Sell Price:";
             // 
@@ -1180,12 +1179,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxSellPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxSellPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxSellPrice.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxSellPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxSellPrice.ForeColor = System.Drawing.Color.White;
             this.TextBoxSellPrice.Location = new System.Drawing.Point(10, 24);
             this.TextBoxSellPrice.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxSellPrice.Name = "TextBoxSellPrice";
-            this.TextBoxSellPrice.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxSellPrice.Size = new System.Drawing.Size(148, 19);
             this.TextBoxSellPrice.TabIndex = 8;
             this.TextBoxSellPrice.TabStop = false;
             // 
@@ -1198,7 +1197,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonSellPrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonSellPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSellPrice.ForeColor = System.Drawing.Color.White;
-            this.ButtonSellPrice.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonSellPrice.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonSellPrice.IconColor = System.Drawing.Color.White;
             this.ButtonSellPrice.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonSellPrice.IconSize = 30;
@@ -1229,7 +1228,7 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelDestockCoefficent.Location = new System.Drawing.Point(10, 6);
             this.LabelDestockCoefficent.Margin = new System.Windows.Forms.Padding(1);
             this.LabelDestockCoefficent.Name = "LabelDestockCoefficent";
-            this.LabelDestockCoefficent.Size = new System.Drawing.Size(116, 17);
+            this.LabelDestockCoefficent.Size = new System.Drawing.Size(111, 15);
             this.LabelDestockCoefficent.TabIndex = 9;
             this.LabelDestockCoefficent.Text = "Destock Coefficent:";
             // 
@@ -1239,12 +1238,12 @@ namespace TraderPlusEditor._Core._Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxDestockCoefficent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.TextBoxDestockCoefficent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxDestockCoefficent.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.TextBoxDestockCoefficent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TextBoxDestockCoefficent.ForeColor = System.Drawing.Color.White;
             this.TextBoxDestockCoefficent.Location = new System.Drawing.Point(10, 24);
             this.TextBoxDestockCoefficent.Margin = new System.Windows.Forms.Padding(0);
             this.TextBoxDestockCoefficent.Name = "TextBoxDestockCoefficent";
-            this.TextBoxDestockCoefficent.Size = new System.Drawing.Size(148, 22);
+            this.TextBoxDestockCoefficent.Size = new System.Drawing.Size(148, 19);
             this.TextBoxDestockCoefficent.TabIndex = 8;
             this.TextBoxDestockCoefficent.TabStop = false;
             // 
@@ -1257,7 +1256,7 @@ namespace TraderPlusEditor._Core._Forms
             this.ButtonDestockCoefficent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ButtonDestockCoefficent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonDestockCoefficent.ForeColor = System.Drawing.Color.White;
-            this.ButtonDestockCoefficent.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.ButtonDestockCoefficent.IconChar = FontAwesome.Sharp.IconChar.Pencil;
             this.ButtonDestockCoefficent.IconColor = System.Drawing.Color.White;
             this.ButtonDestockCoefficent.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ButtonDestockCoefficent.IconSize = 30;
@@ -1274,9 +1273,9 @@ namespace TraderPlusEditor._Core._Forms
             // 
             this.Label_Version.AutoSize = true;
             this.Label_Version.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Label_Version.Location = new System.Drawing.Point(1149, 0);
+            this.Label_Version.Location = new System.Drawing.Point(1148, 0);
             this.Label_Version.Name = "Label_Version";
-            this.Label_Version.Size = new System.Drawing.Size(85, 17);
+            this.Label_Version.Size = new System.Drawing.Size(86, 15);
             this.Label_Version.TabIndex = 7;
             this.Label_Version.Text = "Label_Version";
             // 
@@ -1316,7 +1315,7 @@ namespace TraderPlusEditor._Core._Forms
             this.PanelNotifications.Margin = new System.Windows.Forms.Padding(0);
             this.PanelNotifications.MinimumSize = new System.Drawing.Size(2, 60);
             this.PanelNotifications.Name = "PanelNotifications";
-            this.PanelNotifications.Size = new System.Drawing.Size(139, 60);
+            this.PanelNotifications.Size = new System.Drawing.Size(137, 60);
             this.PanelNotifications.TabIndex = 10;
             this.PanelNotifications.Visible = false;
             // 
@@ -1326,13 +1325,13 @@ namespace TraderPlusEditor._Core._Forms
             this.LabelNotifications.BackColor = System.Drawing.Color.Transparent;
             this.LabelNotifications.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LabelNotifications.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.LabelNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LabelNotifications.Location = new System.Drawing.Point(60, 0);
             this.LabelNotifications.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNotifications.MaximumSize = new System.Drawing.Size(1000, 150);
             this.LabelNotifications.Name = "LabelNotifications";
             this.LabelNotifications.Padding = new System.Windows.Forms.Padding(0, 0, 18, 12);
-            this.LabelNotifications.Size = new System.Drawing.Size(77, 34);
+            this.LabelNotifications.Size = new System.Drawing.Size(75, 32);
             this.LabelNotifications.TabIndex = 0;
             this.LabelNotifications.Text = "Label7";
             this.LabelNotifications.UseMnemonic = false;
@@ -1356,7 +1355,7 @@ namespace TraderPlusEditor._Core._Forms
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.ClientSize = new System.Drawing.Size(1234, 711);
@@ -1366,7 +1365,7 @@ namespace TraderPlusEditor._Core._Forms
             this.Controls.Add(this.Panel_Dashboard);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Noto Sans", 9F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(768, 500);
