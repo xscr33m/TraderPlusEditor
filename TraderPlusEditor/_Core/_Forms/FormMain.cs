@@ -933,6 +933,8 @@ namespace TraderPlusEditor._Core._Forms
 
                     // Scrollen zum markierten Eintrag
                     newCategoryItem.EnsureVisible();
+
+                    IsChangedEntry = true;
                 }
                 else
                 {
@@ -967,6 +969,8 @@ namespace TraderPlusEditor._Core._Forms
                             row.Cells["products_category"].Value = newCategoryName;
                         }
                     }
+
+                    IsChangedEntry = true;
                 }
                 else
                 {
@@ -1016,6 +1020,8 @@ namespace TraderPlusEditor._Core._Forms
 
                     // Entferne die Kategorie aus lv_categories
                     ListViewCategories.SelectedItems[0].Remove();
+
+                    IsChangedEntry = true;
                 }
             }
         }
