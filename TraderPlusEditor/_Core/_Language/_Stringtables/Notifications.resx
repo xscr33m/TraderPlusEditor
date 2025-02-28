@@ -175,7 +175,7 @@
     <value>Einstellungen erfolgreich gespeichert!</value>
   </data>
   <data name="de_Startup" xml:space="preserve">
-    <value>xscr33mLabs wurde erfolgreich gestartet!</value>
+    <value>TraderPlusEditor wurde erfolgreich gestartet!</value>
   </data>
   <data name="en_CategoryExists" xml:space="preserve">
     <value>The category already exists.</value>
@@ -235,7 +235,7 @@
     <value>Settings saved successfully!</value>
   </data>
   <data name="en_Startup" xml:space="preserve">
-    <value>xscr33mLabs successfully started!</value>
+    <value>TraderPlusEditor successfully started!</value>
   </data>
   <data name="fr_CategoryExists" xml:space="preserve">
     <value>La catégorie existe déjà.</value>
@@ -295,6 +295,6 @@
     <value>Paramètres enregistrés avec succès !</value>
   </data>
   <data name="fr_Startup" xml:space="preserve">
-    <value>xscr33mLabs a été lancé avec succès !</value>
+    <value>TraderPlusEditor a été lancé avec succès !</value>
   </data>
 </root>

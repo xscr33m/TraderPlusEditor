@@ -232,7 +232,7 @@ namespace TraderPlusEditor._Core._Language._Stringtables {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die xscr33mLabs wurde erfolgreich gestartet! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die TraderPlusEditor wurde erfolgreich gestartet! ähnelt.
         /// </summary>
         internal static string de_Startup {
             get {
@@ -412,7 +412,7 @@ namespace TraderPlusEditor._Core._Language._Stringtables {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die xscr33mLabs successfully started! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die TraderPlusEditor successfully started! ähnelt.
         /// </summary>
         internal static string en_Startup {
             get {
@@ -592,7 +592,7 @@ namespace TraderPlusEditor._Core._Language._Stringtables {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die xscr33mLabs a été lancé avec succès ! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die TraderPlusEditor a été lancé avec succès ! ähnelt.
         /// </summary>
         internal static string fr_Startup {
             get {
